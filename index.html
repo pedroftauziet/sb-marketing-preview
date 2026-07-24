@@ -267,15 +267,76 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
 .cal .wk .wd{font-size:.82rem;color:#E7CDBB;line-height:1.35;}
 .note{font-size:.82rem;color:var(--ink-soft);}
 .invert .note{color:#C9A48F;}
+
+/* ============ v10 ADDITIONS ============ */
+:root{--done:#3F6B4A;--done-on:#EAF4EC;}
+:root[data-theme="dark"]{--done:#7FB98D;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--done:#7FB98D;}}
+
+/* Expander affordance — chevron that rotates on open, bullets inside */
+.tl-list details{border-bottom:1px solid rgba(225,171,123,.18);}
+.tl-list summary{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:.65rem;
+  padding:.55rem 0;font-size:.98rem;color:var(--cream);}
+.tl-list summary::-webkit-details-marker{display:none;}
+.tl-list summary::before{content:none;}
+.chev{flex:none;width:.9em;height:.9em;margin-top:.28em;color:var(--caramel);
+  transition:transform .18s ease;}
+.tl-list details[open] .chev{transform:rotate(90deg);}
+.s-txt{flex:1;}
+.exp-list{list-style:none;margin:.15rem 0 .85rem 1.55rem;padding:0;
+  display:flex;flex-direction:column;gap:.4rem;}
+.exp-list li{position:relative;padding-left:.95rem;font-size:.9rem;color:#D8B9A6;line-height:1.42;}
+.exp-list li::before{content:"";position:absolute;left:0;top:.55em;width:.32rem;height:.32rem;
+  background:var(--caramel);opacity:.7;}
+.exp-list li b{color:#fff;}
+.exp-list .btn{align-self:flex-start;margin-top:.35rem;}
+
+/* DONE / status treatment on a step */
+.tl-list details.done > summary{background:rgba(127,185,141,.12);
+  border-left:2px solid var(--done);padding:.5rem .6rem;}
+.tl-list details.done .chev{color:var(--done);}
+.tl-list details.spec > summary{border-left:2px solid var(--caramel);padding:.5rem .6rem;
+  background:rgba(225,171,123,.08);}
+.stag{flex:none;font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.06em;font-size:.72rem;
+  padding:.06rem .42rem;line-height:1.5;white-space:nowrap;}
+.stag.done{background:var(--done);color:var(--done-on);}
+.stag.spec{background:rgba(225,171,123,.22);color:var(--caramel);}
+
+/* Promotion engine — creator pool, format, brief */
+.subhead{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.05em;font-size:1.25rem;
+  color:var(--caramel);margin:.4rem 0 .2rem;}
+.fmt{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;
+  background:rgba(225,171,123,.3);border:1px solid rgba(225,171,123,.3);}
+.fmt .cell{background:var(--burgundy);padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;}
+:root[data-theme="dark"] .fmt .cell{background:var(--burgundy-deep);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .fmt .cell{background:var(--burgundy-deep);}}
+.fmt .cell .lab{font-family:'Bebas Neue',Impact,sans-serif;color:var(--caramel);font-size:1.05rem;letter-spacing:.03em;}
+.fmt .cell p{font-size:.9rem;color:#E7CDBB;line-height:1.45;}
+.fmt .cell p b{color:#fff;}
+
+.handles{display:flex;flex-wrap:wrap;gap:.45rem;}
+.handle{font-family:'Bricolage Grotesque',sans-serif;font-size:.85rem;
+  background:rgba(225,171,123,.12);border:1px solid rgba(225,171,123,.32);color:var(--cream);
+  padding:.28rem .6rem;letter-spacing:.01em;}
+.tbc{display:inline-block;border:1px dashed rgba(225,171,123,.65);color:var(--caramel);
+  font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;padding:.14rem .5rem;
+  font-family:'Bebas Neue',Impact,sans-serif;}
+.pool-meta{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-size:.85rem;color:#D8B9A6;}
+.pool-meta b{color:var(--caramel);}
+
+.nos{display:flex;flex-wrap:wrap;gap:.5rem;}
+.no{font-size:.82rem;color:#E7CDBB;background:rgba(168,50,63,.16);
+  border:1px solid rgba(232,115,126,.4);padding:.28rem .6rem;}
+.no::before{content:"\00d7  ";color:var(--hot);font-weight:700;}
+
 </style>
 
 <!-- ================= COVER ================= -->
 <section class="cover">
   <div class="wrap stack">
-    <span class="script">Marketing takeover &mdash; progress, direction &amp; the ask</span>
     <h1>Own the baker,<br>not the transaction</h1>
     <hr class="rule-caramel">
-    <p class="lede">Since our last 1:1 I stopped writing the plan and started building it. Here&rsquo;s what&rsquo;s <strong>already done</strong>, where I want to take it <strong>next</strong>, and the few <strong>calls</strong> I still need from you.</p>
+    <p class="lede">Since our last 1:1, I stopped writing the plan and started building it.</p>
     <div class="meta">
       <span>For <b>Florian Ilia</b></span>
       <span>From <b>Pedro F. Tauziet</b></span>
@@ -304,13 +365,83 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
   </div>
 </section>
 
-<!-- ================= WHAT'S BUILT ================= -->
+<!-- ================= THE PLAN — FOUR PHASES ================= -->
 <section class="invert">
   <div class="wrap stack-lg">
     <div class="head">
-      <span class="eyebrow">Where we are now</span>
+      <span class="eyebrow">The plan</span>
+      <h2>Four phases</h2>
+      <p class="lede"><strong>Fix the product before you promote it.</strong> The built items below are steps inside these phases &mdash; this is where they sit. <span style="opacity:.75">Tap any step to open it.</span></p>
+    </div>
+    <div class="tl">
+
+      <div class="tl-item">
+        <div class="tl-head"><span class="tl-num">01</span><span class="tl-title">Fix what&rsquo;s broken</span><span class="tl-date">Needs dev</span></div>
+        <p class="tl-goal">Clear the blockers that stop everything else. <b>The one phase I can&rsquo;t ship alone &mdash; it needs repo / Shopify access.</b></p>
+        <ul class="tl-list">
+<li><details><summary><span class="s-txt">Remove the fake phone number + live-chat claim</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The footer shows an <b>invented phone number</b>.</li><li>It claims a live chat nobody staffs.</li><li>Remove both.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Write real legal pages, and link them</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Terms &amp; Privacy are placeholder text and unlinked.</li><li>Shipping &amp; Returns don&rsquo;t exist.</li><li>Write them, fill Shopify&rsquo;s policy fields, link them. Needs Kaye + legal review.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Fix the cookie / GDPR consent</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The cookie &ldquo;Learn more&rdquo; link is broken (404).</li><li>Shoppers can&rsquo;t withdraw consent.</li><li>Both quick fixes.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Tracking &amp; technical setup <span style="opacity:.65">(grouped dev tasks)</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Install the <b>Meta Pixel + CAPI</b> and Google Ads tag &mdash; today no ad could even be measured.</li><li>Turn on Consent Mode.</li><li>Fix the checkout-domain setting and the product feeds stuck on &ldquo;Loading&hellip;&rdquo;.</li><li>Fix the Shopify analytics crash.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Verify with a live test order</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Place a real order end-to-end.</li><li>Confirm the sale is tracked.</li><li>This is the gate before any ad spend.</li></ul></details></li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-head"><span class="tl-num">02</span><span class="tl-title">Turn the site into a real store</span><span class="tl-date">Designed</span></div>
+        <p class="tl-goal">Rebuild it as a store, not a broken catalogue. <b>The homepage redesign is done &mdash; open it right here.</b></p>
+        <ul class="tl-list">
+<li><details class="done"><summary><span class="stag done">Done</span><span class="s-txt">Rebuild the homepage with real ecommerce logic</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Broken hero fixed; real category structure.</li><li>Proof-led &mdash; reviews, PMF and reputation up front.</li><li>High-fidelity and clickable; awaiting build in the repo.</li><li><a class="btn" href="./superbaking.html" target="_blank" rel="noopener">Open the live site &rarr;</a></li></ul></details></li>
+<li><details class="done"><summary><span class="stag done">Done</span><span class="s-txt">Put our proof on the homepage</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Reviews, PMF and Amazon reputation now surfaced on the new homepage.</li></ul></details></li>
+<li><details class="done"><summary><span class="stag done">Done</span><span class="s-txt">Bring BakeSide into the homepage + nav</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The app is now part of the story and the menu in the redesign.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Import Amazon reviews to product pages</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Pages show &ldquo;0 reviews&rdquo; while Amazon has thousands.</li><li>Import them so the site earns trust.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Rewrite product copy + re-export images full-res</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Descriptions are pasted Amazon bullets &mdash; one page describes the wrong product.</li><li>Rewrite for the web.</li><li>Re-export sharp images that double as ad creative.</li></ul></details></li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-head"><span class="tl-num">03</span><span class="tl-title">Connect site and app</span><span class="tl-date">Proposed</span></div>
+        <p class="tl-goal">Make site and app work as one system. <b>Architecture designed; needs a monetisation call + dev.</b></p>
+        <ul class="tl-list">
+<li><details class="spec"><summary><span class="stag spec">Designed</span><span class="s-txt">Connect app &harr; site both ways</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Different channels get different destinations.</li><li>App-intent &rarr; the BakeSide site.</li><li>Problem-intent &rarr; a lead-magnet timeline planner.</li><li>Purchase-intent &rarr; superbaking.com.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Build the bundle Amazon can&rsquo;t match</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The hardware kit with <b>months of BakeSide included</b>.</li><li>Never a price, never a tier name &mdash; only &ldquo;months included with your kit.&rdquo;</li><li>Depends on the monetisation model being decided first (see the asks).</li></ul></details></li>
+<li><details><summary><span class="s-txt">Keep VIP traffic on our own site</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The VIP code currently redirects our most engaged customers to Amazon.</li><li>Honour it on our own site instead.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Build the Klaviyo email flows</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Automated email sequences that run themselves.</li><li><b>Welcome</b> new customers, then <b>onboard</b> them into the app.</li><li><b>Nudge upgrades</b>, and <b>recover</b> abandoned carts and browses.</li></ul></details></li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-head"><span class="tl-num">04</span><span class="tl-title">Promote both brands</span><span class="tl-date">Ahead &mdash; specced</span></div>
+        <p class="tl-goal">Only now drive demand. Evidence-based and creator-native &mdash; the full engine is the next section. This is where a right hand comes in.</p>
+        <ul class="tl-list">
+<li><details><summary><span class="s-txt">First-month short-form calendar (12 posts)</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>3 posts a week, shot in one batch session.</li><li>Built around one real starter and one loaf per week.</li><li>The diagnosis is the recurring format &mdash; not &ldquo;content with an app in it.&rdquo;</li></ul></details></li>
+<li><details><summary><span class="s-txt">Creator-native format (the Cal AI mechanism)</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Creators film the bake they were already making.</li><li>The app appears only at the starter check &mdash; 3&ndash;6 seconds, once.</li><li>Value first, product discreet.</li></ul></details></li>
+<li><details class="spec"><summary><span class="stag spec">Drafted</span><span class="s-txt">Re-review campaign + ASO</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Fix the 4.0&#9733;-from-6-ratings problem (28 PMF promoters).</li><li>Make the app findable in search.</li><li>Both drafted.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Paid ads &mdash; retargeting first, then prospecting</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Start warm &mdash; retarget people who already visited. Cheapest first.</li><li>Go cold (prospecting) only once it&rsquo;s proven.</li><li>Room to extend with Pedro&rsquo;s own references.</li></ul></details></li>
+        </ul>
+      </div>
+
+      <div class="tl-item track">
+        <div class="tl-head"><span class="tl-num">&#9733;</span><span class="tl-title">BakeSide app track</span><span class="tl-date">Parallel</span></div>
+        <p class="tl-goal">Fix how the app presents and how it&rsquo;s found &mdash; it&rsquo;s proven, just invisible.</p>
+        <ul class="tl-list">
+<li><details class="spec"><summary><span class="stag spec">Drafted</span><span class="s-txt">ASO rewrite &mdash; title, subtitle, screenshots</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Keywords, copy and better screenshots so people find it and download.</li></ul></details></li>
+<li><details><summary><span class="s-txt">In-app review prompt at the moment of delight</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Ask for a review right after a good Bake Outcome, when the user is happy.</li></ul></details></li>
+<li><details class="spec"><summary><span class="stag spec">Drafted</span><span class="s-txt">Re-review campaign to the 28 PMF promoters</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>One honest email to the survey fans who love the app. The fastest rating fix.</li></ul></details></li>
+<li><details><summary><span class="s-txt">Drop &ldquo;beta&rdquo; framing before monetisation</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Both listings still say beta / free.</li><li>Remove it before we charge &mdash; it contradicts every CTA.</li></ul></details></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT'S ALREADY BUILT ================= -->
+<section>
+  <div class="wrap stack-lg">
+    <div class="head">
       <h2>What&rsquo;s already built</h2>
-      <p class="lede">Not slides &mdash; working artifacts. The two flagship surfaces are <strong>designed and ready to build</strong>; the promotion and app fixes are <strong>fully specced</strong>. Open the two sites yourself:</p>
+      <p class="lede">Working artifacts, not slides. Open the two sites yourself:</p>
     </div>
     <div class="cta-row">
       <a class="btn" href="./superbaking.html" target="_blank" rel="noopener">Open the new superbaking.com &rarr;</a>
@@ -319,98 +450,32 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
     <div class="built">
       <div class="item">
         <div class="top"><h3>superbaking.com redesign</h3><span class="pill ok">Built</span></div>
-        <p>Full homepage rebuild &mdash; real ecommerce logic, our proof up front (reviews, PMF, reputation), BakeSide surfaced in the story. High-fidelity, clickable. <b>Designed, awaiting build.</b></p>
+        <p>Full homepage rebuild &mdash; real ecommerce logic, our proof up front (reviews, PMF, reputation), BakeSide surfaced in the story. High-fidelity and clickable.</p>
         <div class="cta-row"><a class="btn ghost" href="./superbaking.html" target="_blank" rel="noopener">Open the live site &rarr;</a></div>
       </div>
       <div class="item">
-        <div class="top"><h3>BakeSide app site</h3><span class="pill ok">Built</span></div>
-        <p>New marketing site for the app &mdash; leads with real numbers, shows the diagnosis as a scored card (Yuka / Cal AI pattern), hardware as credibility (MEATER pattern). Final after 5 rounds. <b>Designed, awaiting build.</b></p>
+        <div class="top"><h3>BakeSide app website</h3><span class="pill ok">Built</span></div>
+        <p>New marketing site for the app &mdash; leads with real numbers, shows the diagnosis as a scored card (Yuka / Cal AI pattern), hardware as credibility (MEATER pattern). Final after 5 rounds.</p>
         <div class="cta-row"><a class="btn ghost" href="./bakeside.html" target="_blank" rel="noopener">Open the live site &rarr;</a></div>
       </div>
       <div class="item">
-        <div class="top"><h3>Funnel + benchmark strategy</h3><span class="pill ok">Built</span></div>
-        <p>Nine app-site benchmarks inspected live. Different channels &rarr; different destinations. The one structural answer to &ldquo;Amazon can&rsquo;t bundle software&rdquo;: <b>each site makes the other product its mechanism</b>.</p>
+        <div class="top"><h3>Benchmark + funnel strategy</h3><span class="pill ok">Done</span></div>
+        <p>Nine app-site benchmarks inspected live. Different channels &rarr; different destinations. The structural answer to &ldquo;Amazon can&rsquo;t bundle software&rdquo;: <b>each site makes the other product its mechanism</b>.</p>
       </div>
       <div class="item">
-        <div class="top"><h3>Promotion plan</h3><span class="pill ok">Built</span></div>
-        <p>Evidence-based, creator-native. First-month short-form calendar (12 posts), creator brief, re-review campaign. <b>Nothing shipped yet</b> &mdash; ready to run on your go-ahead.</p>
+        <div class="top"><h3>BakeSide promotion plan</h3><span class="pill warn">Plan ready</span></div>
+        <p>A written <b>plan</b> for how we&rsquo;d promote &mdash; first-month calendar (12 posts), creator brief, re-review campaign. <b>A plan, not a shipped thing</b> &mdash; ready to run on your go-ahead.</p>
       </div>
       <div class="item">
-        <div class="top"><h3>App Store Optimisation</h3><span class="pill warn">Specced</span></div>
+        <div class="top"><h3>App Store Optimisation</h3><span class="pill warn">Drafted</span></div>
         <p>Title, subtitle, screenshots and keyword rewrite drafted so the app is <b>found</b>, not just competent. Pedro submits.</p>
       </div>
       <div class="item">
-        <div class="top"><h3>Re-review campaign</h3><span class="pill warn">Specced</span></div>
+        <div class="top"><h3>Re-review campaign</h3><span class="pill warn">Drafted</span></div>
         <p>4.0&#9733; from just <b>6</b> ratings. A 5-email sequence to the 28 PMF promoters + an in-app prompt at the moment of delight. Highest-ROI, cheapest fix we own.</p>
       </div>
     </div>
-    <p class="note">Honest status: the two sites are high-fidelity, self-contained mockups &mdash; production-ready designs, not yet deployed to the live domains. Everything else is a finished spec awaiting a go / access.</p>
-  </div>
-</section>
-
-<!-- ================= TIMELINE ================= -->
-<section>
-  <div class="wrap stack-lg">
-    <div class="head">
-      <span class="eyebrow">The plan</span>
-      <h2>Four phases &mdash; and where each one stands</h2>
-      <p class="lede"><strong>Fix the product before you promote it.</strong> Phases 2&ndash;3 are largely <em>designed</em> already; Phase 1 still needs dev; Phase 4 stays ahead. <span style="opacity:.75">Click any item to expand.</span></p>
-    </div>
-    <div class="tl">
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">01</span><span class="tl-title">Turn the lights on</span><span class="tl-date">Needs dev</span></div>
-        <p class="tl-goal">Clear the blockers that stop everything else. <b>The one phase I can&rsquo;t ship alone &mdash; it needs repo / Shopify access.</b></p>
-        <ul class="tl-list">
-<li><details><summary>Remove the fake phone + live-chat claim</summary><p class="exp">The footer shows an invented number and an unstaffed live-chat claim. Remove both. (Removal is itself a Phase-1 item.)</p></details></li>
-<li><details><summary>Real legal pages (Terms/Privacy/Shipping/Returns), linked</summary><p class="exp">Terms &amp; Privacy are Lorem ipsum and unlinked; Shipping/Returns don&rsquo;t exist. Write real ones, fill Shopify&rsquo;s policy fields, link them. Needs Kaye + legal review.</p></details></li>
-<li><details><summary>Fix cookie link + consent withdrawal (GDPR)</summary><p class="exp">The cookie &ldquo;Learn more&rdquo; link 404s and consent can&rsquo;t be withdrawn. Quick fixes.</p></details></li>
-<li><details><summary>Install Meta Pixel + CAPI, Google Ads tag, Consent Mode</summary><p class="exp">No ad pixel exists today, so no ad could be measured. Install the tracking. Needs a little dev support.</p></details></li>
-<li><details><summary>Fix analytics + the &ldquo;Loading&hellip;&rdquo; product feeds</summary><p class="exp">Shopify analytics crashes on a missing setting; the homepage product rows are stuck loading. Both dev fixes.</p></details></li>
-<li><details><summary>Verify tracking with a live test order</summary><p class="exp">Place a real test order and confirm the sale is tracked end-to-end. The gate before any ad spend.</p></details></li>
-        </ul>
-      </div>
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">02</span><span class="tl-title">Fix the site as a product</span><span class="tl-date">Designed</span></div>
-        <p class="tl-goal">Rebuild it as a real store. <b>The homepage redesign is done &mdash; open it above.</b> Remaining items are build + content.</p>
-        <ul class="tl-list">
-<li><details><summary>Rebuild the homepage with real ecommerce logic <b>&mdash; DONE (design)</b></summary><p class="exp">Broken hero fixed, real category structure, proof-led. The full high-fidelity redesign is built and clickable; awaiting build in the repo.</p></details></li>
-<li><details><summary>Import Amazon reviews to product pages</summary><p class="exp">Pages show &ldquo;0 reviews&rdquo; while Amazon has thousands. Import them so the site earns trust.</p></details></li>
-<li><details><summary>Put our proof on the homepage <b>&mdash; DONE (design)</b></summary><p class="exp">Reviews, PMF and Amazon reputation are surfaced in the new homepage.</p></details></li>
-<li><details><summary>Bring BakeSide into the homepage + nav <b>&mdash; DONE (design)</b></summary><p class="exp">The app is now part of the story and the menu in the redesign.</p></details></li>
-<li><details><summary>Rewrite product-page copy + re-export images full-res</summary><p class="exp">Descriptions are pasted Amazon bullets (one page describes the wrong product). Rewrite for the web; re-export sharp images that double as ad creative.</p></details></li>
-        </ul>
-      </div>
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">03</span><span class="tl-title">Close the loop</span><span class="tl-date">Proposed</span></div>
-        <p class="tl-goal">Make site and app work as one system. <b>Architecture designed (funnel + benchmark doc); needs a monetisation call + dev.</b></p>
-        <ul class="tl-list">
-<li><details><summary>Connect app &harr; site both ways <b>&mdash; designed</b></summary><p class="exp">Different channels get different destinations: app-intent &rarr; BakeSide site; problem-intent &rarr; a lead-magnet timeline planner; purchase-intent &rarr; superbaking.com. Spec is written.</p></details></li>
-<li><details><summary>Build the bundle Amazon can&rsquo;t match</summary><p class="exp">Tools + <b>months of BakeSide included with the kit</b>. Needs the monetisation decision first (see the asks), then dev + Shopify execute. No tier name or price is public.</p></details></li>
-<li><details><summary>Keep VIP traffic on-site (stop the Amazon redirect)</summary><p class="exp">The VIP code currently sends our most engaged customers to Amazon. Honour it on our own site instead.</p></details></li>
-<li><details><summary>Klaviyo flows: welcome &rarr; onboarding &rarr; upgrade; abandon</summary><p class="exp">Build the automated emails: welcome, app onboarding, upgrade nudges, plus cart and browse abandonment.</p></details></li>
-        </ul>
-      </div>
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">04</span><span class="tl-title">Promotion engine</span><span class="tl-date">Ahead &mdash; specced</span></div>
-        <p class="tl-goal">Only now drive demand &mdash; for both brands. Evidence-based and creator-native (next section). Triggers a right hand.</p>
-        <ul class="tl-list">
-<li><details><summary>First-month short-form calendar (12 posts)</summary><p class="exp">3 originals/week in one batch session, built around one real starter and one loaf a week. The diagnosis is the recurring format, not &ldquo;content with an app in it.&rdquo;</p></details></li>
-<li><details><summary>Creator-native brief (Cal AI mechanism)</summary><p class="exp">Creators film the bake they were already making; the app enters only at the starter check. Value first, product discreet.</p></details></li>
-<li><details><summary>Re-review campaign + ASO</summary><p class="exp">Fix the rating (28 PMF promoters) and make the app findable. Both drafted.</p></details></li>
-<li><details><summary>Retargeting ads &rarr; then prospecting</summary><p class="exp">Start warm (cheapest), then cold once it&rsquo;s proven. Room for Pedro to extend with his own references.</p></details></li>
-        </ul>
-      </div>
-      <div class="tl-item track">
-        <div class="tl-head"><span class="tl-num">&#9733;</span><span class="tl-title">BakeSide app track</span><span class="tl-date">Parallel</span></div>
-        <p class="tl-goal">Fix how the app presents and how it&rsquo;s found &mdash; it&rsquo;s proven, just invisible.</p>
-        <ul class="tl-list">
-<li><details><summary>ASO rewrite &mdash; title, subtitle, screenshots <b>&mdash; specced</b></summary><p class="exp">Keywords + copy + better screenshots so people find it and download.</p></details></li>
-<li><details><summary>In-app review prompt at the moment of delight</summary><p class="exp">Ask for a review right after a good Bake Outcome, when the user is happy.</p></details></li>
-<li><details><summary>Re-review campaign to the 28 PMF promoters <b>&mdash; specced</b></summary><p class="exp">One honest email to the survey fans who love the app. The fastest rating fix.</p></details></li>
-<li><details><summary>Drop &ldquo;beta&rdquo; framing before monetisation</summary><p class="exp">Both listings still say beta / free &mdash; remove that before we charge. It contradicts every CTA.</p></details></li>
-        </ul>
-      </div>
-    </div>
+    <p class="note">Honest status: the two sites are high-fidelity, self-contained mockups &mdash; production-ready designs, not yet deployed to the live domains. Everything else is a finished spec or plan awaiting a go / access.</p>
   </div>
 </section>
 
@@ -419,17 +484,20 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
   <div class="wrap stack-lg">
     <div class="head">
       <span class="eyebrow">Phase 4, in depth</span>
-      <h2>How we promote &mdash; borrowed from what actually worked</h2>
-      <p class="lede">Not &ldquo;post more.&rdquo; A specific, evidenced mechanism. Two comparables anchor it &mdash; and I&rsquo;ve built the first-month plan around them.</p>
+      <h2>The promotion engine</h2>
+      <p class="lede">The specific mechanism I&rsquo;d use, who we&rsquo;d contact, and what we&rsquo;d send them.</p>
     </div>
+
+    <!-- Anchors -->
     <div class="evid">
       <div class="card">
         <div class="card-head"><h3>Cal AI <span class="src">the model</span></h3></div>
         <ul class="blist">
-          <li>Bootstrapped app that grew by filming <b>one recordable feature</b> &mdash; the photo scan &mdash; over and over.</li>
+          <li>A bootstrapped app that grew by filming <b>one recordable feature</b> &mdash; its photo scan &mdash; over and over.</li>
           <li>Structurally identical to us: their food scan is our <b>starter / loaf photo diagnosis</b>.</li>
-          <li>What transfers: pick one feature, show the <b>verdict card in the first second</b>, volume over polish. What doesn&rsquo;t: their paid 250-creator network. We borrow the mechanism, not the curve.</li>
+          <li>What transfers: pick one feature, show the <b>verdict in the first second</b>, volume over polish. What doesn&rsquo;t: their paid 250-creator network. We borrow the mechanism, not the curve.</li>
         </ul>
+        <div class="cta-row"><a class="btn ghost" href="https://www.calai.app/" target="_blank" rel="noopener">See Cal AI &rarr;</a></div>
       </div>
       <div class="card">
         <div class="card-head"><h3>Ooni <span class="src">the sober read</span></h3></div>
@@ -440,42 +508,100 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
         </ul>
       </div>
       <div class="card">
-        <div class="card-head"><h3>Creator-native <span class="src">the format</span></h3></div>
+        <div class="card-head"><h3>The bet <span class="src">in one line</span></h3></div>
         <ul class="blist">
-          <li>Creators film the <b>bake they were already making</b>. The app enters only at the starter check &mdash; 3&ndash;6 seconds, once.</li>
-          <li>Value first, product discreet &mdash; the format is <b>structurally incapable</b> of being product-forward.</li>
-          <li>Backed by our own Amazon truth: the feature-callout image <b>lost by 67% CVR</b>. This audience punishes product-forward creative.</li>
+          <li>Stop making &ldquo;content about baking with an app in it.&rdquo;</li>
+          <li>Make the <b>diagnosis</b> the recurring format: a photo &rarr; a scored verdict &rarr; a corrected next bake.</li>
+          <li>Our own Amazon truth backs it &mdash; the feature-callout image <b>lost by 67% CVR</b>. This audience punishes product-forward creative.</li>
         </ul>
       </div>
     </div>
+
+    <!-- The creator-native format -->
     <div class="stack">
-      <span class="eyebrow" style="margin-top:.6rem;">First month &mdash; 12 posts, one batch a week</span>
+      <span class="subhead">The creator-native format &mdash; concretely</span>
+      <p class="lede">The creator films the Sunday bake they were making anyway. The app appears <strong>only</strong> at the moment they check the starter.</p>
+      <div class="fmt">
+        <div class="cell"><span class="lab">What they film</span><p>Their normal weekend bake &mdash; their phone, their voice, their kitchen. <b>No script from us.</b></p></div>
+        <div class="cell"><span class="lab">Where the app enters</span><p>At the starter check, they photograph it and say what it tells them &mdash; <b>3&ndash;6 seconds, once.</b> If they disagree with it on camera, even better.</p></div>
+        <div class="cell"><span class="lab">Then back to baking</span><p>The tool may be in their hands; it is never the subject. The format is <b>structurally incapable</b> of being product-forward.</p></div>
+      </div>
+      <div class="nos">
+        <span class="no">No unboxing</span><span class="no">No &ldquo;check out this app&rdquo;</span><span class="no">No discount code</span><span class="no">No app icon / download screen</span><span class="no">No price or tier name</span><span class="no">No script</span>
+      </div>
+    </div>
+
+    <!-- Who we contact -->
+    <div class="stack">
+      <span class="subhead">Who we&rsquo;d start with</span>
+      <p class="lede">Real relationships we already have &mdash; the February UGC set. <strong>Warm first (Wave 1); source cold only if that yields too few.</strong></p>
+      <p class="note" style="margin-bottom:.3rem;">Video creators</p>
+      <div class="handles">
+        <span class="handle">@thetimelessbreadz</span><span class="handle">@southernbellebreadco</span><span class="handle">@homemadebycait</span><span class="handle">@chrissyscarpati</span><span class="handle">@baked.by.lowe</span><span class="handle">@dough_mama_az</span><span class="handle">@byrd_house_baking</span><span class="handle">@_thesimpleloaf</span><span class="handle">@coffeeforlayovers</span><span class="handle">@yellowdoorbakry</span><span class="handle">@sourdough_canvas</span>
+      </div>
+      <p class="note" style="margin:.6rem 0 .3rem;">Photo creators</p>
+      <div class="handles">
+        <span class="handle">@Sarkasdailybread</span><span class="handle">@Deserttrailfarms</span><span class="handle">@_luubbaa</span>
+      </div>
+      <div class="pool-meta" style="margin-top:.9rem;">
+        <span><b>30+</b> creators already hold product</span>
+        <span><b>~10</b> packages ship / week</span>
+        <span><b>~50%</b> post</span>
+        <span>Reach per creator &mdash; <span class="tbc">to pull</span></span>
+      </div>
+    </div>
+
+    <!-- How we choose + the brief -->
+    <div class="two-up">
+      <div class="col">
+        <span class="col-label">How we choose them</span>
+        <ul class="blist">
+          <li>By <b>behaviour, not follower count</b> &mdash; they already post bake-<b>process</b> content, not styled flat-lays.</li>
+          <li>Target the <b>3k&ndash;50k</b> range: real engagement, still native, no rate card.</li>
+          <li>Activate warm relationships first; source cold only if Wave 1 is thin.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <span class="col-label">The video brief we send</span>
+        <ul class="blist">
+          <li><b>What to film:</b> a technique, a fix, or a before/after &mdash; the video they&rsquo;d make anyway.</li>
+          <li><b>Where the app enters:</b> the starter check, 3&ndash;6s, once.</li>
+          <li><b>Hard limits:</b> no unboxing, no pitch, no code.</li>
+          <li><b>Deliverables:</b> one vertical video + 3 stills, posted to their feed, raw file back.</li>
+          <li><b>Usage rights:</b> 24-month, non-exclusive, no paid media unless agreed.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- First month + re-review -->
+    <div class="stack">
+      <span class="subhead">First month &mdash; 12 posts, one batch a week</span>
       <div class="cal">
         <div class="wk"><span class="wn">Week 1</span><span class="wd">Establish the format &mdash; starter diagnosis, one-fix demos.</span></div>
         <div class="wk"><span class="wn">Week 2</span><span class="wd">The loaf loop &mdash; app grades a real bake, promises a fix.</span></div>
-        <div class="wk"><span class="wn">Week 3</span><span class="wd">The timeline / planning angle &mdash; work backwards from dinner.</span></div>
+        <div class="wk"><span class="wn">Week 3</span><span class="wd">The timeline angle &mdash; work backwards from dinner.</span></div>
         <div class="wk"><span class="wn">Week 4</span><span class="wd">Proof &amp; payoff &mdash; the fix worked, side-by-side. The loop closes.</span></div>
       </div>
-      <p class="note">Plus a re-review campaign (28 PMF promoters &rarr; ~4.5&#9733;, and n:6 &rarr; 20+) and the ASO rewrite. This section is built to extend &mdash; Pedro will add further references.</p>
+      <span class="subhead" style="margin-top:.6rem;">The re-review campaign</span>
+      <p class="lede">One honest email to the <strong>28 PMF promoters</strong> (no incentive, no number requested) lifts the 4.0&#9733;-from-6-ratings problem to roughly <strong>~4.5&#9733;</strong> and, more importantly, <strong>6 ratings &rarr; 20+</strong> &mdash; which is what actually makes the number credible.</p>
+      <p class="note">This section is built to extend &mdash; Pedro will add further references and creators.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= HOW WE BUILD ================= -->
+<!-- ================= EFFICIENCY WIN ================= -->
 <section>
   <div class="wrap stack-lg">
     <div class="head">
-      <span class="eyebrow">The efficiency win</span>
       <h2>We can largely build this ourselves</h2>
       <p class="lede">The old blocker was &ldquo;name a dev owner.&rdquo; It&rsquo;s smaller than we thought.</p>
     </div>
     <div class="loop">
-      <div class="node"><span class="who">The stack</span><span class="what">superbaking.com runs on <strong>Shopify Hydrogen</strong>, in a Git repo I already have access to.</span></div>
-      <div class="joint"><span class="arrow">&darr;</span><span>So Pedro + Claude Code can build the redesign <strong>directly in the repo, on a branch</strong> &mdash; preview deploy, live site untouched.</span></div>
-      <div class="node"><span class="who">Nabiha</span><span class="what">The app engineer only <strong>reviews + merges at the end</strong>. Not a build owner, not a hire.</span></div>
+      <div class="node"><span class="who">The repo</span><span class="what">superbaking.com runs on <strong>Shopify Hydrogen</strong>, in a Git repo I already have access to.</span></div>
+      <div class="node"><span class="who">Pedro + Claude</span><span class="what">Build the redesign <strong>directly on a branch</strong> &mdash; preview deploy, live site untouched.</span></div>
+      <div class="node"><span class="who">Nabiha</span><span class="what">The app engineer only <strong>reviews + merges</strong> at the end.</span></div>
       <div class="joint broke"><span class="arrow">!</span><span><b>Still open:</b> bakeside.app&rsquo;s host and stack are unknown &mdash; a question for Nabiha before we touch the app site.</span></div>
     </div>
-    <p class="big-line">This makes the proposal <span class="a">cheaper</span> and <span class="a">faster</span> &mdash; we need review + access, not a dev hire.</p>
   </div>
 </section>
 
@@ -484,7 +610,7 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
   <div class="wrap stack-lg">
     <div class="head">
       <span class="eyebrow">Who does what</span>
-      <h2>Three lanes &mdash; and the middle one just got wider</h2>
+      <h2>Three lanes</h2>
       <p class="lede">With repo access, much of what used to sit in the dev lane moves to <em>&ldquo;we build it, Nabiha reviews.&rdquo;</em></p>
     </div>
     <div class="cols">
@@ -516,7 +642,6 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
         </ul>
       </div>
     </div>
-    <p class="big-line">The unblock is now <span class="a">access + review</span> &mdash; not a dev hire.</p>
   </div>
 </section>
 
@@ -524,9 +649,8 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
 <section>
   <div class="wrap stack-lg">
     <div class="head">
-      <span class="eyebrow">The honest answer</span>
       <h2>What fits, without losing design</h2>
-      <p class="lede"><strong>~25% of my week for marketing; design keeps the other 75%.</strong> The work above was produced inside that envelope. Real per-task estimates come when we build them in ClickUp.</p>
+      <p class="lede"><strong>~25% of my week for marketing; design keeps the other 75%.</strong> The work above was produced inside that envelope.</p>
     </div>
     <div class="cols">
       <div class="card">
@@ -535,7 +659,7 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
       </div>
       <div class="card">
         <div class="card-head"><h3>Where I&rsquo;d want a hand</h3></div>
-        <p style="font-size:.95rem;color:var(--ink-soft);margin:0"><strong>Phase 4 &mdash; ongoing promotion.</strong> Continuous and specialist &mdash; the trigger for the right hand you suggested: <em>&ldquo;if BakeSide monetization goes well, we increase the team.&rdquo;</em></p>
+        <p style="font-size:.95rem;color:var(--ink-soft);margin:0"><strong>Phase 4 &mdash; ongoing promotion.</strong> Continuous and specialist &mdash; the trigger for the right hand you suggested: <em>&ldquo;if BakeSide monetisation goes well, we increase the team.&rdquo;</em></p>
       </div>
     </div>
     <p class="lede"><strong>Fit Sage stays out of scope</strong> &mdash; room left for a third app later, but not tasked now.</p>
@@ -546,7 +670,6 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
 <section>
   <div class="wrap stack-lg">
     <div class="head">
-      <span class="eyebrow">How it divides</span>
       <h2>I own and direct. I don&rsquo;t become the bottleneck.</h2>
     </div>
     <div class="tw">
@@ -573,7 +696,7 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
       <h2>Four decisions</h2>
     </div>
     <ol class="asks">
-      <li><span><strong>Approve the direction</strong> &mdash; the site builds the app funnel and owns the customer, not competes with our Amazon listing. Everything downstream depends on it.</span></li>
+      <li><span><strong>Approve the direction</strong> &mdash; the site builds the app funnel and owns the customer, rather than competing with our Amazon listing. Everything downstream depends on it.</span></li>
       <li><span><strong>Confirm the monetisation model</strong> &mdash; I believe it&rsquo;s a <strong>user subscription</strong>, expressed to buyers only as <em>&ldquo;months of BakeSide included with your kit.&rdquo;</em> No tier name or price is public yet; I need your confirmation before the bundle and the &ldquo;drop beta&rdquo; work proceed.</span></li>
       <li><span><strong>Confirm access + ownership</strong> &mdash; repo / Shopify access so we can build in-branch, plus who owns the <strong>bakeside.app domain and the app-store accounts</strong> (and Nabiha to answer the bakeside.app stack).</span></li>
       <li><span><strong>Agree the right-hand trigger</strong> &mdash; promotion phase + BakeSide monetisation going well &rarr; we add capacity.</span></li>
