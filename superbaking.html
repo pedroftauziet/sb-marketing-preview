@@ -413,6 +413,23 @@
   .cookie .accept{background:var(--caramel);color:var(--burgundy-deep)}
   .cookie .decline{background:transparent;color:var(--cream)}
 
+  /* ---------- Welcome popup — 10% off, honored on superbaking.com ---------- */
+  .welcome{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(63,15,27,.55);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+  .welcome.open{opacity:1;visibility:visible}
+  .welcome-card{position:relative;background:var(--cream-2);color:var(--ink);border-radius:var(--radius);border:1px solid var(--line);box-shadow:0 30px 70px -20px rgba(0,0,0,.6);max-width:420px;width:100%;padding:40px 30px 28px;text-align:center;transform:translateY(14px) scale(.98);transition:transform .25s ease}
+  .welcome.open .welcome-card{transform:none}
+  .welcome .wx{position:absolute;top:12px;right:14px;width:34px;height:34px;border:none;background:transparent;font-size:1.55rem;line-height:1;color:var(--muted);cursor:pointer;border-radius:50%}
+  .welcome .wx:hover{background:var(--line);color:var(--ink)}
+  .welcome .eyebrow{color:var(--caramel-deep);display:block;margin-bottom:8px}
+  .welcome h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.4rem,8vw,3.2rem);color:var(--burgundy-deep);line-height:.95;margin:0 0 10px}
+  .welcome p{color:var(--muted);margin:0 0 20px;font-size:1rem}
+  .welcome-form{display:flex;flex-direction:column;gap:10px}
+  .welcome-form input{min-height:52px;border-radius:100px;border:2px solid var(--burgundy);padding:0 20px;font-size:1rem;font-family:inherit;background:var(--cream);color:var(--ink);width:100%}
+  .welcome-form input::placeholder{color:#9a7a5f}
+  .welcome-form .btn{width:100%}
+  .welcome .nothanks{margin-top:14px;background:none;border:none;color:var(--muted);font-size:.85rem;text-decoration:underline;cursor:pointer;font-family:inherit}
+  .welcome .fineprint{font-size:.72rem;color:var(--muted);opacity:.85;margin:14px 0 0}
+
   /* ---------- Responsive ---------- */
   @media(max-width:980px){
     .nav-row2-wrap{display:none}
@@ -769,8 +786,8 @@
           <span class="txt"><strong>Free with every kit</strong><small>BakeSide &middot; 3 months included</small></span>
         </div>
 
-        <h2>Meet your AI baking coach</h2>
-        <p class="lead">Tap through what BakeSide actually shows you.</p>
+        <h2>Meet your AI bread coach</h2>
+        <p class="lead">An AI bread coach that learns your kitchen. Tap through what BakeSide actually shows you.</p>
 
         <div class="demo-tabs" role="tablist" aria-label="BakeSide app features">
         <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="true" aria-controls="panel-diagnosis" tabindex="0">
@@ -1266,6 +1283,22 @@
   </div>
 </div>
 
+<!-- Welcome popup — 10% off first order, honored on superbaking.com (no Amazon redirect) -->
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeDesc" hidden>
+  <div class="welcome-card">
+    <button class="wx" id="welcomeClose" type="button" aria-label="Close">&times;</button>
+    <span class="eyebrow">Welcome to Superbaking</span>
+    <h2 id="welcomeTitle">Unlock 10% off</h2>
+    <p id="welcomeDesc">Sign up for 10% off your first order and first access to new tools.</p>
+    <form class="welcome-form" onsubmit="return false">
+      <input type="email" placeholder="you@email.com" aria-label="Email address" required>
+      <button class="btn btn-primary" type="submit">Sign me up</button>
+    </form>
+    <button class="nothanks" id="welcomeNo" type="button">No thanks</button>
+    <p class="fineprint">10% off your first order on superbaking.com. Unsubscribe anytime.</p>
+  </div>
+</div>
+
 <script>
   document.querySelector('.announce .x').addEventListener('click', function(e){
     e.target.closest('.announce').style.display='none';
@@ -1377,6 +1410,35 @@
         track.scrollBy({left: step * parseInt(btn.dataset.dir,10) * 2, behavior:'smooth'});
       });
     });
+  })();
+
+  /* ---- Welcome popup: 10% off first order, honored on-site, once per session ---- */
+  (function(){
+    var pop = document.getElementById('welcome');
+    if(!pop) return;
+    var KEY = 'sb_welcome_dismissed', lastFocus = null;
+    function open(){
+      if(sessionStorage.getItem(KEY)) return;
+      pop.hidden = false;
+      lastFocus = document.activeElement;
+      requestAnimationFrame(function(){ pop.classList.add('open'); });
+      var f = pop.querySelector('input'); if(f) f.focus();
+    }
+    function close(){
+      try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
+      pop.classList.remove('open');
+      setTimeout(function(){ pop.hidden = true; }, 280);
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    document.getElementById('welcomeClose').addEventListener('click', close);
+    document.getElementById('welcomeNo').addEventListener('click', close);
+    pop.addEventListener('click', function(e){ if(e.target === pop) close(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && pop.classList.contains('open')) close();
+    });
+    pop.querySelector('.welcome-form').addEventListener('submit', close);
+    var seen; try{ seen = sessionStorage.getItem(KEY); }catch(e){ seen = null; }
+    if(!seen) setTimeout(open, 1600);
   })();
 </script>
 </body>
