@@ -186,6 +186,8 @@
     border-left:1px solid rgba(225,171,123,.25)}
   .trust-item:first-child{border-left:0;flex-basis:100%;padding-bottom:12px;
     border-bottom:1px solid rgba(225,171,123,.22);margin-bottom:4px}
+  .trust:has(.trust-item:only-child){max-width:max-content}
+  .trust-item:only-child{flex-basis:auto;border-bottom:0;padding-bottom:4px;margin-bottom:0}
   .trust-item svg{flex:none}
   .trust-item .stars{color:var(--caramel);letter-spacing:.1em;font-size:1.05rem}
   .trust-item .t{font-size:.95rem;color:var(--cream);font-weight:600;line-height:1.25}
@@ -696,8 +698,8 @@
   <div class="wrap">
     <div class="hero-copy">
       <span class="eyebrow on-dark">Straight from our kitchen</span>
-      <h1 class="display">Bake bread worth<br><span class="accent">bragging about</span></h1>
-      <p class="sub">Pro-grade sourdough kits, built for bakers who want their first loaf to look like their hundredth.</p>
+      <h1 class="display">Baker-made tools.<br><span class="accent">A coach in your pocket.</span></h1>
+      <p class="sub">The best baking tools, designed by bakers &mdash; paired with the BakeSide app that guides every loaf like a coach at your side. The craft and the coaching, together.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#shop">Shop sourdough kits</a>
         <div class="trust">
@@ -706,19 +708,7 @@
             <span class="t"><span class="tc" title="To confirm — Pedro verifying in Seller Central">4.7&#9733; &middot; 8,000+ Amazon reviews</span>
               <small>Verified customers</small></span>
           </div>
-          <div class="trust-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E1AB7B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h13v13H1z"/><path d="M14 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="17.5" cy="18.5" r="2"/></svg>
-            <span class="t">Ships from the US<small>Free over $49</small></span>
-          </div>
-          <div class="trust-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E1AB7B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
-            <span class="t">30-day returns<small>No questions asked</small></span>
-          </div>
         </div>
-      </div>
-      <div class="hero-badge">
-        <div class="big">3,000+</div>
-        <small>bakers using the BakeSide app</small>
       </div>
     </div>
   </div>
