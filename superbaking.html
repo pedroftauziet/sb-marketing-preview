@@ -164,8 +164,8 @@
   /* ---------- Hero: ONE promise, ONE CTA ---------- */
   /* v3.1: full-bleed photographic hero */
   .hero{position:relative;isolation:isolate;background:var(--cream);color:var(--ink);overflow:hidden;padding:0}
-  .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:#F0E5D5}
+  .hero-bg img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block}
   .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:center;
     min-height:clamp(560px,74vh,760px);padding-top:84px;padding-bottom:84px}
   .hero-copy{max-width:640px}
@@ -439,7 +439,7 @@
     .nav-row1{height:60px;gap:12px}
     .nav-ico[data-desk]{display:none}
     .hero .wrap{padding-top:56px;padding-bottom:64px;min-height:clamp(520px,80vh,680px);align-items:flex-end}
-    .hero-bg img{object-position:22% 45%}
+    .hero-bg img{object-position:center top}
     .demo-stage{grid-template-columns:1fr;gap:32px;max-width:460px}
     .demo-phone{max-width:290px}
     .foot-grid{grid-template-columns:1fr 1fr}
