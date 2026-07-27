@@ -358,212 +358,1013 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
 .invert .pill.later{background:rgba(224,166,89,.2);color:var(--warn);}
 .invert .pill.skip{background:rgba(232,115,126,.18);color:var(--hot);}
 @media (max-width:560px){.rank .row{grid-template-columns:auto 1fr;}.rank .rf{grid-column:2;text-align:left;}}
+.ctable-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:.9rem;}
+.ctable{width:100%;border-collapse:collapse;font-size:.85rem;min-width:560px;}
+.ctable th,.ctable td{text-align:left;padding:.5rem .7rem;border-bottom:1px solid rgba(225,171,123,.28);white-space:nowrap;}
+.ctable thead th{color:var(--caramel);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;}
+.ctable td{color:#E9D8C8;}
+.ctable td.handle-cell{color:var(--cream);font-weight:600;}
+.ctable td.tp{color:#B79A94;}
+.ctable tbody tr:last-child td{border-bottom:0;}
+.ctable-cap{font-size:.8rem;color:#B79A94;margin-top:.5rem;}
 </style>
-
-
 <!-- ================= 1 · COVER ================= -->
 <section class="cover">
-  <div class="wrap stack">
-    <h1>Own the baker,<br>not the transaction</h1>
-    <hr class="rule-caramel">
-    <p class="lede">Since our last 1:1, I stopped writing the plan and started building it.</p>
-    <div class="meta">
-      <span>For <b>Florian Ilia</b></span>
-      <span>From <b>Pedro F. Tauziet</b></span>
-      <span><b>23 July 2026</b></span>
-    </div>
-  </div>
+<div class="wrap stack">
+<h1>Own the baker,<br>not the transaction</h1>
+<hr class="rule-caramel">
+<p class="lede">Since our last 1:1, I stopped writing the plan and started building it.</p>
+<div class="meta">
+<span>For <b>Florian Ilia</b>
+</span>
+<span>From <b>Pedro F. Tauziet</b>
+</span>
+<span>
+<b>28 July 2026</b>
+</span>
+</div>
+</div>
 </section>
-
 <!-- ================= 2 · THE LOGIC ================= -->
 <section>
-  <div class="wrap stack-lg">
-    <div class="head">
-      <span class="eyebrow">The logic</span>
-      <h2>One loop, two front-ends</h2>
-      <p class="lede">On Amazon we <strong>rent</strong> the customer. <em>Amazon can&rsquo;t bundle software with hardware &mdash; we can.</em></p>
-    </div>
-    <div class="loop">
-      <div class="node"><span class="who">Amazon</span><span class="what">Brings the customer in &mdash; already works.</span></div>
-      <div class="joint"><span class="arrow">&darr;</span><span>The site captures them instead of leaking them back.</span></div>
-      <div class="node"><span class="who">The website</span><span class="what">Turns buyers into known customers + app users. The surface we own.</span></div>
-      <div class="joint"><span class="arrow">&darr;</span><span>The bundle Amazon can&rsquo;t match: tools + <strong>months of BakeSide included with your kit</strong>.</span></div>
-      <div class="node"><span class="who">BakeSide</span><span class="what">Retention + subscription &mdash; our only recurring revenue.</span></div>
-      <div class="joint"><span class="arrow">&darr;</span><span>Proof (reviews, PMF) travels back and lifts both.</span></div>
-    </div>
-  </div>
+<div class="wrap stack-lg">
+<div class="head">
+<span class="eyebrow">The logic</span>
+<h2>One loop, two front-ends</h2>
+<p class="lede">On Amazon we <strong>rent</strong> the customer. <em>Amazon can&rsquo;t bundle software with hardware &mdash; we can.</em>
+</p>
+</div>
+<div class="loop">
+<div class="node">
+<span class="who">Amazon</span>
+<span class="what">Brings the customer in &mdash; already works.</span>
+</div>
+<div class="joint">
+<span class="arrow">&darr;</span>
+<span>The site captures them instead of leaking them back.</span>
+</div>
+<div class="node">
+<span class="who">The website</span>
+<span class="what">Turns buyers into known customers + app users. The surface we own.</span>
+</div>
+<div class="joint">
+<span class="arrow">&darr;</span>
+<span>The bundle Amazon can&rsquo;t match: tools + <strong>months of BakeSide included with your kit</strong>.</span>
+</div>
+<div class="node">
+<span class="who">BakeSide</span>
+<span class="what">Retention + subscription &mdash; our only recurring revenue.</span>
+</div>
+<div class="joint">
+<span class="arrow">&darr;</span>
+<span>Proof (reviews, PMF) travels back and lifts both.</span>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ================= 3 · THE PLAN + WHERE I AM ================= -->
 <section class="invert">
-  <div class="wrap stack-lg">
-    <div class="head">
-      <span class="eyebrow">The plan &mdash; and where I already am</span>
-      <h2>Fix the product,<br>then promote it</h2>
-      <p class="lede">Four phases. <strong>What&rsquo;s marked Done is already built</strong> &mdash; open the two live sites yourself. <span style="opacity:.75">Tap any step for detail.</span></p>
-    </div>
-    <div class="lead-btns">
-      <a class="btn" href="./superbaking.html" target="_blank" rel="noopener">Open the new superbaking.com &rarr;</a>
-      <a class="btn" href="./bakeside.html" target="_blank" rel="noopener">Open the new BakeSide site &rarr;</a>
-    </div>
-    <div class="tl">
-
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">01</span><span class="tl-title">Fix what&rsquo;s broken</span><span class="tl-date">Needs dev</span></div>
-        <p class="tl-goal">Clear the blockers first. <b>The one phase I can&rsquo;t ship alone &mdash; it needs repo / Shopify access.</b></p>
-        <ul class="tl-list">
-<li><details><summary><span class="s-txt">Remove the fake phone number + live-chat claim</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The footer shows an <b>invented phone number</b> and claims a live chat nobody staffs. Remove both; point support to <b>hello@superbaking.com</b>.</li><li><b>Owner:</b> Pedro (in-repo). <b>How:</b> edit the footer component on a branch; no dev dependency.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Write real legal pages, and link them</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Terms, Privacy, Shipping &amp; Returns are placeholder or missing. Write them, fill Shopify&rsquo;s policy fields, link them in the footer.</li><li><b>Owner:</b> Pedro drafts &rarr; <b>external legal review</b> before publish. <b>How:</b> real copy, not boilerplate; needs sign-off.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Tracking &amp; technical setup <span style="opacity:.65">(grouped dev tasks)</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>Web pixels</b> &mdash; install Meta Pixel + CAPI and the Google Ads tag &mdash; today no ad could even be measured. <b>Owner:</b> Pedro in-repo.</li><li><b>Product analytics (separate concern):</b> we have <b>no live product analytics</b> for the app today. Set up <b>PostHog</b> (or decide the stack) so the app funnel is measurable &mdash; this is in-app behaviour, not web pixels. <b>Owner:</b> Pedro, with Nabiha for app instrumentation.</li><li>Consent Mode, cookie/GDPR fix, product feeds, checkout domain, analytics crash &mdash; then a real end-to-end test order, the gate before any spend.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Fulfillment automation &mdash; Shopify &harr; Amazon MCF</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Site orders need a fulfilment path. Route Shopify orders through <b>Amazon Multi-Channel Fulfillment</b> so we ship from existing FBA stock instead of packing by hand.</li><li><b>Owner:</b> Pedro. <b>How:</b> an MCF connector app + mapping SKUs to Amazon inventory.</li><li><span class="tbc">To confirm</span> &mdash; can Pedro do this with Claude Code + the Hydrogen repo + Shopify admin, or does it need dedicated dev help? A question for Florian/Nabiha before committing.</li></ul></details></li>
-        </ul>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">02</span><span class="tl-title">Turn the site into a real store</span><span class="tl-date">Designed</span></div>
-        <p class="tl-goal">Rebuild it as a store, not a broken catalogue. <b>The homepage redesign is done &mdash; open it right here.</b></p>
-        <ul class="tl-list">
-<li><details class="done"><summary><span class="stag done">Done</span><span class="s-txt">Homepage rebuilt &mdash; real ecommerce logic, proof + BakeSide up front</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Broken hero fixed; real category structure; reviews, PMF and reputation surfaced; BakeSide woven into story + nav.</li><li>High-fidelity and clickable; awaiting build in the repo.</li><li><a class="btn" href="./superbaking.html" target="_blank" rel="noopener">Open the live site &rarr;</a></li></ul></details></li>
-<li><details><summary><span class="s-txt">Import Amazon reviews to product pages</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Pages show &ldquo;0 reviews&rdquo; while Amazon has thousands. Import them so the site earns trust.</li><li><b>Owner:</b> Pedro. <b>How:</b> a reviews app that syncs Amazon reviews, or a one-time export mapped to each product.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Rewrite product copy + re-export images full-res</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Descriptions are pasted Amazon bullets &mdash; one page describes the wrong product. Rewrite for the web; re-export sharp images that double as ad creative.</li><li><b>Owner:</b> Pedro (copy) + Trixie (image export). <b>How:</b> in-repo per product.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Honour the 10% welcome offer <b>on-site</b></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The live site has a 10%-off email-capture popup &mdash; but its code <b>redirected to Amazon</b>. Decision for the new site: capture the email and honour <b>10% off the first order on superbaking.com</b>, consistent with &ldquo;own the baker.&rdquo;</li><li><b>Owner:</b> Pedro. <b>How:</b> build the popup (added to the new homepage separately) + a Shopify discount code fired on capture.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Decide the ownership model &mdash; who maintains the store</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Nobody currently owns ongoing maintenance of products, prices, bundles and content. A decision to make, not a task to assign.</li><li><b>Proposed owner:</b> Pedro, consulting Florian &mdash; not Kaye. <b>How:</b> Pedro holds the catalogue/content going forward; escalates pricing/bundle calls to Florian.</li></ul></details></li>
-        </ul>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">03</span><span class="tl-title">Connect site and app</span><span class="tl-date">Proposed</span></div>
-        <p class="tl-goal">Make site and app work as one system. <b>Architecture designed; needs a monetisation call + dev.</b></p>
-        <ul class="tl-list">
-<li><details class="spec"><summary><span class="stag spec">Designed</span><span class="s-txt">Connect app &harr; site both ways</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>Different channels, different destinations: app-intent &rarr; BakeSide site; problem-intent &rarr; lead-magnet planner; purchase-intent &rarr; superbaking.com.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Build the bundle Amazon can&rsquo;t match</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The hardware kit with <b>months of BakeSide included</b> &mdash; never a price, never a tier name.</li><li>Depends on the monetisation model being decided first (see the asks).</li></ul></details></li>
-<li><details class="spec"><summary><span class="stag spec">Designed</span><span class="s-txt">In-app monetisation model &mdash; already designed, not published</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The mechanism is designed, not invented on the spot: a <b>free tier</b> plus a <b>paid tier with a budget-wall moment</b> where the paid value lands. We know how it works.</li><li>The open decision is narrow: <b>confirm the model + pricing</b> &mdash; not &ldquo;we have no plan.&rdquo; <b>Owner:</b> Florian decides; Pedro builds. No price or tier name is shown to buyers.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Klaviyo flows for the BakeSide segment</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>Three flows:</b> onboarding (activate a new install), engagement (bring back the lapsed), upgrade nudge (free &rarr; paid at the budget-wall moment).</li><li>Two real segments already exist in Klaviyo: <b>&ldquo;BakeSide Users &ndash; Not on Superbaking List&rdquo;</b> and <b>&ldquo;BakeSide Users on Superbaking List.&rdquo;</b></li><li><b>Owner:</b> Pedro / Trixie build in the Klaviyo UI &mdash; the connector is read-only on flows.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Email campaign plan to promote BakeSide</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>Sends:</b> a 3-email launch push &mdash; (1) meet the coach, (2) the photo-diagnosis payoff, (3) the install ask &mdash; to the <b>Superbaking main list</b> + the <b>two BakeSide segments</b>.</li><li><b>Plus</b> the one-email re-review to the <b>28 PMF promoters</b> (see the app track).</li><li><b>Automate</b> the three flows above so new installs and lapsed users are handled without a manual send. <b>Owner:</b> Pedro / Trixie.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Cross-promotion from Superbaking &mdash; two branches</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>(a) Website module</b> &mdash; a &ldquo;How It Works&rdquo; block where BakeSide is <b>step 2</b> of using the tool (the MEATER pattern). <b>Owner:</b> Pedro in-repo; copy drafted.</li><li><b>(b) Physical QR insert cards</b> already sit in Superbaking packaging &mdash; <b>repoint the QR to the new bakeside.app site</b>, not the old landing. <b>Owner:</b> Pedro / Trixie. <b>How:</b> update the short-URL destination; refreshed art lands with the next print run.</li></ul></details></li>
-<li><details><summary><span class="s-txt">PMF quotes &rarr; ready-made testimonials</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The 73% PMF survey produced real promoter verbatims. Use them as named <b>testimonials on the BakeSide site and in-app</b> &mdash; not just as a headline stat.</li><li><b>Owner:</b> Pedro. <b>How:</b> pull the strongest quotes, attribute them, place on the app site + an in-app proof surface.</li></ul></details></li>
-<li><details><summary><span class="s-txt">Keep VIP traffic on our own site + onboarding &amp; upgrade nudge</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>The VIP code currently sends our most engaged customers to Amazon &mdash; honour it on our own site.</li><li><b>Onboarding + upgrade nudge run in two places:</b> in-app (activation prompts, the budget-wall moment) and email (the Klaviyo flows above) &mdash; tied together. <b>Owner:</b> Pedro / Trixie.</li></ul></details></li>
-        </ul>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-head"><span class="tl-num">04</span><span class="tl-title">Promote both brands</span><span class="tl-date">Ahead &mdash; specced</span></div>
-        <p class="tl-goal">Only now drive demand. Evidence-based and creator-native &mdash; the full engine is the next section. <b>This is where a right hand comes in.</b></p>
-      </div>
-
-      <div class="tl-item track">
-        <div class="tl-head"><span class="tl-num">&#9733;</span><span class="tl-title">BakeSide app track</span><span class="tl-date">Parallel</span></div>
-        <p class="tl-goal">Fix how the app presents and how it&rsquo;s found &mdash; it&rsquo;s proven, just invisible.</p>
-        <ul class="tl-list">
-<li><details class="spec"><summary><span class="stag spec">Gate</span><span class="s-txt">Drop &ldquo;Free during Beta&rdquo; &mdash; the first domino</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>This is a <b>sequencing gate</b>: until it&rsquo;s removed, the ASO refresh, the insert-card repoint and the re-review email all contradict a &ldquo;free beta&rdquo; message. Remove it first and the rest unblocks.</li><li>It lives in the <b>store listings &mdash; App Store Connect + Play Console</b>, <b>not the website.</b></li><li><b>Gated on confirming app-store account access</b> (tied to the Florian ask). <b>Owner:</b> Pedro, once access is granted.</li></ul></details></li>
-<li><details class="spec"><summary><span class="stag spec">Drafted</span><span class="s-txt">Store-listing / ASO refresh &mdash; iOS <b>and</b> Google Play</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>App Store Connect (iOS):</b> title, subtitle, keyword field, screenshots.</li><li><b>Play Console (Android):</b> title, short + full description, keyword-bearing copy, screenshots.</li><li>The listing already earned <b>3,000+ installs with no keywords</b> &mdash; this is unclaimed free upside. <b>Owner:</b> Pedro writes (Trixie for screenshots); needs app-store account access.</li></ul></details></li>
-<li><details><summary><span class="s-txt">In-app review prompt + re-review to the 28 PMF promoters</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>In-app prompt</b> at the moment of delight &mdash; right after a good Bake Outcome. Nabiha-suggested, <b>optional, not mandatory.</b></li><li><b>Re-review campaign:</b> one honest email to the 28 PMF promoters lifts 4.0&#9733;-from-6 toward <b>~4.5&#9733;</b> and, more importantly, <b>6 ratings &rarr; 20+</b>. <b>Owner:</b> Pedro.</li></ul></details></li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
+<div class="wrap stack-lg">
+<div class="head">
+<h2>Fix the product,<br>then promote it</h2>
+<p class="lede">Four phases. <strong>What&rsquo;s marked Done is already built</strong> &mdash; open the two live sites yourself. <span style="opacity:.75">Tap any step for detail.</span>
+</p>
+</div>
+<div class="lead-btns">
+<a class="btn" href="./superbaking.html" target="_blank" rel="noopener">Open the new superbaking.com &rarr;</a>
+<a class="btn" href="./bakeside.html" target="_blank" rel="noopener">Open the new BakeSide site &rarr;</a>
+</div>
+<div class="tl">
+<div class="tl-item">
+<div class="tl-head">
+<span class="tl-num">01</span>
+<span class="tl-title">Fix what&rsquo;s broken</span>
+<span class="tl-date">Needs dev</span>
+</div>
+<p class="tl-goal">Clear the blockers first. <b>The one phase I can&rsquo;t ship alone &mdash; it needs repo / Shopify access.</b> Every fix below is built into the <b>new redesigned store</b> &mdash; we&rsquo;re not patching the current live site.
+</p>
+<ul class="tl-list">
+<li>
+<details>
+<summary>
+<span class="s-txt">Remove the fake phone number + live-chat claim</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>The footer shows an <b>invented phone number</b> and claims a live chat nobody staffs. Remove both; point support to <b>hello@superbaking.com</b>.</li>
+<li>
+<b>Owner:</b> Pedro (in-repo). <b>How:</b> edit the footer component on a branch; no dev dependency.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Write real legal pages, and link them</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Terms, Privacy, Shipping &amp; Returns are placeholder or missing. Write them, fill Shopify&rsquo;s policy fields, link them in the footer.</li>
+<li>
+<b>How:</b> draft <b>in-house</b> &mdash; adapt BakeSide&rsquo;s existing app <b>Terms of Service</b> and <b>Privacy Policy</b> (bakeside.app/app-terms-of-service, /app-privacy-policy) as templates, tailored to the Superbaking Shopify store and adding Shipping &amp; Returns.</li>
+<li>
+<b>Owner:</b> Pedro + Claude draft, Pedro reviews &mdash; not necessarily external legal.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Tracking &amp; technical setup <span style="opacity:.65">(grouped dev tasks)</span>
+</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>Web pixels</b> &mdash; install Meta Pixel + CAPI and the Google Ads tag &mdash; today no ad could even be measured. <b>Owner:</b> Pedro in-repo.</li>
+<li>
+<b>Product analytics (separate concern):</b> we have <b>no live product analytics</b> for the app today. Set up <b>PostHog</b> (or decide the stack) so the app funnel is measurable &mdash; this is in-app behaviour, not web pixels. <b>Owner:</b> Pedro, with Nabiha for app instrumentation.</li>
+<li>
+<b>Consent Mode</b> &mdash; the cookie banner tells Google whether the user consented, so tracking stays GDPR-safe.</li>
+<li>
+<b>Cookie link &amp; consent withdrawal</b> &mdash; the &ldquo;learn more&rdquo; link is broken and users can&rsquo;t revoke consent. Fix both.</li>
+<li>
+<b>Product feeds stuck on &ldquo;Loading&hellip;&rdquo;</b> &mdash; product rows never finish loading (a front-end bug).</li>
+<li>
+<b>PUBLIC_CHECKOUT_DOMAIN</b> &mdash; a missing Hydrogen setting that crashes analytics; a one-line dev fix.</li>
+<li>Then a real end-to-end <b>test order</b> &mdash; the gate before any spend.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Fulfillment automation &mdash; Shopify &harr; Amazon MCF</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Site orders need a fulfilment path. Route Shopify orders through <b>Amazon Multi-Channel Fulfillment</b> so we ship from existing FBA stock instead of packing by hand.</li>
+<li>
+<b>Owner:</b> Pedro. <b>How:</b> an MCF connector app + mapping SKUs to Amazon inventory.</li>
+<li>
+<span class="tbc">To confirm</span> &mdash; can Pedro do this with Claude Code + the Hydrogen repo + Shopify admin, or does it need dedicated dev help? A question for Florian/Nabiha before committing.</li>
+</ul>
+</details>
+</li>
+</ul>
+</div>
+<div class="tl-item">
+<div class="tl-head">
+<span class="tl-num">02</span>
+<span class="tl-title">Turn the site into a real store</span>
+<span class="tl-date">Designed</span>
+</div>
+<p class="tl-goal">Rebuild it as a store, not a broken catalogue. <b>The homepage redesign is done &mdash; open it right here.</b>
+</p>
+<ul class="tl-list">
+<li>
+<details class="done">
+<summary>
+<span class="stag done">Done</span>
+<span class="s-txt">Homepage rebuilt &mdash; real ecommerce logic, proof + BakeSide up front</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Broken hero fixed; real category structure; reviews, PMF and reputation surfaced; BakeSide woven into story + nav.</li>
+<li>High-fidelity and clickable; awaiting build in the repo.</li>
+<li>
+<a class="btn" href="./superbaking.html" target="_blank" rel="noopener">Open the live site &rarr;</a>
+</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Import Amazon reviews to product pages</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Pages show &ldquo;0 reviews&rdquo; while Amazon has thousands. Import them so the site earns trust.</li>
+<li>
+<b>Owner:</b> Pedro. <b>How:</b> a reviews app that syncs Amazon reviews, or a one-time export mapped to each product.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Rewrite product copy + re-export images full-res</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Descriptions are pasted Amazon bullets &mdash; one page describes the wrong product. Rewrite for the web; re-export sharp images that double as ad creative.</li>
+<li>
+<b>Owner:</b> Pedro (copy) + Trixie (image export). <b>How:</b> in-repo per product.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Honour the 10% welcome offer <b>on-site</b>
+</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>The live site has a 10%-off email-capture popup &mdash; but its code <b>redirected to Amazon</b>. Decision for the new site: capture the email and honour <b>10% off the first order on superbaking.com</b>, consistent with &ldquo;own the baker.&rdquo;</li>
+<li>
+<b>Owner:</b> Pedro. <b>How:</b> build the popup (added to the new homepage separately) + a Shopify discount code fired on capture.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Decide the ownership model &mdash; who maintains the store</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Nobody currently owns ongoing maintenance of products, prices, bundles and content.</li>
+<li>
+<b>Store maintenance:</b> Pedro &amp; Trixie. <b>Catalogue content:</b> Pedro &amp; Trixie.</li>
+<li>
+<b>Pricing &amp; bundles:</b> from Operations, <b>later</b> &mdash; once the site is better built and we can confidently run more promotions.</li>
+</ul>
+</details>
+</li>
+</ul>
+</div>
+<div class="tl-item">
+<div class="tl-head">
+<span class="tl-num">03</span>
+<span class="tl-title">Connect site and app</span>
+<span class="tl-date">Proposed</span>
+</div>
+<p class="tl-goal">Make site and app work as one system. <b>Architecture designed; needs a monetisation call + dev.</b>
+</p>
+<ul class="tl-list">
+<li>
+<details class="spec">
+<summary>
+<span class="stag spec">Designed</span>
+<span class="s-txt">Connect app &harr; site both ways</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>The two brands are embedded in each other: <b>BakeSide is a module inside the Superbaking site</b>, and <b>Superbaking is a module inside BakeSide</b> &mdash; and each still lives on its own site.</li>
+<li>That mutual embed <b>is</b> the two-way link today. Deepen it: carry the customer between the two without leaking back to Amazon.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Build the bundle Amazon can&rsquo;t match</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>Our own proposal</b> (not from Florian&rsquo;s artifact): a bundle on the Superbaking site where a specific pack includes <b>months of BakeSide</b>.</li>
+<li>Depends on the monetisation model being decided first (see the asks).</li>
+</ul>
+</details>
+</li>
+<li>
+<details class="spec">
+<summary>
+<span class="stag spec">Designed</span>
+<span class="s-txt">In-app monetisation model &mdash; already designed, not published</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>The mechanism is designed, not invented on the spot: a <b>free tier</b> plus a <b>paid tier with a budget-wall moment</b> where the paid value lands. We know how it works.</li>
+<li>The open decision is narrow: <b>confirm the model + pricing</b> &mdash; not &ldquo;we have no plan.&rdquo; <b>Owner:</b> Florian decides; Pedro builds. No price or tier name is shown to buyers.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Klaviyo flows for the BakeSide segment</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>Onboarding</b> &mdash; triggers on a new install (when the user leaves their email to sign in) &rarr; welcome / onboarding email.</li>
+<li>
+<b>Engagement / bring-back</b> &mdash; re-engage lapsed users.</li>
+<li>
+<b>Upgrade nudge</b> &mdash; for users still on the free tier &rarr; incentivise upgrading.</li>
+<li>
+<b>Segments</b> &mdash; the two BakeSide segments already created by <b>Bilal&rsquo;s team</b>:</li>
+<li style="margin-left:1.1rem;">&ldquo;BakeSide Users &ndash; Not on Superbaking List&rdquo;</li>
+<li style="margin-left:1.1rem;">&ldquo;BakeSide Users on Superbaking List&rdquo;</li>
+<li>
+<b>Owner:</b> Pedro / Trixie build the flows in the Klaviyo UI &mdash; the connector is read-only on flows.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Email campaign plan to promote BakeSide</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>Target:</b> the <b>Superbaking email list</b> &mdash; people who are <b>not</b> BakeSide users yet. (Not the BakeSide segments &mdash; they&rsquo;re already users.)</li>
+<li>
+<b>Lead</b> with the app&rsquo;s main feature to drive downloads.</li>
+<li>
+<b>If that doesn&rsquo;t convert,</b> add a nudge offering free time in the app &mdash; a short trial (<span class="tbc">duration to confirm</span>).</li>
+<li>
+<b>Owner:</b> Pedro / Trixie.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Cross-promotion from Superbaking &mdash; two branches</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>(a) The site already promotes the app heavily</b> &mdash; module 1 (hero) presents BakeSide, module 2 describes it, and we can add the bundle. The website is already a major app-promotion surface. <b>Owner:</b> Pedro in-repo; copy drafted.</li>
+<li>
+<b>(b) Physical QR insert cards</b> already sit in Superbaking packaging &mdash; <b>repoint the QR to the new bakeside.app site</b>, not the old landing. <b>Owner:</b> Pedro / Trixie. <b>How:</b> update the short-URL destination; refreshed art lands with the next print run.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">PMF quotes &rarr; ready-made testimonials</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>The 73% PMF survey produced real promoter verbatims. Use them as named <b>testimonials on the BakeSide site and in-app</b> &mdash; not just as a headline stat.</li>
+<li>
+<b>Owner:</b> Pedro. <b>How:</b> pull the strongest quotes, attribute them, place on the app site + an in-app proof surface.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Recipes that publish themselves &mdash; community &amp; discovery</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Already live at the bottom of the BakeSide site: every time a baker shares a recipe / bake, a <b>public page is created</b> for it.</li>
+<li>This answers Florian&rsquo;s own artifact point &mdash; users want <b>more recipes &amp; variety</b>, beyond photos and videos. Turn it into a real <b>retention + discovery</b> lever BakeSide owns.</li>
+<li>Lives in <b>both</b> places: a growing library on the site (indexable for SEO) and fresh content in the app. <b>Owner:</b> Pedro / Nabiha (shared-page indexing is a dev task).</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Keep VIP traffic on our own site + onboarding &amp; upgrade nudge</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>The VIP code currently sends our most engaged customers to Amazon &mdash; honour it on our own site.</li>
+<li>
+<b>Onboarding + upgrade nudge run in two places:</b> in-app (activation prompts, the budget-wall moment) and email (the Klaviyo flows above) &mdash; tied together. <b>Owner:</b> Pedro / Trixie.</li>
+</ul>
+</details>
+</li>
+</ul>
+</div>
+<div class="tl-item">
+<div class="tl-head">
+<span class="tl-num">04</span>
+<span class="tl-title">Promote both brands</span>
+<span class="tl-date">Ahead &mdash; specced</span>
+</div>
+<p class="tl-goal">Only now drive demand. Evidence-based and creator-native &mdash; the full engine is the next section. <b>This is where a right hand comes in.</b>
+</p>
+</div>
+<div class="tl-item track">
+<div class="tl-head">
+<span class="tl-num">&#9733;</span>
+<span class="tl-title">BakeSide app track</span>
+<span class="tl-date">Parallel</span>
+</div>
+<p class="tl-goal">Fix how the app presents and how it&rsquo;s found &mdash; it&rsquo;s proven, just invisible.</p>
+<ul class="tl-list">
+<li>
+<details class="spec">
+<summary>
+<span class="stag spec">Gate</span>
+<span class="s-txt">Drop &ldquo;Free during Beta&rdquo; &mdash; the first domino</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>This is a <b>sequencing gate</b>: until it&rsquo;s removed, the ASO refresh, the insert-card repoint and the re-review email all contradict a &ldquo;free beta&rdquo; message. Remove it first and the rest unblocks.</li>
+<li>It lives in the <b>store listings &mdash; App Store Connect + Play Console</b>, <b>not the website.</b>
+</li>
+<li>
+<b>Gated on confirming app-store account access</b> (tied to the Florian ask). <b>Owner:</b> the BakeSide team.</li>
+</ul>
+</details>
+</li>
+<li>
+<details class="spec">
+<summary>
+<span class="stag spec">Drafted</span>
+<span class="s-txt">Store-listing / ASO refresh &mdash; iOS <b>and</b> Google Play</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>App Store Connect (iOS):</b> title, subtitle, keyword field, screenshots.</li>
+<li>
+<b>Play Console (Android):</b> title, short + full description, keyword-bearing copy, screenshots.</li>
+<li>The listing already earned <b>3,000+ installs with no keywords</b> &mdash; this is unclaimed free upside. <b>Owner:</b> Pedro writes; screenshots / images by <b>Trixie &amp; Pedro</b>; needs app-store account access.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">In-app review prompt + re-review to the 28 PMF promoters</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>In-app prompt</b> at the moment of delight &mdash; right after a good Bake Outcome. Nabiha-suggested, <b>optional, not mandatory.</b>
+</li>
+<li>
+<b>Re-review campaign:</b> one honest email to the 28 PMF promoters lifts 4.0&#9733;-from-6 toward <b>~4.5&#9733;</b> and, more importantly, <b>6 ratings &rarr; 20+</b>. <b>Owner:</b> Pedro.</li>
+</ul>
+</details>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ================= 4 · THE PROMOTION ENGINE ================= -->
 <section class="invert">
-  <div class="wrap stack-lg">
-    <div class="head">
-      <span class="eyebrow">Phase 4, in depth</span>
-      <h2>Four channels we can<br>exploit now &mdash; zero budget</h2>
-      <p class="lede">Every one is <strong>organic</strong>, uses an asset we already own, and needs no approvable spend. Paid stays <strong>later</strong> &mdash; gated on a pixel with history and a real price, not preference.</p>
-    </div>
-
-    <div class="rank">
-      <div class="row"><span class="rn">1</span><div class="rc"><span class="rt">ASO &mdash; app-store search</span><span class="rd">The listing already earned <b>3,000+ installs with no keywords</b>. Submit the drafted strings, iOS + Play. <span class="pill now">Exploit now</span></span></div><span class="rf">Effort Low<br>Fit High</span></div>
-      <div class="row"><span class="rn">2</span><div class="rc"><span class="rt">Owned cross-promo from Superbaking</span><span class="rd">Site &ldquo;How It Works&rdquo; module + the Amazon QR insert card. Warmest audience, only Amazon&rarr;app path we own. <span class="pill now">Exploit now</span></span></div><span class="rf">Effort Low<br>Fit High</span></div>
-      <div class="row"><span class="rn">3</span><div class="rc"><span class="rt">Email / lifecycle</span><span class="rd">The 28-promoter re-review + the planner-magnet flow. Retargeting we own without a pixel. <span class="pill now">Exploit now</span></span></div><span class="rf">Effort Med<br>Fit High</span></div>
-      <div class="row"><span class="rn">4</span><div class="rc"><span class="rt">Organic short-form + creator-native UGC</span><span class="rd">The growth engine below &mdash; the one motion with a real analogue (Cal AI). One batch a week. <span class="pill now">Exploit now</span></span></div><span class="rf">Effort Med<br>Fit High</span></div>
-    </div>
-
-    <div class="head" style="margin-top:1rem;">
-      <span class="eyebrow">Channel 4, in depth</span>
-      <h2>The engine: film<br>one feature</h2>
-      <p class="lede">Cal AI &mdash; a bootstrapped app &mdash; grew by filming <strong>one recordable feature</strong>, its photo scan, over and over. Ours is the <strong>starter / loaf photo diagnosis</strong>. We borrow the mechanism, not the curve.</p>
-    </div>
-    <div class="lead-btns">
-      <a class="btn ghost" href="https://www.calai.app/" target="_blank" rel="noopener">See Cal AI &rarr;</a>
-    </div>
-
-    <div class="stack">
-      <span class="subhead">The creator-native format</span>
-      <p class="lede">The creator films the Sunday bake they were making anyway. The app appears <strong>only</strong> at the moment they check the starter.</p>
-      <div class="fmt">
-        <div class="cell"><span class="lab">What they film</span><p>Their normal weekend bake &mdash; their phone, their kitchen. <b>No script from us.</b></p></div>
-        <div class="cell"><span class="lab">Where the app enters</span><p>At the starter check they photograph it and say what it tells them &mdash; <b>3&ndash;6 seconds, once.</b></p></div>
-        <div class="cell"><span class="lab">Then back to baking</span><p>The tool may be in their hands; it is never the subject. <b>Structurally incapable of being product-forward.</b></p></div>
-      </div>
-    </div>
-
-    <div class="stack">
-      <span class="subhead">Who we&rsquo;d start with</span>
-      <p class="lede">Real relationships we already have &mdash; the February UGC set. <strong>Warm first; source cold only if that yields too few.</strong></p>
-      <div class="handles">
-        <span class="handle">@thetimelessbreadz</span><span class="handle">@southernbellebreadco</span><span class="handle">@homemadebycait</span><span class="handle">@chrissyscarpati</span><span class="handle">@baked.by.lowe</span><span class="handle">@dough_mama_az</span><span class="handle">@byrd_house_baking</span><span class="handle">@_thesimpleloaf</span><span class="handle">@coffeeforlayovers</span><span class="handle">@yellowdoorbakry</span><span class="handle">@sourdough_canvas</span><span class="handle">@Sarkasdailybread</span><span class="handle">@Deserttrailfarms</span><span class="handle">@_luubbaa</span>
-      </div>
-      <div class="pool-meta" style="margin-top:.9rem;">
-        <span><b>30+</b> creators already hold product</span>
-        <span><b>~10</b> packages ship / week</span>
-        <span><b>~50%</b> post</span>
-        <span>Reach per creator &mdash; <span class="tbc">to pull</span></span>
-      </div>
-    </div>
-
-    <ul class="tl-list">
-<li><details><summary><span class="s-txt">How we choose them + the video brief we send</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>Choose by behaviour, not follower count</b> &mdash; they already post bake-process content, not styled flat-lays. Target the <b>3k&ndash;50k</b> range: real engagement, no rate card.</li><li><b>Brief:</b> film the technique/fix/before-after they&rsquo;d make anyway; app enters at the starter check (3&ndash;6s, once); no unboxing, no pitch, no code.</li><li><b>Deliverables:</b> one vertical video + 3 stills, posted to feed, raw file back. 24-month non-exclusive usage.</li></ul></details></li>
-<li><details><summary><span class="s-txt">First month &mdash; 12 posts, one batch a week</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>Wk 1</b> establish the format &mdash; starter diagnosis, one-fix demos.</li><li><b>Wk 2</b> the loaf loop &mdash; app grades a real bake, promises a fix.</li><li><b>Wk 3</b> the timeline angle &mdash; work backwards from dinner.</li><li><b>Wk 4</b> proof &amp; payoff &mdash; the fix worked, side-by-side. The loop closes.</li></ul></details></li>
-<li><details><summary><span class="s-txt">The re-review campaign &mdash; why it works</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>One honest email to the <b>28 PMF promoters</b> lifts 4.0&#9733;-from-6-ratings to roughly <b>~4.5&#9733;</b> and, more importantly, <b>6 ratings &rarr; 20+</b> &mdash; what actually makes the number credible.</li><li>This engine is built to extend &mdash; Pedro will add further references and creators.</li></ul></details></li>
-<li><details><summary><span class="s-txt">The full channel ranking &mdash; all 14, effort &times; fit, verdict</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>ASO / app-store search</b> &mdash; Low / High &mdash; <span class="pill now">Exploit now</span></li><li><b>Owned cross-promo (site module)</b> &mdash; Low / High &mdash; <span class="pill now">Exploit now</span></li><li><b>Email / lifecycle</b> &mdash; Med / High &mdash; <span class="pill now">Exploit now</span></li><li><b>Organic short-form + creator UGC</b> &mdash; Med / High &mdash; <span class="pill now">Exploit now</span></li><li><b>Shared-page indexing (SEO)</b> &mdash; Med / High &mdash; <span class="pill now">Exploit now (dev task)</span></li><li><b>Amazon QR insert card</b> &mdash; Med / High &mdash; <span class="pill now">Start now</span> / land at next print run</li><li><b>Web SEO content library / blog</b> &mdash; High / Med &mdash; <span class="pill later">Later</span> &mdash; trigger: a writer at &ge;1/week</li><li><b>Apple Search Ads (first paid test)</b> &mdash; Med / Low &mdash; <span class="pill later">Later</span> &mdash; pixel + price</li><li><b>Paid social (Meta / TikTok / UAC)</b> &mdash; High / Low &mdash; <span class="pill later">Later</span> &mdash; pixel + price + attribution</li><li><b>Google Ads / PPC</b> &mdash; Med / Low &mdash; <span class="pill later">Later</span> &mdash; ASO gets the same intent free</li><li><b>In-app referral</b> &mdash; Med / Low &mdash; <span class="pill later">Later</span> &mdash; needs a price/credit to fund the reward</li><li><b>Pinterest</b> &mdash; Med / Low &mdash; <span class="pill skip">Skip</span> &mdash; declining, unattributable</li><li><b>YouTube long-form</b> &mdash; High / Low &mdash; <span class="pill skip">Skip</span> &mdash; production cost vs team size</li><li><b>Affiliate network</b> &mdash; High / Low &mdash; <span class="pill skip">Skip</span> &mdash; no volume, no commissionable price</li></ul></details></li>
-<li><details><summary><span class="s-txt">The benchmarks behind the ranking</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>Cal AI</b> &mdash; grew on founder-shot organic short-form of one recordable feature, before any ad spend. The engine we borrow. <span class="pill ok">Evidenced</span></li><li><b>AllTrails</b> &mdash; ~49% of web traffic is Google organic, parlayed into app installs. SEO&rarr;installs is the durable engine &mdash; our <b>later</b> content bet. <span class="pill ok">Evidenced</span></li><li><b>Ooni</b> &mdash; ~1M ovens &rarr; ~430k app installs. A hardware base does <b>not</b> convert free; it converts at a moment of necessity. <span class="pill ok">Evidenced</span></li><li><b>MEATER</b> &mdash; hardware + app, the app is a <b>step</b> in using the tool, never a second ask. The model for our cross-promo. <span class="pill ok">Evidenced</span></li></ul></details></li>
-<li><details><summary><span class="s-txt">Paid traffic &mdash; the plan sketch (deliberately later)</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li><b>Instruments (Phase 1):</b> Meta Pixel + CAPI and the Google Ads tag &mdash; so spend can be measured before it happens.</li><li><b>Organic social presence:</b> <b>create an Instagram for BakeSide</b> + maintain Superbaking&rsquo;s Instagram. <b>Owner:</b> Pedro / Trixie.</li><li><span class="tbc">To investigate</span> &mdash; a prior Superbaking social account appears to have been lost / deactivated (the &ldquo;Carolina&rdquo; account). Importance TBC; flag it, don&rsquo;t assume.</li><li><b>Paid itself stays later:</b> gated on a pixel with history + a live price (no LTV &rarr; no honest CAC ceiling). Apple Search Ads is the first test when it opens.</li></ul></details></li>
-<li><details><summary><span class="s-txt">The honest note &mdash; built to learn, not to forecast</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list"><li>No audited organic-growth playbook exists for the 35&ndash;60 sourdough niche specifically. We borrow mechanisms from adjacent verticals and <b>instrument our own test.</b></li><li>So the plan is built to <b>learn, not to forecast</b> &mdash; Wave 1 tests whether the format earns saves in this audience before any spend. Don&rsquo;t read a Cal AI curve as ours.</li></ul></details></li>
-    </ul>
-  </div>
+<div class="wrap stack-lg">
+<div class="head">
+<span class="eyebrow">Phase 4, in depth</span>
+<h2>Two buckets:<br>free now, and paid</h2>
+<p class="lede">Split honestly by what it costs. <strong>Free &amp; available now</strong> uses assets we already own. <strong>Needs budget + effort</strong> is real spend and real work &mdash; not free.</p>
+</div>
+<div class="rank">
+<div class="row">
+<span class="rn">1</span>
+<div class="rc">
+<span class="rt">ASO &mdash; app-store search</span>
+<span class="rd">The listing already earned <b>3,000+ installs with no keywords</b>. Submit the drafted strings, iOS + Play. <span class="pill now">Free now</span>
+</span>
+</div>
+<span class="rf">Effort Low<br>Fit High</span>
+</div>
+<div class="row">
+<span class="rn">2</span>
+<div class="rc">
+<span class="rt">Owned cross-promo from Superbaking</span>
+<span class="rd">The site&rsquo;s app modules + the Amazon QR insert card. Warmest audience, only Amazon&rarr;app path we own. <span class="pill now">Free now</span>
+</span>
+</div>
+<span class="rf">Effort Low<br>Fit High</span>
+</div>
+<div class="row">
+<span class="rn">3</span>
+<div class="rc">
+<span class="rt">Email / lifecycle</span>
+<span class="rd">The 28-promoter re-review + the Superbaking-list app push. Retargeting we own without a pixel. <span class="pill now">Free now</span>
+</span>
+</div>
+<span class="rf">Effort Med<br>Fit High</span>
+</div>
+<div class="row">
+<span class="rn">4</span>
+<div class="rc">
+<span class="rt">Influencer marketing / creator-native UGC</span>
+<span class="rd">The growth engine below &mdash; the one motion with a real analogue (Cal AI). <b>Not free:</b> it costs budget and takes real effort. <span class="pill later">Needs budget + effort</span>
+</span>
+</div>
+<span class="rf">Effort High<br>Fit High</span>
+</div>
+</div>
+<div class="head" style="margin-top:1rem;">
+<span class="eyebrow">Channel 4, in depth</span>
+<h2>The engine: film<br>one feature</h2>
+<p class="lede">Cal AI &mdash; a bootstrapped app &mdash; grew by filming <strong>one recordable feature</strong>, its photo scan, over and over. Ours are the <strong>starter diagnosis</strong>, the <strong>bake timeline</strong>, and a <strong>tool-in-action</strong> moment. We borrow the mechanism, not the curve.</p>
+</div>
+<div class="lead-btns">
+<a class="btn ghost" href="https://www.calai.app/" target="_blank" rel="noopener">See Cal AI &rarr;</a>
+</div>
+<div class="stack">
+<span class="subhead">The creator-native format</span>
+<p class="lede">The creator films the Sunday bake they were making anyway. The app appears <strong>only</strong> at the moment they check the starter.</p>
+<div class="fmt">
+<div class="cell">
+<span class="lab">What they film</span>
+<p>Their normal weekend bake &mdash; their phone, their kitchen. <b>No script from us.</b>
+</p>
+</div>
+<div class="cell">
+<span class="lab">Where the app enters</span>
+<p>At the starter check they photograph it and say what it tells them &mdash; <b>3&ndash;6 seconds, once.</b>
+</p>
+</div>
+<div class="cell">
+<span class="lab">Then back to baking</span>
+<p>The tool may be in their hands; it is never the subject. <b>Structurally incapable of being product-forward.</b>
+</p>
+</div>
+</div>
+</div>
+<div class="stack">
+<span class="subhead">Warm micro-creators we already have</span>
+<p class="lede">Real relationships from the February UGC set &mdash; <strong>30+ hold product, ~10 ship/week, ~50% post.</strong>
+</p>
+<div class="ctable-wrap">
+<table class="ctable">
+<thead>
+<tr>
+<th>Creator</th>
+<th>Followers</th>
+<th>Engagement</th>
+<th>Cadence</th>
+<th>Content type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="handle-cell">@thetimelessbreadz</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@southernbellebreadco</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@homemadebycait</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@chrissyscarpati</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@baked.by.lowe</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@dough_mama_az</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@byrd_house_baking</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@_thesimpleloaf</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@coffeeforlayovers</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@yellowdoorbakry</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@sourdough_canvas</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@Sarkasdailybread</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@Deserttrailfarms</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="handle-cell">@_luubbaa</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="ctable-cap">All metrics <b>to pull</b> &mdash; a research pass is filling these next. No numbers are invented.</p>
+</div>
+<div class="stack">
+<span class="subhead">Top sourdough influencers to target</span>
+<p class="lede">A separate, larger-reach tier &mdash; distinct from the warm micro-creators above. <strong>Names + metrics to pull; research in progress.</strong>
+</p>
+<div class="ctable-wrap">
+<table class="ctable">
+<thead>
+<tr>
+<th>Creator</th>
+<th>Followers</th>
+<th>Engagement</th>
+<th>Cadence</th>
+<th>Content type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+<tr>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+<td class="tp">to pull</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="ctable-cap">Reach tier &mdash; <b>to pull / research in progress.</b> The more viral the creator, the more we scale app adoption.</p>
+</div>
+<ul class="tl-list">
+<li>
+<details>
+<summary>
+<span class="s-txt">How we choose them + the video brief we send</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>Our warm creators are chosen by behaviour, not follower count</b> &mdash; they already post real bake-process content, not styled flat-lays. That&rsquo;s an attribute of this tier, not a hard rule.</li>
+<li>
+<b>App adoption may need mass/viral reach</b> &mdash; so it&rsquo;s worth testing <b>both</b> tiers (warm micro + top influencers). The more viral, the more we scale adoption.</li>
+<li>
+<b>The brief (concrete, Cal-AI style):</b> film the technique / fix / before-after you&rsquo;d make anyway; the app appears once at the starter check (3&ndash;6s); no unboxing, no pitch, no discount code.</li>
+<li>
+<b>Deliverables:</b> one vertical video + 3 stills, posted to feed, raw file back.</li>
+<li>
+<b>Non-exclusive usage rights</b> = permission to reuse the creator&rsquo;s video on our channels and ads; the creator keeps using it too; for a set period.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">First month &mdash; test 3 video types, then replicate the winner</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>Ask creators to film <b>3 feature-test video types</b>: <b>starter diagnosis</b>, <b>bake timeline</b>, and <b>tool-in-action</b>.</li>
+<li>See which performs best.</li>
+<li>Then <b>replicate the winning format</b> across the other creators.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">The full channel ranking &mdash; all 14, effort &times; fit, verdict</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>ASO / app-store search</b> &mdash; Low / High &mdash; <span class="pill now">Exploit now</span>
+</li>
+<li>
+<b>Owned cross-promo (site module)</b> &mdash; Low / High &mdash; <span class="pill now">Exploit now</span>
+</li>
+<li>
+<b>Email / lifecycle</b> &mdash; Med / High &mdash; <span class="pill now">Exploit now</span>
+</li>
+<li>
+<b>Influencer / creator-native UGC</b> &mdash; High / High &mdash; <span class="pill later">Needs budget + effort</span>
+</li>
+<li>
+<b>Shared-page indexing (SEO)</b> &mdash; Med / High &mdash; <span class="pill now">Exploit now (dev task)</span>
+</li>
+<li>
+<b>Amazon QR insert card</b> &mdash; Med / High &mdash; <span class="pill now">Start now</span> / land at next print run</li>
+<li>
+<b>Web SEO content library / blog</b> &mdash; High / Med &mdash; <span class="pill later">Later</span> &mdash; trigger: a writer at &ge;1/week</li>
+<li>
+<b>Apple Search Ads (first paid test)</b> &mdash; Med / Low &mdash; <span class="pill later">Later</span> &mdash; pixel + price</li>
+<li>
+<b>Paid social (Meta / TikTok / UAC)</b> &mdash; High / Low &mdash; <span class="pill later">Later</span> &mdash; pixel + price + attribution</li>
+<li>
+<b>Google Ads / PPC</b> &mdash; Med / Low &mdash; <span class="pill later">Later</span> &mdash; ASO gets the same intent free</li>
+<li>
+<b>In-app referral</b> &mdash; Med / Low &mdash; <span class="pill later">Later</span> &mdash; needs a price/credit to fund the reward</li>
+<li>
+<b>Pinterest</b> &mdash; Med / Low &mdash; <span class="pill skip">Skip</span> &mdash; declining, unattributable</li>
+<li>
+<b>YouTube long-form</b> &mdash; High / Low &mdash; <span class="pill skip">Skip</span> &mdash; production cost vs team size</li>
+<li>
+<b>Affiliate network</b> &mdash; High / Low &mdash; <span class="pill skip">Skip</span> &mdash; no volume, no commissionable price</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">The re-review campaign &mdash; why it works</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>One honest email to the <b>28 PMF promoters</b> lifts 4.0&#9733;-from-6-ratings to roughly <b>~4.5&#9733;</b> and, more importantly, <b>6 ratings &rarr; 20+</b> &mdash; what actually makes the number credible.</li>
+<li>This engine is built to extend &mdash; Pedro will add further references and creators.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">The benchmarks behind the ranking</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>Cal AI</b> &mdash; grew on founder-shot organic short-form of one recordable feature, before any ad spend. The engine we borrow. <span class="pill ok">Evidenced</span>
+</li>
+<li>
+<b>AllTrails</b> &mdash; ~49% of web traffic is Google organic, parlayed into app installs. SEO&rarr;installs is the durable engine &mdash; our <b>later</b> content bet. <span class="pill ok">Evidenced</span>
+</li>
+<li>
+<b>Ooni</b> &mdash; ~1M ovens &rarr; ~430k app installs. A hardware base does <b>not</b> convert free; it converts at a moment of necessity. <span class="pill ok">Evidenced</span>
+</li>
+<li>
+<b>MEATER</b> &mdash; hardware + app, the app is a <b>step</b> in using the tool, never a second ask. The model for our cross-promo. <span class="pill ok">Evidenced</span>
+</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">Paid traffic &mdash; the plan sketch (deliberately later)</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>
+<b>Instruments (Phase 1):</b> Meta Pixel + CAPI and the Google Ads tag &mdash; so spend can be measured before it happens.</li>
+<li>
+<b>Organic social presence:</b>
+<b>create an Instagram for BakeSide</b> + maintain Superbaking&rsquo;s Instagram. <b>Owner:</b> Pedro / Trixie.</li>
+<li>
+<span class="tbc">To investigate</span> &mdash; a prior Superbaking social account appears to have been lost / deactivated (the &ldquo;Carolina&rdquo; account). Importance TBC; flag it, don&rsquo;t assume.</li>
+<li>
+<b>Paid itself stays later:</b> gated on a pixel with history + a live price (no LTV &rarr; no honest CAC ceiling). Apple Search Ads is the first test when it opens.</li>
+</ul>
+</details>
+</li>
+<li>
+<details>
+<summary>
+<span class="s-txt">The honest note &mdash; built to learn, not to forecast</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list">
+<li>No audited organic-growth playbook exists for the 35&ndash;60 sourdough niche specifically. We borrow mechanisms from adjacent verticals and <b>instrument our own test.</b>
+</li>
+<li>So the plan is built to <b>learn, not to forecast</b> &mdash; Wave 1 tests whether the format earns saves in this audience before any spend. Don&rsquo;t read a Cal AI curve as ours.</li>
+</ul>
+</details>
+</li>
+</ul>
+</div>
 </section>
-
 <!-- ================= 5 · HOW WE BUILD IT ================= -->
 <section>
-  <div class="wrap stack-lg">
-    <div class="head">
-      <span class="eyebrow">How we build it</span>
-      <h2>We can build most<br>of this ourselves</h2>
-      <p class="lede">The old blocker was &ldquo;name a dev owner.&rdquo; It&rsquo;s smaller than we thought.</p>
-    </div>
-    <div class="loop">
-      <div class="node"><span class="who">The repo</span><span class="what">superbaking.com runs on <strong>Shopify Hydrogen</strong>, in a Git repo I already have access to.</span></div>
-      <div class="node"><span class="who">Pedro + Claude</span><span class="what">Build the redesign <strong>directly on a branch</strong> &mdash; preview deploy, live site untouched.</span></div>
-      <div class="node"><span class="who">Nabiha</span><span class="what">The app engineer only <strong>reviews + merges</strong> at the end.</span></div>
-      <div class="joint broke"><span class="arrow">!</span><span><b>Still open:</b> bakeside.app&rsquo;s host and stack are unknown &mdash; a question for Nabiha before we touch the app site.</span></div>
-    </div>
-    <p class="lede"><strong>I found the bases first.</strong> I systematise and set each piece up with Claude Code &mdash; hands-on, owning the setup of most of this. Once a foundation is laid, <strong>Trixie takes the regular monitoring and maintenance.</strong> I own and direct without becoming the bottleneck.</p>
-    <ul class="tl-list" style="--caramel:var(--accent);">
-<li><details><summary><span class="s-txt" style="color:var(--ink);">Who does what &mdash; the division of labour</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--accent);"><polyline points="9 6 15 12 9 18"></polyline></svg></summary><ul class="exp-list" style="color:var(--ink-soft);"><li style="color:var(--ink-soft);"><b style="color:var(--ink);">Pedro &mdash; found &amp; systematise (now).</b> Sets up each base with Claude Code: the redesign in-repo, tracking, Klaviyo flows, ASO, cross-promo, measurement, and the strategy/briefs behind them.</li><li style="color:var(--ink-soft);"><b style="color:var(--ink);">Trixie &mdash; ongoing monitoring &amp; design (later).</b> Once a base is laid: regular maintenance, imagery, store screenshots, launch creative, keeping the running system healthy.</li><li style="color:var(--ink-soft);"><b style="color:var(--ink);">Florian &mdash; decisions &amp; access.</b> Approvals, the monetisation call, repo / Shopify / app-store access.</li><li style="color:var(--ink-soft);"><b style="color:var(--ink);">Nabiha &mdash; app engineer.</b> Reviews + merges the site branch; owns the bakeside.app stack question and app instrumentation.</li><li style="color:var(--ink-soft);"><b style="color:var(--ink);">External &mdash; legal review</b> of the Terms / Privacy / Shipping / Returns copy before publish.</li></ul></details></li>
-    </ul>
-  </div>
+<div class="wrap stack-lg">
+<div class="head">
+<span class="eyebrow">How we build it</span>
+<h2>Repo &rarr; Pedro + Claude<br>&rarr; Nabiha reviews</h2>
+<p class="lede">The build runs on a clear chain, in-branch, with the live site untouched until merge.</p>
+</div>
+<div class="loop">
+<div class="node">
+<span class="who">The repo</span>
+<span class="what">superbaking.com runs on <strong>Shopify Hydrogen</strong>, in a Git repo I already have access to.</span>
+</div>
+<div class="node">
+<span class="who">Pedro + Claude</span>
+<span class="what">Build the redesign <strong>directly on a branch</strong> &mdash; preview deploy, live site untouched.</span>
+</div>
+<div class="node">
+<span class="who">Nabiha</span>
+<span class="what">The app engineer only <strong>reviews + merges</strong> at the end.</span>
+</div>
+<div class="joint broke">
+<span class="arrow">!</span>
+<span>
+<b>Still open:</b> bakeside.app&rsquo;s host and stack are unknown &mdash; a question for Nabiha before we touch the app site.</span>
+</div>
+</div>
+<p class="lede">
+<strong>I found the bases first.</strong> I systematise and set each piece up with Claude Code &mdash; hands-on, owning the setup of most of this. Once a foundation is laid, <strong>Pedro + Trixie do the regular monitoring and maintenance together.</strong> I own and direct without becoming the bottleneck.</p>
+<ul class="tl-list" style="--caramel:var(--accent);">
+<li>
+<details>
+<summary>
+<span class="s-txt" style="color:var(--ink);">Who does what &mdash; the division of labour</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--accent);">
+<polyline points="9 6 15 12 9 18">
+</polyline>
+</svg>
+</summary>
+<ul class="exp-list" style="color:var(--ink-soft);">
+<li style="color:var(--ink-soft);">
+<b style="color:var(--ink);">Pedro &mdash; found &amp; systematise (now).</b> Sets up each base with Claude Code: the redesign in-repo, tracking, Klaviyo flows, ASO, cross-promo, measurement, and the strategy/briefs behind them.</li>
+<li style="color:var(--ink-soft);">
+<b style="color:var(--ink);">Pedro + Trixie &mdash; ongoing monitoring &amp; design (later).</b> Once a base is laid, they run it together: regular maintenance, imagery, store screenshots, launch creative, keeping the running system healthy.</li>
+<li style="color:var(--ink-soft);">
+<b style="color:var(--ink);">Florian &mdash; decisions &amp; access.</b> Approvals, the monetisation call, repo / Shopify / app-store access.</li>
+<li style="color:var(--ink-soft);">
+<b style="color:var(--ink);">Nabiha &mdash; app engineer.</b> Reviews + merges the site branch; owns the bakeside.app stack question and app instrumentation.</li>
+<li style="color:var(--ink-soft);">
+<b style="color:var(--ink);">Legal review</b> of the Terms / Privacy / Shipping / Returns copy &mdash; we may do this <b>in-house</b>; if not, <span class="tbc">to consult</span>. Not definitively external.</li>
+</ul>
+</details>
+</li>
+</ul>
+</div>
 </section>
-
 <!-- ================= 6 · THE ASKS ================= -->
 <section class="invert">
-  <div class="wrap stack-lg">
-    <div class="head">
-      <span class="eyebrow">What I need from you</span>
-      <h2>Four decisions</h2>
-    </div>
-    <ol class="asks">
-      <li><span><strong>Approve the direction</strong> &mdash; the site builds the app funnel and owns the customer, rather than competing with our Amazon listing.</span></li>
-      <li><span><strong>Confirm the monetisation model</strong> &mdash; I believe <strong>user subscription</strong>, shown to buyers only as <em>&ldquo;months of BakeSide included with your kit.&rdquo;</em> No tier name or price is public.</span></li>
-      <li><span><strong>Confirm access + ownership</strong> &mdash; repo / Shopify access to build in-branch, plus who owns the <strong>bakeside.app domain and the app-store accounts</strong>.</span></li>
-      <li><span><strong>Agree the right-hand trigger</strong> &mdash; promotion phase + BakeSide monetisation going well &rarr; we add capacity.</span></li>
-    </ol>
-  </div>
+<div class="wrap stack-lg">
+<div class="head">
+<span class="eyebrow">What I need from you</span>
+<h2>Four decisions</h2>
+</div>
+<ol class="asks">
+<li>
+<span>
+<strong>Approve the direction</strong> &mdash; the site builds the app funnel and owns the customer, rather than competing with our Amazon listing.</span>
+</li>
+<li>
+<span>
+<strong>Confirm the monetisation model</strong> &mdash; I believe <strong>user subscription</strong>, shown to buyers only as <em>&ldquo;months of BakeSide included with your kit.&rdquo;</em> No tier name or price is public.</span>
+</li>
+<li>
+<span>
+<strong>Confirm access + ownership</strong> &mdash; repo / Shopify access to build in-branch, plus who owns the <strong>bakeside.app domain and the app-store accounts</strong>.</span>
+</li>
+<li>
+<span>
+<strong>Agree the right-hand trigger</strong> &mdash; promotion phase + BakeSide monetisation going well &rarr; we add capacity.</span>
+</li>
+</ol>
+</div>
 </section>
-
 <div class="wrap foot">
-  <p>Sources: live audit of superbaking.com, Google Play and App Store listings &middot; Shopify Admin API &middot; Search Console &middot; PMF Survey Report (73% PMF, NPS +65, 3,000+ installs) &middot; benchmark inspection of 9 app sites &middot; BakeSide promotion + funnel strategy docs &middot; 1:1 transcript, 14 July 2026. Support: hello@superbaking.com.</p>
-  <p style="margin-top:.5rem;">Live redesigns: <b>superbaking.com</b> &rarr; <a href="./superbaking.html">./superbaking.html</a> &middot; <b>BakeSide</b> &rarr; <a href="./bakeside.html">./bakeside.html</a></p>
+<p>Sources: live audit of superbaking.com, Google Play and App Store listings &middot; Shopify Admin API &middot; Search Console &middot; PMF Survey Report (73% PMF, NPS +65, 3,000+ installs) &middot; benchmark inspection of 9 app sites &middot; BakeSide promotion + funnel strategy docs &middot; 1:1 transcript, 14 July 2026. Support: hello@superbaking.com.</p>
+<p style="margin-top:.5rem;">Live redesigns: <b>superbaking.com</b> &rarr; <a href="./superbaking.html">./superbaking.html</a> &middot; <b>BakeSide</b> &rarr; <a href="./bakeside.html">./bakeside.html</a>
+</p>
 </div>
