@@ -1286,5 +1286,34 @@
   });
 })();
 </script>
+
+<!-- EDIT_MODE_SNIPPET -->
+<script>
+(function(){
+  if(!/[?&]edit\b/i.test(location.search)) return;
+  document.designMode='on';
+  var bar=document.createElement('div');
+  bar.style.cssText='position:fixed;bottom:16px;right:16px;z-index:2147483647;display:flex;gap:8px;font-family:system-ui,sans-serif;align-items:center';
+  var note=document.createElement('div');
+  note.textContent='EDIT MODE — click any text to edit';
+  note.style.cssText='background:#111;color:#fff;padding:9px 13px;border-radius:8px;font-size:13px;opacity:.9';
+  var save=document.createElement('button');
+  save.textContent='\u{1F4BE} Download edited HTML';
+  save.style.cssText='background:#591727;color:#fff;border:0;padding:10px 15px;border-radius:8px;cursor:pointer;font-size:14px;box-shadow:0 6px 16px rgba(0,0,0,.35)';
+  save.setAttribute('contenteditable','false');
+  save.onclick=function(){
+    document.designMode='off';
+    var doc='<!doctype html>\n'+document.documentElement.outerHTML;
+    document.designMode='on';
+    var blob=new Blob([doc],{type:'text/html'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=(location.pathname.split('/').pop()||'page').replace(/\.html?$/,'')+'.edited.html';
+    a.click();
+  };
+  bar.appendChild(note);bar.appendChild(save);
+  document.body.appendChild(bar);
+})();
+</script>
 </body>
 </html>
