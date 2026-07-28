@@ -223,16 +223,21 @@ td b{color:var(--ink);}
   .phase .cost{grid-column:2;text-align:left;}
 }
 
-/* ============ ASKS ============ */
-ol.asks{margin:0;padding:0;list-style:none;counter-reset:a;
-  display:flex;flex-direction:column;gap:1px;background:rgba(225,171,123,.3);
-  border:1px solid rgba(225,171,123,.3);}
-ol.asks li{counter-increment:a;background:var(--burgundy);padding:1.05rem 1.3rem;
-  display:flex;gap:1rem;align-items:baseline;font-size:.95rem;}
-:root[data-theme="dark"] ol.asks li{background:var(--burgundy-deep);}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) ol.asks li{background:var(--burgundy-deep);}}
-ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Neue',Impact,sans-serif;
-  color:var(--caramel);font-size:1.15rem;min-width:2ch;}
+/* ============ ASKS (grouped checklist) ============ */
+.asklist{display:flex;flex-direction:column;gap:1.5rem;}
+.askgroup{border:1px solid rgba(225,171,123,.3);}
+.askgroup h3{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.03em;
+  color:var(--caramel);font-size:1.3rem;line-height:1;margin:0;
+  padding:.75rem 1.3rem;background:rgba(225,171,123,.12);
+  border-bottom:1px solid rgba(225,171,123,.3);}
+ul.checks{margin:0;padding:0;list-style:none;
+  display:flex;flex-direction:column;gap:1px;background:rgba(225,171,123,.3);}
+ul.checks li{background:var(--burgundy);padding:.85rem 1.3rem;
+  display:flex;gap:.85rem;align-items:baseline;font-size:.92rem;}
+:root[data-theme="dark"] ul.checks li{background:var(--burgundy-deep);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) ul.checks li{background:var(--burgundy-deep);}}
+ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
+  line-height:1;flex:0 0 auto;}
 
 /* ============ CLOSE ============ */
 .close{border:2px solid var(--accent);padding:clamp(1.6rem,4vw,2.6rem);background:var(--paper);}
@@ -1353,26 +1358,49 @@ ol.asks li::before{content:counter(a,decimal-leading-zero);font-family:'Bebas Ne
 <div class="wrap stack-lg">
 <div class="head">
 <span class="eyebrow">What I need from you</span>
-<h2>Four decisions</h2>
+<h2>Asks &amp; decisions</h2>
 </div>
-<ol class="asks">
-<li>
-<span>
-<strong>Approve the direction</strong> — the websites redesign, the promotion channels</span>
-</li>
-<li>
-<span>
-<strong>Confirm the monetisation model</strong> — I believe <strong>user subscription</strong>, shown to buyers only as <em>“months of BakeSide included with your kit.”</em>&nbsp;</span>
-</li>
-<li>
-<span>
-<strong>Confirm access + ownership</strong> — repo / Shopify access to build in-branch, who owns the <strong>bakeside.app domain and the app-store accounts</strong>.</span>
-</li>
-<li>
-<span>
-<strong>Agree the right-hand trigger</strong> — promotion phase + BakeSide monetisation going well → we add capacity.</span>
-</li>
-</ol>
+<div class="asklist">
+
+<div class="askgroup">
+<h3>A · Approve — direction &amp; model</h3>
+<ul class="checks">
+<li><span>Approve the overall direction — <strong>own the baker</strong>; the site builds the app funnel.</span></li>
+<li><span>Confirm the monetisation model = <strong>user subscription</strong>.</span></li>
+<li><span>Decide how much BakeSide to include in the bundle (days / trial / months) — the <strong>length to confirm</strong>.</span></li>
+<li><span>Approve testing <strong>creator-native UGC</strong> (implies some budget).</span></li>
+</ul>
+</div>
+
+<div class="askgroup">
+<h3>B · Confirm — access &amp; ownership</h3>
+<ul class="checks">
+<li><span><strong>App Store Connect + Google Play</strong> account access (gates ASO and dropping “Free during Beta”).</span></li>
+<li><span><strong>bakeside.app</strong> domain ownership / DNS access.</span></li>
+<li><span>Confirm the BakeSide team owns dropping <strong>“Free during Beta.”</strong></span></li>
+<li><span>Confirm <strong>deploy access to the Shopify Hydrogen repo</strong> (Pedro has it; Nabiha reviews the merge).</span></li>
+</ul>
+</div>
+
+<div class="askgroup">
+<h3>C · Decide — who / how (feasibility)</h3>
+<ul class="checks">
+<li><span><strong>MCF</strong> (Shopify↔Amazon fulfillment automation): can Pedro do it with Claude + Shopify, or needs help?</span></li>
+<li><span><strong>PostHog / product analytics</strong>: approve setting it up (not in place today).</span></li>
+<li><span><strong>Legal pages</strong>: OK to draft in-house from BakeSide’s templates + a review (vs external legal)?</span></li>
+</ul>
+</div>
+
+<div class="askgroup">
+<h3>D · Flags — to investigate</h3>
+<ul class="checks">
+<li><span>The lost/deactivated Superbaking social account (the <strong>“Carolina” account</strong>) — investigate, importance TBC.</span></li>
+<li><span>Validate <strong>ASO keywords</strong> against real App Store search volume.</span></li>
+<li><span>Verify <strong>creator/influencer follower numbers</strong> live before presenting externally.</span></li>
+</ul>
+</div>
+
+</div>
 </div>
 </section>
 <div class="wrap foot">
