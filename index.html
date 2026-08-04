@@ -307,6 +307,14 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
   padding:.06rem .42rem;line-height:1.5;white-space:nowrap;}
 .stag.done{background:var(--done);color:var(--done-on);}
 .stag.spec{background:rgba(225,171,123,.22);color:var(--caramel);}
+/* post-meeting status update (2026-08-04) */
+.stag.prog{background:rgba(225,171,123,.92);color:#3f0f1b;}
+.stag.later{background:rgba(245,238,218,.13);color:rgba(245,238,218,.72);}
+.stag.todo{background:transparent;color:var(--caramel);box-shadow:inset 0 0 0 1px rgba(225,171,123,.55);}
+.tl-list details.prog > summary{border-left:2px solid var(--caramel);padding:.5rem .6rem;background:rgba(225,171,123,.08);}
+.tl-list details.later > summary{border-left:2px solid rgba(245,238,218,.22);padding:.5rem .6rem;}
+.tl-list details.todo > summary{border-left:2px solid rgba(225,171,123,.4);padding:.5rem .6rem;}
+.tl-list details.prog .chev,.tl-list details.todo .chev{color:var(--caramel);}
 
 /* Promotion engine — creator pool, format, brief */
 .subhead{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.05em;font-size:1.25rem;
@@ -413,7 +421,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </div>
 <div class="joint">
 <span class="arrow">↓</span>
-<span>The bundle Amazon can’t match: tools + <strong>a 14-day BakeSide trial included with your kit</strong>.</span>
+<span>The bundle Amazon can’t match: tools + <strong>the BakeSide app, free with every kit</strong>.</span>
 </div>
 <div class="node">
 <span class="who">BakeSide</span>
@@ -431,7 +439,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <div class="wrap stack-lg">
 <div class="head">
 <h2>Fix the product, then promote it</h2>
-<p class="lede">Four phases. <strong>What’s marked Done is already built.</strong></p>
+<p class="lede">Four phases. <strong>What’s marked Done is already built.</strong> <span style="opacity:.8">Status updated 2026-08-04 — Superbaking Phases 1–2 are largely built; badges below show Done · In progress · To do · Deferred.</span></p>
 </div>
 <div class="lead-btns">
 <a class="btn" href="./superbaking.html" target="_blank" rel="noopener">Open the new superbaking.com →</a>
@@ -447,8 +455,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <p class="tl-goal">Clear the blockers first.<b>&nbsp;I can’t ship alone — it needs repo / Shopify access.</b> Every fix below is built into the <b>new redesigned store</b></p>
 <ul class="tl-list">
 <li>
-<details>
+<details class="done">
 <summary>
+<span class="stag done">Done</span>
 <span class="s-txt">Remove the fake phone number + live-chat claim</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -463,8 +472,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="done">
 <summary>
+<span class="stag done">Done</span>
 <span class="s-txt">Write real legal pages, and link them</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -481,8 +491,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="prog">
 <summary>
+<span class="stag prog">In progress</span>
 <span class="s-txt">Tracking &amp; technical setup <span style="opacity:.65">(grouped dev tasks)</span>
 </span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -492,24 +503,25 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </summary>
 <ul class="exp-list">
 <li>
-<b>Web pixels</b> — install Meta Pixel + CAPI and the Google Ads tag — today no ad could even be measured. <b>Owner:</b> Pedro in-repo.</li>
+<b>Web pixels</b> — install Meta Pixel + CAPI and the Google Ads tag — today no ad could even be measured. <b>Owner:</b> Pedro in-repo. <b style="color:rgba(245,238,218,.78)">[Deferred — wired the day we open ad accounts; no pixels live today]</b></li>
 <li>
-<b>Product analytics (separate concern):</b> we have <b>no live product analytics</b> for the app today. Set up <b>PostHog</b> (or decide the stack) so the app funnel is measurable. <b>Owner:</b> Pedro, with Nabiha for app instrumentation.</li>
+<b>Product analytics (separate concern):</b> we have <b>no live product analytics</b> for the app today. Set up <b>PostHog</b> (or decide the stack) so the app funnel is measurable. <b>Owner:</b> Pedro, with Nabiha for app instrumentation. <b style="color:rgba(245,238,218,.78)">[App-side → Nabiha; not a Superbaking-site task]</b></li>
 <li>
-<b>Consent Mode</b> — the cookie banner tells Google whether the user consented, so tracking stays GDPR-safe.</li>
+<b>Consent Mode</b> — the cookie banner tells Google whether the user consented, so tracking stays GDPR-safe. <b style="color:var(--caramel)">[Banner already records consent; the Google signal goes live with the pixels]</b></li>
 <li>
-<b>Cookie link &amp; consent withdrawal</b> — the “learn more” link is broken and users can’t revoke consent. Fix both.</li>
+<b>Cookie link &amp; consent withdrawal</b> — the “learn more” link is broken and users can’t revoke consent. Fix both. <b style="color:var(--done)">[Fixed — link now points to the real v3 privacy page]</b></li>
 <li>
-<b>Product feeds stuck on “Loading…”</b> — product rows never finish loading (a front-end bug).</li>
+<b>Product feeds stuck on “Loading…”</b> — product rows never finish loading (a front-end bug). <b style="color:var(--done)">[Resolved — the new store renders products server-side; the bug was the old theme]</b></li>
 <li>
-<b>PUBLIC_CHECKOUT_DOMAIN</b> — a missing Hydrogen setting that crashes analytics; a one-line dev fix.</li>
-<li>Then a real end-to-end <b>test order</b> — the gate before any spend.</li>
+<b>PUBLIC_CHECKOUT_DOMAIN</b> — a missing Hydrogen setting that crashes analytics; a one-line dev fix. <b style="color:var(--done)">[Done in code — deploy env should still set the value (Nabiha)]</b></li>
+<li>Then a real end-to-end <b>test order</b> — the gate before any spend. <b style="color:var(--done)">[Validated — a real paid order shipped end-to-end via MCF with tracking]</b></li>
 </ul>
 </details>
 </li>
 <li>
-<details>
+<details class="done">
 <summary>
+<span class="stag done">Done</span>
 <span class="s-txt">Fulfillment automation — Shopify ↔ Amazon MCF</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -521,7 +533,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <li>
 <b>Owner:</b> Pedro. <b>How:</b> an MCF connector app + mapping SKUs to Amazon inventory.</li>
 <li>
-<span class="tbc">To confirm</span> — can Pedro do this with Claude Code + the Hydrogen repo + Shopify admin, or does it need dedicated dev help? A question for Florian/Nabiha before committing.</li>
+<b>Confirmed &amp; done (2026-08-03/04):</b> Pedro did it with Claude + the Shopify admin — no dedicated dev needed. Root cause was Order processing set to "don't fulfill automatically" (orphaned since Carolina), so paid orders sat unfulfilled. Switched to auto-fulfill + customer shipment notifications; the pre-existing backlog was cleared to MCF by hand. New orders now auto-ship from FBA with tracking.</li>
 </ul>
 </details>
 </li>
@@ -554,8 +566,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="done">
 <summary>
+<span class="stag done">Done</span>
 <span class="s-txt">Import Amazon reviews to product pages</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -570,8 +583,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="prog">
 <summary>
+<span class="stag prog">In progress</span>
 <span class="s-txt">Rewrite product copy + re-export images full-res</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -586,8 +600,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="done">
 <summary>
+<span class="stag done">Done</span>
 <span class="s-txt">Honour the 10% welcome offer <b>on-site</b>
 </span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -603,8 +618,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="todo">
 <summary>
+<span class="stag todo">To do</span>
 <span class="s-txt">Decide the ownership model — who maintains the store</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -718,7 +734,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <li>
 <b>Lead</b> with the app’s main feature to drive downloads.</li>
 <li>
-<b>If that doesn’t convert,</b> add a nudge offering free time in the app — a short 14-day trial.</li>
+<b>If that doesn’t convert,</b> add a nudge around the app’s value — the paid tier is sold in <em>bakes</em> (≈2 free / 5 paid + chat), not a trial and not tokens.</li>
 <li>
 <b>Owner:</b> Pedro / Trixie.</li>
 </ul>
@@ -1321,7 +1337,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <div class="joint broke">
 <span class="arrow">!</span>
 <span>
-<b>Still open:</b> bakeside.app’s host and stack are unknown — a question for Nabiha before we touch the app site.</span>
+<b>Known:</b> bakeside.app is a static site on <b>AWS S3 + CloudFront</b>, with DNS at <b>GoDaddy</b>.</span>
 </div>
 </div>
 <p class="lede">
@@ -1367,7 +1383,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <ul class="checks">
 <li><span>✓ Approved — own the baker; the site builds the app funnel (Amazon stays the primary revenue driver).</span></li>
 <li><span>✓ Confirmed — monetisation model = user subscription (BakeSide Plus); implementation details to sync with Nabiha.</span></li>
-<li><span>✓ Confirmed — 14-day BakeSide trial included in the bundle.</span></li>
+<li><span>✓ Confirmed — <strong>NO trial</strong>; free tier stays free; paid tier sold in <em>bakes</em> (≈2 free / 5 paid + chat), not tokens (Florian, 2026-07-27).</span></li>
 <li><span>✓ Approved — test creator-native UGC (CalAI-style organic TikTok); start from the CARO + Peregrine influencer database.</span></li>
 </ul>
 </div>
@@ -1376,7 +1392,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <h3>B · Confirm — access &amp; ownership</h3>
 <ul class="checks">
 <li><span>✓ Granted (view-only) — App Store Connect + Google Play access; editing the listing / ASO needs write access — confirm who edits.</span></li>
-<li><span><strong>bakeside.app</strong> domain ownership / DNS access.</span></li>
+<li><span><strong>bakeside.app</strong> — ✓ Florian granted Pedro <b>GoDaddy (DNS)</b> access (2026-08-04); still need <b>AWS S3</b> access to publish (files live in S3; DNS already points to CloudFront).</span></li>
 <li><span>Confirm who can edit the store listings to drop “Free during Beta” (our access is view-only).</span></li>
 <li><span>✓ Confirmed — build on Shopify Hydrogen + GitHub + Claude; Pedro deploys, Nabiha reviews the merge. Shopify access = Admin + Developer (granted).</span></li>
 </ul>
