@@ -315,6 +315,20 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 .tl-list details.later > summary{border-left:2px solid rgba(245,238,218,.22);padding:.5rem .6rem;}
 .tl-list details.todo > summary{border-left:2px solid rgba(225,171,123,.4);padding:.5rem .6rem;}
 .tl-list details.prog .chev,.tl-list details.todo .chev{color:var(--caramel);}
+/* collapsible channel ranking (Phase 4) */
+.chan-collapse{margin:.2rem 0 .4rem;}
+.chan-collapse > summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.55rem;
+  font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.04em;font-size:1.2rem;color:var(--caramel);
+  padding:.55rem .1rem;border-top:1px solid rgba(225,171,123,.25);border-bottom:1px solid rgba(225,171,123,.25);}
+.chan-collapse > summary::-webkit-details-marker{display:none;}
+.chan-collapse > summary .chev{width:1rem;height:1rem;transition:transform .2s;}
+.chan-collapse[open] > summary .chev{transform:rotate(90deg);}
+.chan-collapse > summary:hover{color:#fff;}
+.chan-collapse[open] > summary{margin-bottom:.9rem;}
+/* asks: highlight the items Florian already approved */
+ul.checks li.ok{background:rgba(127,185,141,.14);border-left:2px solid var(--done);
+  padding:.3rem .55rem;border-radius:5px;}
+ul.checks li.ok > span{color:#DCEFE1;}
 
 /* Promotion engine — creator pool, format, brief */
 .subhead{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.05em;font-size:1.25rem;
@@ -583,9 +597,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details class="prog">
+<details class="done">
 <summary>
-<span class="stag prog">In progress</span>
+<span class="stag done">Done</span>
 <span class="s-txt">Rewrite product copy + re-export images full-res</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -648,9 +662,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </p>
 <ul class="tl-list">
 <li>
-<details class="spec">
+<details class="done">
 <summary>
-<span class="stag spec">Designed</span>
+<span class="stag done">Done</span>
 <span class="s-txt">Connect app ↔ site both ways</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -679,9 +693,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details class="spec">
+<details class="todo">
 <summary>
-<span class="stag spec">Designed</span>
+<span class="stag todo">To do</span>
 <span class="s-txt">In-app monetisation model</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -758,8 +772,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="done">
 <summary>
+<span class="stag done">Done</span>
 <span class="s-txt">PMF quotes → ready-made testimonials</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -774,8 +789,9 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 </details>
 </li>
 <li>
-<details>
+<details class="todo">
 <summary>
+<span class="stag todo">To do</span>
 <span class="s-txt">A separate community hub — recipes, discovery &amp; retention</span>
 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <polyline points="9 6 15 12 9 18">
@@ -892,6 +908,11 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <h2>Every channel, ranked by cost</h2>
 <p class="lede"><strong>Owner model:</strong> Pedro chooses &amp; systematises each channel; Trixie helps with monitoring &amp; execution</p>
 </div>
+<details class="chan-collapse">
+<summary>
+<span class="s-txt">The channel ranking — tap to expand</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+</summary>
 <span class="subhead">Free &amp; available now</span>
 <div class="rank">
 <div class="row">
@@ -1012,6 +1033,7 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <span class="rf">Effort High<br>Fit Low<br>Owner Pedro</span>
 </div>
 </div>
+</details>
 <ul class="tl-list">
 <li>
 <details>
@@ -1381,29 +1403,29 @@ ul.checks li::before{content:"\2610";color:var(--caramel);font-size:1.25rem;
 <div class="askgroup">
 <h3>A · Approve — direction &amp; model</h3>
 <ul class="checks">
-<li><span>✓ Approved — own the baker; the site builds the app funnel (Amazon stays the primary revenue driver).</span></li>
-<li><span>✓ Confirmed — monetisation model = user subscription (BakeSide Plus); implementation details to sync with Nabiha.</span></li>
-<li><span>✓ Confirmed — <strong>NO trial</strong>; free tier stays free; paid tier sold in <em>bakes</em> (≈2 free / 5 paid + chat), not tokens (Florian, 2026-07-27).</span></li>
-<li><span>✓ Approved — test creator-native UGC (CalAI-style organic TikTok); start from the CARO + Peregrine influencer database.</span></li>
+<li class="ok"><span>✓ Approved — own the baker; the site builds the app funnel (Amazon stays the primary revenue driver).</span></li>
+<li class="ok"><span>✓ Confirmed — monetisation model = user subscription (BakeSide Plus); implementation details to sync with Nabiha.</span></li>
+<li class="ok"><span>✓ Confirmed — <strong>NO trial</strong>; free tier stays free; paid tier sold in <em>bakes</em> (≈2 free / 5 paid + chat), not tokens (Florian, 2026-07-27).</span></li>
+<li class="ok"><span>✓ Approved — test creator-native UGC (CalAI-style organic TikTok); start from the CARO + Peregrine influencer database.</span></li>
 </ul>
 </div>
 
 <div class="askgroup">
 <h3>B · Confirm — access &amp; ownership</h3>
 <ul class="checks">
-<li><span>✓ Granted (view-only) — App Store Connect + Google Play access; editing the listing / ASO needs write access — confirm who edits.</span></li>
+<li class="ok"><span>✓ Granted (view-only) — App Store Connect + Google Play access; editing the listing / ASO needs write access — confirm who edits.</span></li>
 <li><span><strong>bakeside.app</strong> — ✓ Florian granted Pedro <b>GoDaddy (DNS)</b> access (2026-08-04); still need <b>AWS S3</b> access to publish (files live in S3; DNS already points to CloudFront).</span></li>
 <li><span>Confirm who can edit the store listings to drop “Free during Beta” (our access is view-only).</span></li>
-<li><span>✓ Confirmed — build on Shopify Hydrogen + GitHub + Claude; Pedro deploys, Nabiha reviews the merge. Shopify access = Admin + Developer (granted).</span></li>
+<li class="ok"><span>✓ Confirmed — build on Shopify Hydrogen + GitHub + Claude; Pedro deploys, Nabiha reviews the merge. Shopify access = Admin + Developer (granted).</span></li>
 </ul>
 </div>
 
 <div class="askgroup">
 <h3>C · Decide — who / how (feasibility)</h3>
 <ul class="checks">
-<li><span><strong>MCF</strong> (Shopify↔Amazon fulfillment automation): can Pedro do it with Claude + Shopify, or needs help?</span></li>
+<li class="ok"><span>✓ Done — <strong>MCF</strong> (Shopify↔Amazon fulfillment): Pedro set it up with Claude + the Shopify admin; paid orders now auto-ship from FBA with tracking. No dedicated dev needed.</span></li>
 <li><span><strong>PostHog / product analytics</strong>: approve setting it up (not in place today).</span></li>
-<li><span>✓ Direction — draft legal pages in-house from BakeSide templates + a review, then share with Florian.</span></li>
+<li class="ok"><span>✓ Direction — draft legal pages in-house from BakeSide templates + a review, then share with Florian.</span></li>
 </ul>
 </div>
 
