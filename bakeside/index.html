@@ -645,9 +645,10 @@
     .steps{grid-template-columns:1fr}
     .inc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .why-grid{grid-template-columns:1fr}
-    .rc-cluster{flex-wrap:wrap;margin-top:36px;gap:18px}
-    .rc-cluster>.rc-chip{transform:none!important;width:220px}
-    .rc-mine{position:static;transform:none;margin:2px auto 0;width:220px}
+    .rc-cluster{flex-direction:column;flex-wrap:nowrap;align-items:center;margin-top:36px;gap:16px}
+    .rc-cluster::before{display:none}
+    .rc-cluster>.rc-chip{transform:none!important;width:100%;max-width:300px}
+    .rc-mine{position:static;transform:none;order:5;margin:2px auto 0;width:100%;max-width:300px}
     .hyd-grid{grid-template-columns:1fr;gap:26px}
     .voices{grid-template-columns:1fr}
     .maker{grid-template-columns:1fr;gap:26px}
