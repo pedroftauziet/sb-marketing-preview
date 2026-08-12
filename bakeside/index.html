@@ -364,16 +364,14 @@
     background:radial-gradient(56% 56% at 50% 48%,rgba(242,90,46,.13),rgba(255,251,234,0) 70%);filter:blur(6px)}
   .sh-chip{position:relative;z-index:1;width:326px;flex:none}
   .sh-chip img{display:block;width:100%;height:auto;border-radius:22px}
-  .sh1{transform:rotate(-2.5deg)}
-  .sh2{transform:rotate(2.5deg)}
+  .sh1,.sh2{transform:none}
   .sh-link{position:relative;z-index:3;flex:none;width:62px;height:62px;margin:0 -14px;border-radius:50%;
     background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;
     box-shadow:0 12px 26px -10px rgba(201,44,3,.7)}
   .sh-link svg{width:26px;height:26px}
-  .rcc1{transform:rotate(-3deg) translateY(10px)}
-  .rcc2{transform:rotate(1.5deg) translateY(-16px);z-index:2}
-  .rcc3{transform:rotate(-1.5deg) translateY(12px)}
-  .rcc4{transform:rotate(3deg) translateY(-8px)}
+  /* aligned, catalog-like row (subtle lift only, no scatter) */
+  .rcc1,.rcc2,.rcc3,.rcc4{transform:none}
+  .sec-head p strong{color:var(--ink);font-weight:700}
 
 
   /* ---------- Proof band ---------- */
@@ -467,6 +465,10 @@
     border-color:transparent;box-shadow:var(--shadow)}
   .demo-tab[aria-selected="true"] .lab{color:var(--cream-5)}
   .demo-tab[aria-selected="true"] .hint{color:rgba(255,251,234,.86)}
+  /* AI-coach carousel controls — hidden on desktop (all 3 tabs show stacked) */
+  .demo-title-m{display:none}
+  .demo-tabwrap{position:relative;width:100%}
+  .demo-controls{display:none}
 
   /* CSS-built app screens (used where no real screenshot exists yet) */
   .demo-panel.scr{background:linear-gradient(170deg,var(--cream) 0%,#efe2c9 100%);
@@ -664,6 +666,25 @@
   }
   @media(max-width:640px){
     section{padding:54px 0}
+    .sec-head h2{font-size:1.8rem;text-wrap:balance}
+    /* AI-coach → one-feature swipe carousel */
+    .demo-stage{display:flex;flex-direction:column;align-items:center;gap:16px}
+    .demo-title-m{display:block;order:-2;text-align:center;margin:0;font-size:1.85rem;text-wrap:balance}
+    .demo-phone{order:-1}
+    .demo-copy{order:0;width:100%;gap:0}
+    .demo-title-d{display:none}
+    .demo-tabwrap{display:block;width:100%}
+    .demo-tabs{gap:0}
+    .demo-tab{display:none}
+    .demo-tab[aria-selected="true"]{display:flex;flex-direction:column;gap:6px}
+    .demo-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px}
+    .demo-arrow{display:flex;align-items:center;justify-content:center;flex:none;
+      width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--line);
+      color:var(--red);box-shadow:var(--shadow-sm);cursor:pointer;padding:0}
+    .demo-arrow svg{width:20px;height:20px}
+    .demo-dots{display:flex;justify-content:center;gap:8px}
+    .demo-dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .2s}
+    .demo-dot[aria-current="true"]{background:var(--red)}
     .inc-grid{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr}
     .store-badges .store-badge{flex:1 1 auto;justify-content:center}
@@ -836,6 +857,7 @@
 <section id="features">
   <div class="wrap">
     <div class="demo-stage">
+      <h2 class="display inc-title demo-title-m" aria-hidden="true">Meet your AI bread coach</h2>
       <div class="demo-phone">
         <div class="demo-screen">
 
@@ -863,20 +885,31 @@
       </div>
 
       <div class="demo-copy">
-        <h2 class="display inc-title">Meet your AI bread coach</h2>
-        <div class="demo-tabs" role="tablist" aria-label="BakeSide app features">
-          <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="true" aria-controls="panel-diagnosis" tabindex="0">
-            <span class="lab">Know when it's ready</span>
-            <span class="hint">Snap a photo &mdash; it reads your starter and tells you when it's peaked.</span>
-          </button>
-          <button class="demo-tab" id="tab-timing" role="tab" aria-selected="false" aria-controls="panel-timing" tabindex="-1">
-            <span class="lab">Smarter plans</span>
-            <span class="hint">A schedule timed to your kitchen &mdash; adjust it anytime, reminders stay in sync.</span>
-          </button>
-          <button class="demo-tab" id="tab-track" role="tab" aria-selected="false" aria-controls="panel-track" tabindex="-1">
-            <span class="lab">Learn from every bake</span>
-            <span class="hint">Each bake remembers what you changed, so the next one's better.</span>
-          </button>
+        <h2 class="display inc-title demo-title-d">Meet your AI bread coach</h2>
+        <div class="demo-tabwrap">
+          <div class="demo-tabs" role="tablist" aria-label="BakeSide app features">
+            <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="true" aria-controls="panel-diagnosis" tabindex="0">
+              <span class="lab">Know when it's ready</span>
+              <span class="hint">Snap a photo &mdash; it reads your starter and tells you when it's peaked.</span>
+            </button>
+            <button class="demo-tab" id="tab-timing" role="tab" aria-selected="false" aria-controls="panel-timing" tabindex="-1">
+              <span class="lab">Smarter plans</span>
+              <span class="hint">A schedule timed to your kitchen &mdash; adjust it anytime, reminders stay in sync.</span>
+            </button>
+            <button class="demo-tab" id="tab-track" role="tab" aria-selected="false" aria-controls="panel-track" tabindex="-1">
+              <span class="lab">Learn from every bake</span>
+              <span class="hint">Each bake remembers what you changed, so the next one's better.</span>
+            </button>
+          </div>
+          <div class="demo-controls">
+            <button class="demo-arrow prev" type="button" aria-label="Previous feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <div class="demo-dots" aria-hidden="true"><span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span></div>
+            <button class="demo-arrow next" type="button" aria-label="Next feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -886,7 +919,8 @@
 
 
 <!-- ============ WHY BAKESIDE — three ideas, short ============ -->
-<section id="why" style="background:var(--surface)">
+<!-- HIDDEN per Pedro 2026-08-12: filler, the point is now made in the chip modules above. Reversible: remove `hidden`. -->
+<section id="why" style="background:var(--surface)" hidden>
   <div class="wrap">
     <div class="sec-head center">
       <h2 class="display">Bake with a coach beside you.</h2>
@@ -918,9 +952,8 @@
 <section id="recipes">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="kicker">The Recipe Catalog</div>
       <h2 class="display">Never start from scratch again.</h2>
-      <p>Ready-to-bake sourdough recipes from expert bakers. Pick one, save it to your library, and make it yours.</p>
+      <p>Ready-to-bake sourdough recipes from expert bakers &mdash; <strong>save any one and make it yours.</strong></p>
     </div>
 
     <div class="rc-cluster">
@@ -937,7 +970,7 @@
     <div class="sec-head center">
       <div class="kicker">Share a recipe</div>
       <h2 class="display">A recipe worth sharing.</h2>
-      <p>Every recipe comes with a link. Choose what to include, send it in a tap &mdash; your friend opens it free and bakes the same loaf.</p>
+      <p>Every recipe comes with a link &mdash; send it in a tap, and <strong>your friend bakes the same loaf.</strong></p>
     </div>
     <div class="sh-cluster">
       <div class="sh-chip sh1"><img src="assets/sharing/share-controls.webp" width="680" height="692" loading="lazy" alt="Choose what to share — toggles for Ingredients, Hydration, Equipment and Instructions"></div>
@@ -1285,7 +1318,11 @@
   (function(){
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.demo-tab'));
     if(!tabs.length) return;
+    var wrap = document.querySelector('.demo-tabwrap');
+    var dots = wrap ? Array.prototype.slice.call(wrap.querySelectorAll('.demo-dot')) : [];
+    var cur = 0;
     function select(i){
+      cur = i;
       tabs.forEach(function(t, j){
         var on = i === j;
         t.setAttribute('aria-selected', on ? 'true' : 'false');
@@ -1296,6 +1333,22 @@
         else { panel.classList.remove('active');
                setTimeout(function(){ if(t.getAttribute('aria-selected')==='false') panel.hidden = true; }, 420); }
       });
+      dots.forEach(function(d, j){ d.setAttribute('aria-current', i === j ? 'true' : 'false'); });
+    }
+    function step(d){ select((cur + d + tabs.length) % tabs.length); }
+    if(wrap){
+      var pv = wrap.querySelector('.demo-arrow.prev'), nx = wrap.querySelector('.demo-arrow.next');
+      if(pv) pv.addEventListener('click', function(){ step(-1); });
+      if(nx) nx.addEventListener('click', function(){ step(1); });
+      dots.forEach(function(d, k){ d.addEventListener('click', function(){ select(k); }); });
+      var sx = null;
+      wrap.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+      wrap.addEventListener('touchend', function(e){
+        if(sx === null) return;
+        var dx = e.changedTouches[0].clientX - sx;
+        if(Math.abs(dx) > 40){ step(dx < 0 ? 1 : -1); }
+        sx = null;
+      }, {passive:true});
     }
     tabs.forEach(function(t, i){
       t.addEventListener('click', function(){ select(i); });
