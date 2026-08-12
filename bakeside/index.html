@@ -349,34 +349,17 @@
   .cat-item .ct b{display:block;font-size:.98rem;font-weight:700}
   .cat-item .ct span{font-size:.82rem;color:var(--muted)}
 
-  /* ---------- Recipe-catalog chip cluster ---------- */
-  .rc-cluster{position:relative;max-width:1040px;margin:64px auto 0;
-    display:flex;flex-wrap:nowrap;gap:22px;justify-content:center;align-items:center}
-  .rc-cluster::before{content:"";position:absolute;inset:-22% 4% -12%;z-index:0;
-    background:radial-gradient(58% 58% at 50% 46%,rgba(242,90,46,.14),rgba(255,251,234,0) 70%);filter:blur(6px)}
-  .rc-chip{position:relative;z-index:1;width:224px;background:#fff;border-radius:20px;
-    box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(46,7,0,.05)}
-  .rc-chip .rc-ph{height:150px;position:relative;display:block}
-  .rc-chip .rc-ph svg{position:absolute;inset:0;width:100%;height:100%}
-  .rc-chip .rc-body{padding:14px 16px 16px}
-  .rc-chip .rc-cat{font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
-  .rc-chip h3{font-size:1.06rem;font-weight:800;letter-spacing:-.01em;line-height:1.15;margin-bottom:9px}
-  .rc-meta{display:flex;flex-wrap:wrap;gap:6px}
-  .rc-m{font-size:.72rem;font-weight:600;color:#4a443f;background:var(--surface);
-    border:1px solid var(--line);border-radius:100px;padding:3px 9px}
-  .rc-cta{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:800;color:var(--red)}
-  .rc-cta svg{width:14px;height:14px}
+  /* ---------- Recipe-catalog chip cluster (real app cards) ---------- */
+  .rc-cluster{position:relative;max-width:1060px;margin:52px auto 0;
+    display:flex;flex-wrap:nowrap;gap:16px;justify-content:center;align-items:center}
+  .rc-cluster::before{content:"";position:absolute;inset:-16% 2% -10%;z-index:0;
+    background:radial-gradient(58% 56% at 50% 48%,rgba(242,90,46,.13),rgba(255,251,234,0) 70%);filter:blur(6px)}
+  .rc-chip{position:relative;z-index:1;width:244px;flex:none}
+  .rc-chip img{display:block;width:100%;height:auto}
   .rcc1{transform:rotate(-3deg) translateY(10px)}
-  .rcc2{transform:rotate(1.5deg) translateY(-14px);z-index:2}
+  .rcc2{transform:rotate(1.5deg) translateY(-16px);z-index:2}
   .rcc3{transform:rotate(-1.5deg) translateY(12px)}
-  .rcc4{transform:rotate(3deg) translateY(-6px)}
-  .rc-mine{position:absolute;z-index:4;right:-10px;top:-64px;background:#fff;border-radius:16px;
-    box-shadow:var(--shadow);padding:12px 14px;width:214px;border:1px solid rgba(46,7,0,.05);transform:rotate(4deg)}
-  .rc-mine .rc-row{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;font-weight:700;padding:6px 0}
-  .rc-mine .rc-row+.rc-row{border-top:1px solid var(--line)}
-  .rc-mine .rc-pill{background:var(--red);color:#fff;border-radius:100px;padding:9px 0;text-align:center;font-weight:800;font-size:.86rem;margin-top:10px}
-  .rc-mine .rc-lab{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-  .rc-note{max-width:560px;margin:38px auto 0;text-align:center;color:var(--muted);font-size:.9rem}
+  .rcc4{transform:rotate(3deg) translateY(-8px)}
 
 
   /* ---------- Proof band ---------- */
@@ -645,10 +628,9 @@
     .steps{grid-template-columns:1fr}
     .inc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .why-grid{grid-template-columns:1fr}
-    .rc-cluster{flex-direction:column;flex-wrap:nowrap;align-items:center;margin-top:36px;gap:16px}
+    .rc-cluster{flex-direction:column;flex-wrap:nowrap;align-items:center;margin-top:30px;gap:10px}
     .rc-cluster::before{display:none}
-    .rc-cluster>.rc-chip{transform:none!important;width:100%;max-width:300px}
-    .rc-mine{position:static;transform:none;order:5;margin:2px auto 0;width:100%;max-width:300px}
+    .rc-cluster>.rc-chip{transform:none!important;width:100%;max-width:320px}
     .hyd-grid{grid-template-columns:1fr;gap:26px}
     .voices{grid-template-columns:1fr}
     .maker{grid-template-columns:1fr;gap:26px}
@@ -924,54 +906,11 @@
     </div>
 
     <div class="rc-cluster">
-      <!-- Make It Mine floating mini-chip -->
-      <div class="rc-mine">
-        <div class="rc-lab">Make it mine</div>
-        <div class="rc-row"><span>Scale</span><span>2&times;</span></div>
-        <div class="rc-row"><span>Flour</span><span>1000 g &middot; 100%</span></div>
-        <div class="rc-row"><span>Water</span><span>720 g &middot; 72%</span></div>
-        <div class="rc-pill">Save As My Recipe</div>
-      </div>
-
-      <div class="rc-chip rcc1">
-        <span class="rc-ph"><svg viewBox="0 0 236 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9b06a"/><stop offset="1" stop-color="#b9722f"/></linearGradient></defs><rect width="236" height="150" fill="url(#g1)"/><ellipse cx="118" cy="92" rx="82" ry="46" fill="#c98842"/><ellipse cx="118" cy="86" rx="82" ry="46" fill="#dda45e"/><path d="M74 78 Q118 58 162 78" stroke="#7a4a1d" stroke-width="4" fill="none" opacity=".55"/><path d="M84 90 Q118 74 152 90" stroke="#7a4a1d" stroke-width="3" fill="none" opacity=".4"/></svg></span>
-        <div class="rc-body">
-          <div class="rc-cat">Beginner favorite</div>
-          <h3>Classic Country Sourdough</h3>
-          <div class="rc-meta"><span class="rc-m">72% hydration</span><span class="rc-m">~24 hr</span></div>
-        </div>
-      </div>
-
-      <div class="rc-chip rcc2">
-        <span class="rc-ph"><svg viewBox="0 0 236 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eec27f"/><stop offset="1" stop-color="#c98a45"/></linearGradient></defs><rect width="236" height="150" fill="url(#g2)"/><rect x="46" y="52" width="144" height="72" rx="16" fill="#d9a75e"/><rect x="46" y="46" width="144" height="72" rx="16" fill="#e8bd76"/><path d="M62 66 h112 M62 82 h112 M62 98 h112" stroke="#a9702f" stroke-width="3" opacity=".35"/></svg></span>
-        <div class="rc-body">
-          <div class="rc-cat">Everyday</div>
-          <h3>Everyday Sandwich Sourdough</h3>
-          <div class="rc-meta"><span class="rc-m">68% hydration</span><span class="rc-m">Soft crumb</span></div>
-        </div>
-      </div>
-
-      <div class="rc-chip rcc3">
-        <span class="rc-ph"><svg viewBox="0 0 236 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3a556"/><stop offset="1" stop-color="#a15f24"/></linearGradient></defs><rect width="236" height="150" fill="url(#g3)"/><circle cx="118" cy="86" r="58" fill="#b5762f"/><circle cx="118" cy="80" r="58" fill="#d19a4f"/><path d="M92 60 L118 96 L144 60" stroke="#6f4319" stroke-width="4" fill="none" opacity=".5"/></svg></span>
-        <div class="rc-body">
-          <div class="rc-cat">Crackly crust</div>
-          <h3>Dutch Oven Boule</h3>
-          <div class="rc-meta"><span class="rc-m">75% hydration</span><span class="rc-m">Deep bake</span></div>
-        </div>
-      </div>
-
-      <div class="rc-chip rcc4">
-        <span class="rc-ph"><svg viewBox="0 0 236 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7b774"/><stop offset="1" stop-color="#b07a38"/></linearGradient></defs><rect width="236" height="150" fill="url(#g4)"/><ellipse cx="118" cy="90" rx="80" ry="42" fill="#bd8038"/><ellipse cx="118" cy="84" rx="80" ry="42" fill="#d7a259"/><path d="M60 70 Q118 52 176 70" stroke="#7a4a1d" stroke-width="3.5" fill="none" opacity=".45"/><g fill="#a9702f" opacity=".38"><circle cx="82" cy="92" r="4"/><circle cx="104" cy="78" r="3"/><circle cx="122" cy="95" r="5"/><circle cx="142" cy="82" r="3.5"/><circle cx="158" cy="94" r="4"/><circle cx="96" cy="104" r="3"/></g></svg></span>
-        <div class="rc-body">
-          <div class="rc-cat">Zero waste</div>
-          <h3>Sourdough Discard Loaf</h3>
-          <div class="rc-meta"><span class="rc-m">No waste</span><span class="rc-m">Same-day</span></div>
-          <span class="rc-cta">Make It Mine <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
-        </div>
-      </div>
+      <div class="rc-chip rcc1"><img src="assets/recipes/classic-country.webp" width="760" height="760" loading="lazy" alt="Classic Country Sourdough recipe card — 45 min active, 24 hr total, 1 loaf, 180 kcal per slice"></div>
+      <div class="rc-chip rcc2"><img src="assets/recipes/everyday-sandwich.webp" width="760" height="760" loading="lazy" alt="Everyday Sandwich Sourdough recipe card — 30 min active, 16 hr total, 16 slices, 150 kcal per slice"></div>
+      <div class="rc-chip rcc3"><img src="assets/recipes/dutch-oven-boule.webp" width="760" height="760" loading="lazy" alt="Dutch Oven Boule recipe card — 40 min active, 20 hr total, 1 boule, 190 kcal per slice"></div>
+      <div class="rc-chip rcc4"><img src="assets/recipes/discard-loaf.webp" width="760" height="760" loading="lazy" alt="Sourdough Discard Loaf recipe card — 25 min active, 12 hr total, 10 slices, 210 kcal per slice"></div>
     </div>
-
-    <p class="rc-note">Placeholder loaf art &mdash; final chips are exported from the app's real Recipe Catalog cards.</p>
   </div>
 </section>
 <!-- ============ SHARING — the launch feature: share a recipe as a link ============ -->
