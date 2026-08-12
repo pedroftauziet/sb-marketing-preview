@@ -356,6 +356,20 @@
     background:radial-gradient(58% 56% at 50% 48%,rgba(242,90,46,.13),rgba(255,251,234,0) 70%);filter:blur(6px)}
   .rc-chip{position:relative;z-index:1;width:244px;flex:none}
   .rc-chip img{display:block;width:100%;height:auto}
+
+  /* ---------- Sharing: send-flow chips ---------- */
+  .sh-cluster{position:relative;max-width:860px;margin:52px auto 0;
+    display:flex;flex-wrap:nowrap;gap:0;justify-content:center;align-items:center}
+  .sh-cluster::before{content:"";position:absolute;inset:-14% 4% -10%;z-index:0;
+    background:radial-gradient(56% 56% at 50% 48%,rgba(242,90,46,.13),rgba(255,251,234,0) 70%);filter:blur(6px)}
+  .sh-chip{position:relative;z-index:1;width:326px;flex:none}
+  .sh-chip img{display:block;width:100%;height:auto;border-radius:22px}
+  .sh1{transform:rotate(-2.5deg)}
+  .sh2{transform:rotate(2.5deg)}
+  .sh-link{position:relative;z-index:3;flex:none;width:62px;height:62px;margin:0 -14px;border-radius:50%;
+    background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 26px -10px rgba(201,44,3,.7)}
+  .sh-link svg{width:26px;height:26px}
   .rcc1{transform:rotate(-3deg) translateY(10px)}
   .rcc2{transform:rotate(1.5deg) translateY(-16px);z-index:2}
   .rcc3{transform:rotate(-1.5deg) translateY(12px)}
@@ -628,9 +642,13 @@
     .steps{grid-template-columns:1fr}
     .inc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .why-grid{grid-template-columns:1fr}
-    .rc-cluster{flex-direction:column;flex-wrap:nowrap;align-items:center;margin-top:30px;gap:10px}
+    .rc-cluster{flex-flow:row wrap;align-items:flex-start;justify-content:center;margin-top:30px;gap:14px}
     .rc-cluster::before{display:none}
-    .rc-cluster>.rc-chip{transform:none!important;width:100%;max-width:320px}
+    .rc-cluster>.rc-chip{transform:none!important;width:calc(50% - 7px);max-width:360px}
+    .sh-cluster{flex-direction:column;gap:6px;margin-top:30px}
+    .sh-cluster::before{display:none}
+    .sh-cluster>.sh-chip{transform:none!important;width:100%;max-width:340px}
+    .sh-link{margin:2px auto;transform:rotate(90deg)}
     .hyd-grid{grid-template-columns:1fr;gap:26px}
     .voices{grid-template-columns:1fr}
     .maker{grid-template-columns:1fr;gap:26px}
@@ -914,28 +932,17 @@
   </div>
 </section>
 <!-- ============ SHARING — the launch feature: share a recipe as a link ============ -->
-<section id="sharing" style="background:var(--surface)">
+<section id="sharing">
   <div class="wrap">
     <div class="sec-head center">
+      <div class="kicker">Share a recipe</div>
       <h2 class="display">A recipe worth sharing.</h2>
-      <p>Every recipe comes with a link. Send a friend exactly what you baked &mdash; they open it free and bake it too.</p>
+      <p>Every recipe comes with a link. Choose what to include, send it in a tap &mdash; your friend opens it free and bakes the same loaf.</p>
     </div>
-    <div class="why-grid">
-      <div class="why">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.3M8.2 13.2l7.6 4.3"/></svg></div>
-        <h3>Share in a tap.</h3>
-        <p>Send any recipe as a link &mdash; no screenshots, no retyping the whole thing.</p>
-      </div>
-      <div class="why">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M4 12h10M4 18h7"/><path d="M17.5 14.5l2 2 3-3.5"/></svg></div>
-        <h3>Choose what to share.</h3>
-        <p>Ingredients, hydration, equipment, instructions &mdash; share just the parts that matter.</p>
-      </div>
-      <div class="why">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 5.5a3 3 0 0 1 0 5M18.5 19a5.5 5.5 0 0 0-3.4-5.1"/></svg></div>
-        <h3>Bake together.</h3>
-        <p>A friend opens your recipe free and bakes the same loaf &mdash; even before they have the app.</p>
-      </div>
+    <div class="sh-cluster">
+      <div class="sh-chip sh1"><img src="assets/sharing/share-controls.webp" width="680" height="692" loading="lazy" alt="Choose what to share — toggles for Ingredients, Hydration, Equipment and Instructions"></div>
+      <div class="sh-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></div>
+      <div class="sh-chip sh2"><img src="assets/sharing/share-card.webp" width="680" height="800" loading="lazy" alt="The share card your friend receives — bread photo, total time, hydration, yield and a QR code to the full recipe"></div>
     </div>
   </div>
 </section>
