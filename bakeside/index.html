@@ -858,6 +858,9 @@
   var mid=cards[Math.floor(cards.length/2)];
   if(mid){track.scrollLeft=mid.offsetLeft-(track.clientWidth-mid.clientWidth)/2;}
   placeArrows();update();
+  // re-centre arrows once images load (initial run measures before images set the height)
+  window.addEventListener('load',function(){placeArrows();update();});
+  cards.forEach(function(c){var im=c.querySelector('img');if(im&&!im.complete){im.addEventListener('load',placeArrows);im.addEventListener('error',placeArrows);}});
 })();</script>
 <!-- ============ 3 · WHAT DOES BAKESIDE INCLUDE? — interactive phone module ============
      Round 3: replaces the old "See it work" diagnosis section, the "How it works"
