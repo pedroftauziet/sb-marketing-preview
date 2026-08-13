@@ -887,10 +887,11 @@
   .exp-chip{position:absolute;bottom:0;width:auto;opacity:0;transform:translateY(46px) scale(.97);
     transition:opacity .4s ease,transform .55s cubic-bezier(.2,.85,.25,1);pointer-events:none;will-change:transform,opacity}
   .exp-chip.active{opacity:1;transform:none}
-  /* every chip renders at the same HEIGHT so heights (and the gap) stay consistent */
-  .exp-chip img{display:block;height:var(--ch);width:auto;max-width:94vw}
-  /* full-screen chips (Home, chat): rounded + soft shadow that follows the shape (drop-shadow, not a box) */
-  .exp-chip[data-tab="home"] img,.exp-chip[data-tab="new"] img{border-radius:22px;filter:drop-shadow(0 12px 18px rgba(46,7,0,.20))}
+  /* every chip renders at the same HEIGHT so heights (and the gap) stay consistent.
+     Chips are transparent PNG/WebP (cream keyed out) → a clean drop-shadow follows each screen's shape, no baked-in rectangle. */
+  .exp-chip img{display:block;height:var(--ch);width:auto;max-width:94vw;filter:drop-shadow(0 13px 20px rgba(46,7,0,.22))}
+  /* chat + Home are full screenshots → round the corners so the shadow follows a rounded screen */
+  .exp-chip[data-tab="home"] img,.exp-chip[data-tab="new"] img{border-radius:22px}
   .exp-chip.soon{width:min(300px,82%);aspect-ratio:5/6;background:#fff;border-radius:24px;border:1px solid rgba(46,7,0,.08);
     box-shadow:0 26px 52px -30px rgba(46,7,0,.42);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
     text-align:center;padding:26px;color:var(--muted)}
