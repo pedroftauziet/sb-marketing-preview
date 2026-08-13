@@ -869,13 +869,15 @@
   #explore{background:#f7efdc}
   #explore .sec-head.center{margin-bottom:8px}
   #explore .sec-head.center h2{color:#4a3311}
-  .nb-stage{max-width:520px;margin:26px auto 0;display:flex;flex-direction:column;align-items:center}
-  .exp-preview{position:relative;width:100%;height:clamp(340px,84vw,406px);display:flex;justify-content:center;align-items:flex-end}
+  .nb-stage{max-width:520px;margin:26px auto 0;display:flex;flex-direction:column;align-items:center;justify-content:center;height:clamp(470px,104vw,520px)}
+  .exp-preview{position:relative;width:100%;height:0;opacity:0;display:flex;justify-content:center;align-items:flex-end;
+    transition:height .55s cubic-bezier(.2,.85,.25,1),opacity .4s ease}
+  .nb-stage.opened .exp-preview{height:clamp(300px,72vw,352px);opacity:1}
   .exp-hint{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);margin:0;color:#9a8b6b;font-size:.95rem;font-weight:600;
     display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .3s;text-align:center}
   .exp-hint svg{width:26px;height:26px;stroke:#c7ab74;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .exp-hint.gone{opacity:0;visibility:hidden}
-  .exp-chip{position:absolute;bottom:0;width:min(330px,86%);opacity:0;transform:translateY(46px) scale(.97);
+  .exp-chip{position:absolute;bottom:0;width:min(300px,80%);opacity:0;transform:translateY(46px) scale(.97);
     transition:opacity .4s ease,transform .55s cubic-bezier(.2,.85,.25,1);pointer-events:none;will-change:transform,opacity}
   .exp-chip.active{opacity:1;transform:none}
   .exp-chip img{display:block;width:100%;height:auto}
@@ -897,9 +899,9 @@
   .nb-item.active{color:var(--red)}
   .nb-item:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:10px}
   .exp-chip.soon .sc-ic svg{stroke-width:1.82}
-  .exp-cap{max-width:440px;margin:16px auto 0;text-align:center;font-size:1rem;line-height:1.4;
-    opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
-  .exp-cap.show{opacity:1;transform:none}
+  .exp-cap{max-width:440px;margin:0 auto;text-align:center;font-size:1rem;line-height:1.4;max-height:0;opacity:0;overflow:hidden;
+    transition:max-height .45s ease,opacity .35s ease,margin .45s ease}
+  .nb-stage.opened .exp-cap{max-height:64px;opacity:1;margin:14px auto 8px}
   .exp-cap .exp-cap-t{font-weight:800;color:var(--ink)}
   .exp-cap .exp-cap-d{color:var(--muted)}
   @media(max-width:640px){
@@ -915,16 +917,13 @@
     </div>
     <div class="nb-stage">
       <div class="exp-preview">
-        <p class="exp-hint">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
-          Tap a tab below to preview it
-        </p>
         <div class="exp-chip" data-tab="starters"><img src="assets/all/mystarters.webp" width="720" height="810" loading="lazy" alt="My Starters app screen — starters sorted by last active, health scores and next feed times"></div>
         <div class="exp-chip" data-tab="bake"><img src="assets/all/mybakes.webp" width="720" height="810" loading="lazy" alt="My Bakes app screen — upcoming and past bakes with outcome scores"></div>
         <div class="exp-chip soon" data-tab="home"><div class="sc-ic"><svg viewBox="0 0 23 23" aria-hidden="true"><path d="M14.375 20.125V12.4583C14.375 11.9294 13.9456 11.5 13.4167 11.5H9.58333C9.05441 11.5 8.625 11.9294 8.625 12.4583V20.125"/><path d="M2.875 9.58333C2.87486 9.019 3.12344 8.48328 3.55446 8.119L10.2628 2.36996C10.9771 1.76623 12.0229 1.76623 12.7372 2.36996L19.4455 8.119C19.8766 8.48328 20.1251 9.019 20.125 9.58333V18.2083C20.125 19.2662 19.2662 20.125 18.2083 20.125H4.79167C3.73383 20.125 2.875 19.2662 2.875 18.2083V9.58333"/></svg></div><b>Home</b><span>Preview coming soon</span></div>
         <div class="exp-chip soon" data-tab="new"><div class="sc-ic"><svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 11.5C1.91667 16.7892 6.21081 21.0833 11.5 21.0833C16.7892 21.0833 21.0833 16.7892 21.0833 11.5C21.0833 6.21081 16.7892 1.91667 11.5 1.91667C6.21081 1.91667 1.91667 6.21081 1.91667 11.5V11.5"/><path d="M7.66667 11.5H15.3333"/><path d="M11.5 7.66667V15.3333"/></svg></div><b>New bake</b><span>Preview coming soon</span></div>
         <div class="exp-chip soon" data-tab="recipes"><div class="sc-ic"><svg viewBox="0 0 23 23" aria-hidden="true"><path d="M11.5 6.70833V20.125"/><path d="M2.875 17.25C2.34608 17.25 1.91667 16.8206 1.91667 16.2917V3.83333C1.91667 3.30441 2.34608 2.875 2.875 2.875H7.66667C9.78234 2.875 11.5 4.59266 11.5 6.70833C11.5 4.59266 13.2177 2.875 15.3333 2.875H20.125C20.6539 2.875 21.0833 3.30441 21.0833 3.83333V16.2917C21.0833 16.8206 20.6539 17.25 20.125 17.25H14.375C12.7882 17.25 11.5 18.5382 11.5 20.125C11.5 18.5382 10.2118 17.25 8.625 17.25H2.875"/></svg></div><b>My Recipes</b><span>Preview coming soon</span></div>
       </div>
+      <p class="exp-cap"><b class="exp-cap-t"></b><span class="exp-cap-d"></span></p>
       <div class="nb-barwrap">
         <nav class="nb-bar" role="tablist" aria-label="BakeSide app navigation">
           <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="home" data-title="Home" data-desc="Everything for today, at a glance.">
@@ -944,7 +943,6 @@
           </button>
         </nav>
       </div>
-      <p class="exp-cap"><b class="exp-cap-t"></b><span class="exp-cap-d"></span></p>
     </div>
   </div>
 </section>
@@ -952,14 +950,14 @@
   var root=document.getElementById('explore'); if(!root)return;
   var items=[].slice.call(root.querySelectorAll('.nb-item'));
   var chips=[].slice.call(root.querySelectorAll('.exp-chip'));
-  var hint=root.querySelector('.exp-hint');
-  var cap=root.querySelector('.exp-cap'), capT=root.querySelector('.exp-cap-t'), capD=root.querySelector('.exp-cap-d');
+  var stage=root.querySelector('.nb-stage');
+  var capT=root.querySelector('.exp-cap-t'), capD=root.querySelector('.exp-cap-d');
   function show(btn){
     var tab=btn.dataset.tab;
     items.forEach(function(b){var on=b===btn;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
     chips.forEach(function(c){c.classList.toggle('active',c.dataset.tab===tab);});
-    if(hint)hint.classList.add('gone');
-    if(capT){capT.textContent=btn.dataset.title||'';capD.textContent=' '+(btn.dataset.desc||'');cap.classList.add('show');}
+    stage.classList.add('opened');
+    if(capT){capT.textContent=btn.dataset.title||'';capD.textContent=' '+(btn.dataset.desc||'');}
   }
   items.forEach(function(b){b.addEventListener('click',function(){show(b);});});
 })();</script>
