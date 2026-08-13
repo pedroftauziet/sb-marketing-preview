@@ -74,9 +74,9 @@
     --r-sm:12px;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:76px}
+  html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:76px}
   body{
-    margin:0;overflow-x:clip;
+    margin:0;overflow-x:hidden;
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
     background:var(--cream);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;
   }
@@ -89,9 +89,7 @@
   .kicker.on-dark{color:var(--cream-5)}
 
   .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
-  section{padding:76px 0;scroll-snap-align:start;scroll-margin-top:76px}
-  /* sections taller than the viewport must NOT be snap points, or mandatory snapping traps you inside them */
-  #proof,#faq,#maker{scroll-snap-align:none}
+  section{padding:76px 0}
   .sec-head{max-width:680px;margin:0 0 40px}
   .sec-head.center{margin:0 auto 44px;text-align:center}
   .sec-head h2{font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:800;letter-spacing:-.02em;line-height:1.06;margin:8px 0 12px}
@@ -1554,67 +1552,5 @@
   });
 })();
 </script>
-<!-- Full-page scroll: one wheel/swipe = jump to the next module (presentation-style).
-     Tall sections are scrolled through natively until their edge, then the next gesture jumps.
-     Disabled under prefers-reduced-motion. -->
-<script>(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var stops = [].slice.call(document.querySelectorAll('body > section, body > footer'))
-    .filter(function(s){ return s.offsetParent !== null && s.getBoundingClientRect().height > 40; });
-  if (stops.length < 3) return;
-  var HDR = 76, PAD = 40, lock = false, t;
-  function vh(){ return window.innerHeight; }
-  function idxNow(){
-    var probe = window.scrollY + vh()*0.4, idx = 0;
-    for (var i=0;i<stops.length;i++){ if (stops[i].offsetTop - HDR <= probe) idx = i; }
-    return idx;
-  }
-  function jump(i){
-    i = Math.max(0, Math.min(stops.length-1, i));
-    lock = true;
-    stops[i].scrollIntoView({behavior:'smooth', block:'start'});
-    clearTimeout(t); t = setTimeout(function(){ lock = false; }, 850);
-  }
-  // is there still content to reveal inside this section in direction dir? (tall sections)
-  function canNative(sec, dir){
-    var r = sec.getBoundingClientRect();
-    return dir > 0 ? (r.bottom > vh() + PAD) : (r.top < HDR - PAD);
-  }
-  window.addEventListener('wheel', function(e){
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-    if (lock){ e.preventDefault(); return; }
-    var dir = e.deltaY > 0 ? 1 : -1, i = idxNow();
-    if (canNative(stops[i], dir)) return;
-    e.preventDefault(); jump(i + dir);
-  }, {passive:false});
-  window.addEventListener('keydown', function(e){
-    var tag = (e.target.tagName||'').toLowerCase();
-    if (tag==='input'||tag==='textarea'||e.target.isContentEditable) return;
-    var down = (e.key==='ArrowDown'||e.key==='PageDown'||(e.key===' '&&!e.shiftKey));
-    var up   = (e.key==='ArrowUp'||e.key==='PageUp'||(e.key===' '&&e.shiftKey));
-    if (!down && !up) return;
-    var i = idxNow(), dir = down ? 1 : -1;
-    if (canNative(stops[i], dir)) return;
-    e.preventDefault(); jump(i + dir);
-  });
-  var sy=null, sx=null, block=false;
-  window.addEventListener('touchstart', function(e){ if(lock)return; sy=e.touches[0].clientY; sx=e.touches[0].clientX; block=false; }, {passive:true});
-  window.addEventListener('touchmove', function(e){
-    if (sy===null || lock) return;
-    var dy = sy - e.touches[0].clientY, dx = sx - e.touches[0].clientX;
-    if (Math.abs(dx) > Math.abs(dy)) return;           // horizontal swipe (AI-coach) → leave it
-    var i = idxNow(), dir = dy>0 ? 1 : -1;
-    if (canNative(stops[i], dir)) return;              // tall section, not at edge → native scroll
-    block = true; e.preventDefault();                  // block native; jump on release
-  }, {passive:false});
-  window.addEventListener('touchend', function(e){
-    if (sy===null) return;
-    var dy = sy - e.changedTouches[0].clientY, dx = sx - e.changedTouches[0].clientX;
-    sy=null; sx=null;
-    if (!block) return; block=false;
-    if (Math.abs(dy) < 30 || Math.abs(dx) > Math.abs(dy)) return;
-    jump(idxNow() + (dy>0 ? 1 : -1));
-  }, {passive:true});
-})();</script>
 </body>
 </html>
