@@ -866,7 +866,7 @@
      Pedro 2026-08-13: no phone — just the real app navbar in the middle. Tapping a tab pops up a
      brief preview chip. Starters + Bake use real onboarding screens; others are "coming soon". -->
 <style>
-  #explore{background:#f7efdc}
+  #explore{background:#f7efdc;--ch:clamp(288px,70vw,326px)}
   #explore .sec-head.center{margin-bottom:8px}
   #explore .sec-head.center h2{color:#4a3311}
   .nb-stage{position:relative;max-width:520px;margin:12px auto 0;display:flex;flex-direction:column;align-items:center}
@@ -879,17 +879,18 @@
   @keyframes nbPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.98;transform:scale(1.07)}}
   .exp-preview{position:relative;width:100%;height:0;opacity:0;display:flex;justify-content:center;align-items:flex-end;
     transition:height .55s cubic-bezier(.2,.85,.25,1),opacity .4s ease}
-  .nb-stage.opened .exp-preview{height:clamp(420px,126vw,474px);opacity:1}
+  .nb-stage.opened .exp-preview{height:var(--ch);opacity:1}
   .exp-hint{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);margin:0;color:#9a8b6b;font-size:.95rem;font-weight:600;
     display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .3s;text-align:center}
   .exp-hint svg{width:26px;height:26px;stroke:#c7ab74;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .exp-hint.gone{opacity:0;visibility:hidden}
-  .exp-chip{position:absolute;bottom:0;width:min(288px,82%);opacity:0;transform:translateY(46px) scale(.97);
+  .exp-chip{position:absolute;bottom:0;width:auto;opacity:0;transform:translateY(46px) scale(.97);
     transition:opacity .4s ease,transform .55s cubic-bezier(.2,.85,.25,1);pointer-events:none;will-change:transform,opacity}
   .exp-chip.active{opacity:1;transform:none}
-  .exp-chip img{display:block;width:100%;height:auto}
-  /* full-screen chips (Home, chat) get a rounded frame + shadow; card-style chips carry their own */
-  .exp-chip[data-tab="home"] img,.exp-chip[data-tab="new"] img{border-radius:26px;box-shadow:0 26px 54px -28px rgba(46,7,0,.42)}
+  /* every chip renders at the same HEIGHT so heights (and the gap) stay consistent */
+  .exp-chip img{display:block;height:var(--ch);width:auto;max-width:94vw}
+  /* full-screen chips (Home, chat): rounded + soft shadow that follows the shape (drop-shadow, not a box) */
+  .exp-chip[data-tab="home"] img,.exp-chip[data-tab="new"] img{border-radius:22px;filter:drop-shadow(0 12px 18px rgba(46,7,0,.20))}
   .exp-chip.soon{width:min(300px,82%);aspect-ratio:5/6;background:#fff;border-radius:24px;border:1px solid rgba(46,7,0,.08);
     box-shadow:0 26px 52px -30px rgba(46,7,0,.42);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
     text-align:center;padding:26px;color:var(--muted)}
@@ -912,9 +913,9 @@
   .exp-chip.soon .sc-ic svg{stroke-width:1.82}
   .exp-cap{max-width:440px;margin:0 auto;text-align:center;font-size:1rem;line-height:1.4;max-height:0;opacity:0;overflow:hidden;
     transition:max-height .45s ease,opacity .35s ease,margin .45s ease}
-  .nb-stage.opened .exp-cap{max-height:92px;opacity:1;margin:16px auto 10px}
+  .nb-stage.opened .exp-cap{max-height:74px;opacity:1;margin:14px auto 6px}
   .exp-cap .exp-cap-t{display:block;font-weight:800;color:var(--ink);font-size:1.05rem}
-  .exp-cap .exp-cap-d{display:block;color:var(--muted);font-size:.95rem;margin-top:2px}
+  .exp-cap .exp-cap-d{display:block;color:#38322c;font-size:.95rem;margin-top:2px;white-space:nowrap}
   @media(max-width:640px){
     .nb-item{font-size:.72rem}
     .nb-item svg{width:23px;height:23px}
@@ -937,19 +938,19 @@
       <p class="exp-cap"><b class="exp-cap-t"></b><span class="exp-cap-d"></span></p>
       <div class="nb-barwrap">
         <nav class="nb-bar" role="tablist" aria-label="BakeSide app navigation">
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="home" data-title="Home" data-desc="Everything for today, at a glance.">
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="home" data-title="Home" data-desc="Today&rsquo;s plan, at a glance.">
             <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M14.375 20.125V12.4583C14.375 11.9294 13.9456 11.5 13.4167 11.5H9.58333C9.05441 11.5 8.625 11.9294 8.625 12.4583V20.125"/><path d="M2.875 9.58333C2.87486 9.019 3.12344 8.48328 3.55446 8.119L10.2628 2.36996C10.9771 1.76623 12.0229 1.76623 12.7372 2.36996L19.4455 8.119C19.8766 8.48328 20.1251 9.019 20.125 9.58333V18.2083C20.125 19.2662 19.2662 20.125 18.2083 20.125H4.79167C3.73383 20.125 2.875 19.2662 2.875 18.2083V9.58333"/></svg><span>Home</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="starters" data-title="My Starters" data-desc="Know the moment it's ready to bake.">
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="starters" data-title="My Starters" data-desc="Know when it&rsquo;s ready.">
             <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 21.0833L15.3333 7.66667"/><path d="M3.32542 12.0079L4.79167 10.5417L6.25792 12.0079C7.56158 13.3167 7.56158 15.4333 6.25792 16.7421L4.79167 18.2083L3.32542 16.7421C2.02175 15.4333 2.02175 13.3167 3.32542 12.0079V12.0079"/><path d="M7.15875 8.17458L8.625 6.70833L10.0912 8.17458C11.3949 9.48339 11.3949 11.5999 10.0912 12.9087L8.625 14.375L7.15875 12.9087C5.85508 11.5999 5.85508 9.48339 7.15875 8.17458V8.17458"/><path d="M10.9921 4.34125L12.4583 2.875L13.9246 4.34125C15.2283 5.65006 15.2283 7.76661 13.9246 9.07542L12.4583 10.5417L10.9921 9.07542C9.68841 7.76661 9.68841 5.65006 10.9921 4.34125V4.34125"/><path d="M19.1667 1.91667H21.0833V3.83333C21.0833 5.94901 19.3657 7.66667 17.25 7.66667H15.3333V5.75C15.3333 3.63433 17.051 1.91667 19.1667 1.91667V1.91667"/><path d="M10.9921 16.7421L12.4583 18.2083L10.9921 19.6746C9.68328 20.9783 7.56672 20.9783 6.25792 19.6746L4.79167 18.2083L6.25792 16.7421C7.56672 15.4384 9.68328 15.4384 10.9921 16.7421V16.7421"/><path d="M14.8254 12.9087L16.2917 14.375L14.8254 15.8412C13.5166 17.1449 11.4001 17.1449 10.0912 15.8412L8.625 14.375L10.0912 12.9087C11.4001 11.6051 13.5166 11.6051 14.8254 12.9087V12.9087"/><path d="M18.6587 9.07542L20.125 10.5417L18.6587 12.0079C17.3499 13.3116 15.2334 13.3116 13.9246 12.0079L12.4583 10.5417L13.9246 9.07542C15.2334 7.77175 17.3499 7.77175 18.6587 9.07542V9.07542"/></svg><span>Starters</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="new" data-title="New" data-desc="Ask the coach anything, or tap a suggestion to start.">
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="new" data-title="New" data-desc="Ask the coach anything.">
             <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 11.5C1.91667 16.7892 6.21081 21.0833 11.5 21.0833C16.7892 21.0833 21.0833 16.7892 21.0833 11.5C21.0833 6.21081 16.7892 1.91667 11.5 1.91667C6.21081 1.91667 1.91667 6.21081 1.91667 11.5V11.5"/><path d="M7.66667 11.5H15.3333"/><path d="M11.5 7.66667V15.3333"/></svg><span>New</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="recipes" data-title="My Recipes" data-desc="Bend any recipe to your kitchen.">
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="recipes" data-title="My Recipes" data-desc="Make any recipe your own.">
             <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M11.5 6.70833V20.125"/><path d="M2.875 17.25C2.34608 17.25 1.91667 16.8206 1.91667 16.2917V3.83333C1.91667 3.30441 2.34608 2.875 2.875 2.875H7.66667C9.78234 2.875 11.5 4.59266 11.5 6.70833C11.5 4.59266 13.2177 2.875 15.3333 2.875H20.125C20.6539 2.875 21.0833 3.30441 21.0833 3.83333V16.2917C21.0833 16.8206 20.6539 17.25 20.125 17.25H14.375C12.7882 17.25 11.5 18.5382 11.5 20.125C11.5 18.5382 10.2118 17.25 8.625 17.25H2.875"/></svg><span>Recipes</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="bake" data-title="My Bakes" data-desc="Repeat what worked, skip what didn't.">
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="bake" data-title="My Bakes" data-desc="Repeat what worked.">
             <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M8.14583 13.8958C9.46813 13.8958 10.5417 12.8223 10.5417 11.5C10.5417 10.1775 10.0625 9.58333 9.58333 8.625C8.556 6.57129 9.36867 4.73992 11.5 2.875C11.9792 5.27083 13.4167 7.57083 15.3333 9.10417C17.25 10.6375 18.2083 12.4583 18.2083 14.375C18.2083 18.0774 15.2024 21.0833 11.5 21.0833C7.79757 21.0833 4.79167 18.0774 4.79167 14.375C4.79167 13.27 5.20662 12.1766 5.75 11.5C5.75 12.8223 6.82354 13.8958 8.14583 13.8958V13.8958"/></svg><span>Bake</span>
           </button>
         </nav>
