@@ -93,7 +93,7 @@
   .sec-head{max-width:680px;margin:0 0 40px}
   .sec-head.center{margin:0 auto 44px;text-align:center}
   .sec-head h2{font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:800;letter-spacing:-.02em;line-height:1.06;margin:8px 0 12px}
-  .sec-head p{color:var(--muted);margin:0;font-size:1.05rem}
+  .sec-head p{color:var(--muted);margin:0;font-size:1.05rem;text-wrap:pretty}
 
   /* to-confirm marker — same convention as the Superbaking mockups */
   .tc{border-bottom:2px dashed var(--red-400);cursor:help}
@@ -349,12 +349,18 @@
   .cat-item .ct b{display:block;font-size:.98rem;font-weight:700}
   .cat-item .ct span{font-size:.82rem;color:var(--muted)}
 
-  /* ---------- Recipe-catalog chip cluster (real app cards) ---------- */
-  .rc-cluster{position:relative;max-width:1060px;margin:52px auto 0;
+  /* ---------- Recipe-catalog panel + chip cluster (real app cards) ---------- */
+  .rc-panel{background:#e7d5ac;border-radius:26px;padding:22px clamp(16px,2.4vw,28px) 28px;max-width:1080px;margin:36px auto 0;
+    box-shadow:0 24px 50px -30px rgba(46,7,0,.42);border:1px solid rgba(46,7,0,.06)}
+  .rc-panel-head{margin-bottom:4px}
+  .rc-eyebrow{display:flex;align-items:center;gap:7px;font-size:.72rem;font-weight:800;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--red);margin-bottom:6px}
+  .rc-seal{width:17px;height:17px;flex:none}
+  .rc-panel-title{display:block;font-size:clamp(1.6rem,2.6vw,2.15rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:#4a3311}
+  .rc-cluster{position:relative;max-width:1040px;margin:22px auto 0;
     display:flex;flex-wrap:nowrap;gap:16px;justify-content:center;align-items:center}
-  .rc-cluster::before{content:"";position:absolute;inset:-16% 2% -10%;z-index:0;
-    background:radial-gradient(58% 56% at 50% 48%,rgba(242,90,46,.13),rgba(255,251,234,0) 70%);filter:blur(6px)}
-  .rc-chip{position:relative;z-index:1;width:244px;flex:none}
+  .rc-panel .rc-cluster::before{display:none}
+  .rc-chip{position:relative;z-index:1;width:232px;flex:none}
   .rc-chip img{display:block;width:100%;height:auto}
 
   /* ---------- Sharing: send-flow chips ---------- */
@@ -468,7 +474,9 @@
   /* AI-coach carousel controls — hidden on desktop (all 3 tabs show stacked) */
   .demo-title-m{display:none}
   .demo-tabwrap{position:relative;width:100%}
-  .demo-controls{display:none}
+  .demo-phonerow{min-width:0}
+  .demo-arrow{display:none}
+  .demo-dots{display:none}
 
   /* CSS-built app screens (used where no real screenshot exists yet) */
   .demo-panel.scr{background:linear-gradient(170deg,var(--cream) 0%,#efe2c9 100%);
@@ -656,6 +664,7 @@
     .maker{grid-template-columns:1fr;gap:26px}
     .demo-stage{grid-template-columns:1fr;gap:32px}
     .demo-stage .demo-phone{max-width:290px}
+    .hero .demo-phone{max-width:290px}
     .maker-inner{padding-top:64px;padding-bottom:68px}
     .car-head{flex-direction:column;align-items:flex-start;gap:12px}
     .foot-grid{grid-template-columns:1fr 1fr}
@@ -670,19 +679,21 @@
     /* AI-coach → one-feature swipe carousel */
     .demo-stage{display:flex;flex-direction:column;align-items:center;gap:16px}
     .demo-title-m{display:block;order:-2;text-align:center;margin:0;font-size:1.85rem;text-wrap:balance}
-    .demo-phone{order:-1}
+    .demo-phonerow{order:-1;position:relative;display:flex;justify-content:center;width:100%}
     .demo-copy{order:0;width:100%;gap:0}
     .demo-title-d{display:none}
     .demo-tabwrap{display:block;width:100%}
     .demo-tabs{gap:0}
     .demo-tab{display:none}
     .demo-tab[aria-selected="true"]{display:flex;flex-direction:column;gap:6px}
-    .demo-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px}
-    .demo-arrow{display:flex;align-items:center;justify-content:center;flex:none;
+    /* arrows flank the phone, centred on its height */
+    .demo-arrow{display:flex;align-items:center;justify-content:center;flex:none;position:absolute;top:50%;transform:translateY(-50%);
       width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--line);
-      color:var(--red);box-shadow:var(--shadow-sm);cursor:pointer;padding:0}
+      color:var(--red);box-shadow:var(--shadow-sm);cursor:pointer;padding:0;z-index:4}
     .demo-arrow svg{width:20px;height:20px}
-    .demo-dots{display:flex;justify-content:center;gap:8px}
+    .demo-arrow.prev{left:0}
+    .demo-arrow.next{right:0}
+    .demo-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
     .demo-dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .2s}
     .demo-dot[aria-current="true"]{background:var(--red)}
     .inc-grid{grid-template-columns:1fr}
@@ -693,6 +704,7 @@
     .award .sprig{width:38px}
     .modal-card{padding:24px 18px 20px}
     .demo-stage .demo-phone{max-width:260px}
+    .hero .demo-phone{max-width:260px}
     .vid-card{width:76vw}
     .trust-item{flex-basis:100%;border-left:0}
   }
@@ -858,6 +870,10 @@
   <div class="wrap">
     <div class="demo-stage">
       <h2 class="display inc-title demo-title-m" aria-hidden="true">Meet your AI bread coach</h2>
+      <div class="demo-phonerow">
+      <button class="demo-arrow prev" type="button" aria-label="Previous feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
       <div class="demo-phone">
         <div class="demo-screen">
 
@@ -883,6 +899,10 @@
 
         </div>
       </div>
+      <button class="demo-arrow next" type="button" aria-label="Next feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      </div><!-- /demo-phonerow -->
 
       <div class="demo-copy">
         <h2 class="display inc-title demo-title-d">Meet your AI bread coach</h2>
@@ -893,7 +913,7 @@
               <span class="hint">Snap a photo &mdash; it reads your starter and tells you when it's peaked.</span>
             </button>
             <button class="demo-tab" id="tab-timing" role="tab" aria-selected="false" aria-controls="panel-timing" tabindex="-1">
-              <span class="lab">Smarter plans</span>
+              <span class="lab">Smart plans</span>
               <span class="hint">A schedule timed to your kitchen &mdash; adjust it anytime, reminders stay in sync.</span>
             </button>
             <button class="demo-tab" id="tab-track" role="tab" aria-selected="false" aria-controls="panel-track" tabindex="-1">
@@ -901,15 +921,7 @@
               <span class="hint">Each bake remembers what you changed, so the next one's better.</span>
             </button>
           </div>
-          <div class="demo-controls">
-            <button class="demo-arrow prev" type="button" aria-label="Previous feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
-            </button>
-            <div class="demo-dots" aria-hidden="true"><span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span></div>
-            <button class="demo-arrow next" type="button" aria-label="Next feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-            </button>
-          </div>
+          <div class="demo-dots" aria-hidden="true"><span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span></div>
         </div>
       </div>
     </div>
@@ -953,15 +965,24 @@
   <div class="wrap">
     <div class="sec-head center">
       <h2 class="display">Never start from scratch again.</h2>
-      <p>Ready-to-bake sourdough recipes from expert bakers &mdash; <strong>save any one and make it yours.</strong></p>
+      <p>Sourdough recipes from expert bakers &mdash; <strong>save any one and make it yours.</strong></p>
     </div>
 
-    <div class="rc-cluster">
+    <div class="rc-panel">
+      <div class="rc-panel-head">
+        <span class="rc-eyebrow">
+          <svg class="rc-seal" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.6l2.3 1.7 2.8-.4 1 2.7 2.6 1.2-.5 2.8 1.8 2.2-1.8 2.2.5 2.8-2.6 1.2-1 2.7-2.8-.4L12 22.4l-2.3-1.7-2.8.4-1-2.7-2.6-1.2.5-2.8L2 11.8l1.8-2.2-.5-2.8 2.6-1.2 1-2.7 2.8.4z"/><path fill="#fff" d="M10.6 14.6l-2.2-2.2-1.3 1.3 3.5 3.5 6-6-1.3-1.3z"/></svg>
+          BakeSide Kitchen &middot; Curated
+        </span>
+        <span class="rc-panel-title">Recipe Catalog</span>
+      </div>
+      <div class="rc-cluster">
       <div class="rc-chip rcc1"><img src="assets/recipes/classic-country.webp" width="760" height="760" loading="lazy" alt="Classic Country Sourdough recipe card — 45 min active, 24 hr total, 1 loaf, 180 kcal per slice"></div>
       <div class="rc-chip rcc2"><img src="assets/recipes/everyday-sandwich.webp" width="760" height="760" loading="lazy" alt="Everyday Sandwich Sourdough recipe card — 30 min active, 16 hr total, 16 slices, 150 kcal per slice"></div>
       <div class="rc-chip rcc3"><img src="assets/recipes/dutch-oven-boule.webp" width="760" height="760" loading="lazy" alt="Dutch Oven Boule recipe card — 40 min active, 20 hr total, 1 boule, 190 kcal per slice"></div>
       <div class="rc-chip rcc4"><img src="assets/recipes/discard-loaf.webp" width="760" height="760" loading="lazy" alt="Sourdough Discard Loaf recipe card — 25 min active, 12 hr total, 10 slices, 210 kcal per slice"></div>
-    </div>
+      </div><!-- /rc-cluster -->
+    </div><!-- /rc-panel -->
   </div>
 </section>
 <!-- ============ SHARING — the launch feature: share a recipe as a link ============ -->
@@ -970,7 +991,7 @@
     <div class="sec-head center">
       <div class="kicker">Share a recipe</div>
       <h2 class="display">A recipe worth sharing.</h2>
-      <p>Every recipe comes with a link &mdash; send it in a tap, and <strong>your friend bakes the same loaf.</strong></p>
+      <p>Send any recipe as a link &mdash; <strong>your friend bakes the same loaf.</strong></p>
     </div>
     <div class="sh-cluster">
       <div class="sh-chip sh1"><img src="assets/sharing/share-controls.webp" width="680" height="692" loading="lazy" alt="Choose what to share — toggles for Ingredients, Hydration, Equipment and Instructions"></div>
@@ -1318,8 +1339,9 @@
   (function(){
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.demo-tab'));
     if(!tabs.length) return;
-    var wrap = document.querySelector('.demo-tabwrap');
-    var dots = wrap ? Array.prototype.slice.call(wrap.querySelectorAll('.demo-dot')) : [];
+    var stage = document.querySelector('.demo-stage');
+    var scope = stage || document;
+    var dots = Array.prototype.slice.call(scope.querySelectorAll('.demo-dot'));
     var cur = 0;
     function select(i){
       cur = i;
@@ -1336,18 +1358,18 @@
       dots.forEach(function(d, j){ d.setAttribute('aria-current', i === j ? 'true' : 'false'); });
     }
     function step(d){ select((cur + d + tabs.length) % tabs.length); }
-    if(wrap){
-      var pv = wrap.querySelector('.demo-arrow.prev'), nx = wrap.querySelector('.demo-arrow.next');
-      if(pv) pv.addEventListener('click', function(){ step(-1); });
-      if(nx) nx.addEventListener('click', function(){ step(1); });
-      dots.forEach(function(d, k){ d.addEventListener('click', function(){ select(k); }); });
-      var sx = null;
-      wrap.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
-      wrap.addEventListener('touchend', function(e){
+    var pv = scope.querySelector('.demo-arrow.prev'), nx = scope.querySelector('.demo-arrow.next');
+    if(pv) pv.addEventListener('click', function(){ step(-1); });
+    if(nx) nx.addEventListener('click', function(){ step(1); });
+    dots.forEach(function(d, k){ d.addEventListener('click', function(){ select(k); }); });
+    if(stage){
+      var sx = null, sy = null;
+      stage.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive:true});
+      stage.addEventListener('touchend', function(e){
         if(sx === null) return;
-        var dx = e.changedTouches[0].clientX - sx;
-        if(Math.abs(dx) > 40){ step(dx < 0 ? 1 : -1); }
-        sx = null;
+        var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+        if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){ step(dx < 0 ? 1 : -1); }
+        sx = null; sy = null;
       }, {passive:true});
     }
     tabs.forEach(function(t, i){
