@@ -703,8 +703,8 @@
     .award{gap:6px}
     .award .sprig{width:38px}
     .modal-card{padding:24px 18px 20px}
-    .demo-stage .demo-phone{max-width:260px}
-    .hero .demo-phone{max-width:260px}
+    .demo-stage .demo-phone{max-width:210px}
+    .hero .demo-phone{max-width:210px}
     .vid-card{width:76vw}
     .trust-item{flex-basis:100%;border-left:0}
   }
@@ -869,15 +869,22 @@
   #explore{background:#f7efdc}
   #explore .sec-head.center{margin-bottom:8px}
   #explore .sec-head.center h2{color:#4a3311}
-  .nb-stage{max-width:520px;margin:12px auto 0;display:flex;flex-direction:column;align-items:center}
+  .nb-stage{position:relative;max-width:520px;margin:12px auto 0;display:flex;flex-direction:column;align-items:center}
+  .exp-close{position:absolute;top:-2px;right:6px;z-index:6;width:36px;height:36px;border-radius:50%;
+    background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:var(--shadow-sm);cursor:pointer;
+    font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;
+    opacity:0;transform:scale(.8);pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+  .nb-stage.opened .exp-close{opacity:1;transform:none;pointer-events:auto}
+  .exp-close:hover{background:var(--surface)}
+  @keyframes nbPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.98;transform:scale(1.07)}}
   .exp-preview{position:relative;width:100%;height:0;opacity:0;display:flex;justify-content:center;align-items:flex-end;
     transition:height .55s cubic-bezier(.2,.85,.25,1),opacity .4s ease}
-  .nb-stage.opened .exp-preview{height:clamp(346px,86vw,400px);opacity:1}
+  .nb-stage.opened .exp-preview{height:clamp(384px,112vw,442px);opacity:1}
   .exp-hint{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);margin:0;color:#9a8b6b;font-size:.95rem;font-weight:600;
     display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .3s;text-align:center}
   .exp-hint svg{width:26px;height:26px;stroke:#c7ab74;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .exp-hint.gone{opacity:0;visibility:hidden}
-  .exp-chip{position:absolute;bottom:0;width:min(346px,92%);opacity:0;transform:translateY(46px) scale(.97);
+  .exp-chip{position:absolute;bottom:0;width:min(322px,88%);opacity:0;transform:translateY(46px) scale(.97);
     transition:opacity .4s ease,transform .55s cubic-bezier(.2,.85,.25,1);pointer-events:none;will-change:transform,opacity}
   .exp-chip.active{opacity:1;transform:none}
   .exp-chip img{display:block;width:100%;height:auto}
@@ -890,7 +897,9 @@
   .exp-chip.soon span{font-size:.86rem}
   .nb-barwrap{position:relative;margin:22px auto 0;max-width:470px;width:100%;z-index:3}
   .nb-barwrap::before{content:"";position:absolute;inset:-40% -2% -66%;z-index:0;
-    background:radial-gradient(52% 66% at 50% 50%,rgba(242,90,46,.62),rgba(242,90,46,0) 72%);filter:blur(20px)}
+    background:radial-gradient(52% 66% at 50% 50%,rgba(242,90,46,.62),rgba(242,90,46,0) 72%);filter:blur(20px);
+    animation:nbPulse 2.2s ease-in-out infinite}
+  .nb-stage.opened .nb-barwrap::before{animation:none;opacity:1}
   .nb-bar{position:relative;z-index:1;background:#fff;border-radius:40px;display:flex;justify-content:space-between;
     gap:2px;padding:13px clamp(10px,3vw,20px);box-shadow:0 22px 44px -22px rgba(46,7,0,.45)}
   .nb-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;cursor:pointer;
@@ -915,6 +924,7 @@
       <h2 class="display">Your bakery, all in one place.</h2>
     </div>
     <div class="nb-stage">
+      <button class="exp-close" type="button" aria-label="Close preview">&#215;</button>
       <div class="exp-preview">
         <div class="exp-chip" data-tab="starters"><img src="assets/all/mystarters.webp" width="720" height="810" loading="lazy" alt="My Starters app screen — starters sorted by last active, health scores and next feed times"></div>
         <div class="exp-chip" data-tab="bake"><img src="assets/all/mybakes.webp" width="720" height="810" loading="lazy" alt="My Bakes app screen — upcoming and past bakes with outcome scores"></div>
@@ -958,7 +968,14 @@
     stage.classList.add('opened');
     if(capT){capT.textContent=btn.dataset.title||'';capD.textContent=btn.dataset.desc||'';}
   }
-  items.forEach(function(b){b.addEventListener('click',function(){show(b);});});
+  function close(){
+    stage.classList.remove('opened');
+    items.forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    chips.forEach(function(c){c.classList.remove('active');});
+  }
+  items.forEach(function(b){b.addEventListener('click',function(){ b.classList.contains('active') ? close() : show(b); });});
+  var closeBtn=root.querySelector('.exp-close');
+  if(closeBtn)closeBtn.addEventListener('click',close);
 })();</script>
 <!-- ============ 3 · WHAT DOES BAKESIDE INCLUDE? — interactive phone module ============
      Round 3: replaces the old "See it work" diagnosis section, the "How it works"
