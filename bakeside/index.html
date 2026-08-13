@@ -887,15 +887,21 @@
   .exp-chip.soon b{font-size:1.02rem;font-weight:800;color:var(--ink)}
   .exp-chip.soon span{font-size:.86rem}
   .nb-barwrap{position:relative;margin:22px auto 0;max-width:470px;width:100%;z-index:3}
-  .nb-barwrap::before{content:"";position:absolute;inset:-26% 4% -50%;z-index:0;
-    background:radial-gradient(50% 62% at 50% 50%,rgba(242,90,46,.4),rgba(242,90,46,0) 70%);filter:blur(16px)}
+  .nb-barwrap::before{content:"";position:absolute;inset:-40% -2% -66%;z-index:0;
+    background:radial-gradient(52% 66% at 50% 50%,rgba(242,90,46,.62),rgba(242,90,46,0) 72%);filter:blur(20px)}
   .nb-bar{position:relative;z-index:1;background:#fff;border-radius:40px;display:flex;justify-content:space-between;
     gap:2px;padding:13px clamp(10px,3vw,20px);box-shadow:0 22px 44px -22px rgba(46,7,0,.45)}
   .nb-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;cursor:pointer;
     color:#6b655f;font-size:.8rem;font-weight:600;font-family:inherit;padding:2px 0;transition:color .2s;-webkit-tap-highlight-color:transparent}
-  .nb-item svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .nb-item svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.82;stroke-linecap:round;stroke-linejoin:round}
   .nb-item.active{color:var(--red)}
   .nb-item:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:10px}
+  .exp-chip.soon .sc-ic svg{stroke-width:1.82}
+  .exp-cap{max-width:440px;margin:16px auto 0;text-align:center;font-size:1rem;line-height:1.4;
+    opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
+  .exp-cap.show{opacity:1;transform:none}
+  .exp-cap .exp-cap-t{font-weight:800;color:var(--ink)}
+  .exp-cap .exp-cap-d{color:var(--muted)}
   @media(max-width:640px){
     .nb-item{font-size:.72rem}
     .nb-item svg{width:23px;height:23px}
@@ -904,9 +910,8 @@
 <section id="explore">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="kicker">Take a look inside</div>
-      <h2 class="display">Tap through your bakery.</h2>
-      <p>Every part of BakeSide, one tap away &mdash; <strong>tap a tab to preview it.</strong></p>
+      <h2 class="display">Your bakery, all in one place.</h2>
+      <p>Every part of BakeSide, one tap away &mdash; <strong>tap a tab to see it.</strong></p>
     </div>
     <div class="nb-stage">
       <div class="exp-preview">
@@ -916,29 +921,30 @@
         </p>
         <div class="exp-chip" data-tab="starters"><img src="assets/all/mystarters.webp" width="720" height="810" loading="lazy" alt="My Starters app screen — starters sorted by last active, health scores and next feed times"></div>
         <div class="exp-chip" data-tab="bake"><img src="assets/all/mybakes.webp" width="720" height="810" loading="lazy" alt="My Bakes app screen — upcoming and past bakes with outcome scores"></div>
-        <div class="exp-chip soon" data-tab="home"><div class="sc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5l8-6.5 8 6.5"/><path d="M6 9.3V20h12V9.3"/><path d="M9.5 20v-3.2a2.5 2.5 0 0 1 5 0V20"/></svg></div><b>Home</b><span>Preview coming soon</span></div>
-        <div class="exp-chip soon" data-tab="new"><div class="sc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg></div><b>New bake</b><span>Preview coming soon</span></div>
-        <div class="exp-chip soon" data-tab="recipes"><div class="sc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 6 4.6 3.5 5.2V18c2.5-.6 6.5-.2 8.5 1.3 2-1.5 6-1.9 8.5-1.3V5.2C18 4.6 14 5 12 6.5z"/><path d="M12 6.5V19"/></svg></div><b>My Recipes</b><span>Preview coming soon</span></div>
+        <div class="exp-chip soon" data-tab="home"><div class="sc-ic"><svg viewBox="0 0 23 23" aria-hidden="true"><path d="M14.375 20.125V12.4583C14.375 11.9294 13.9456 11.5 13.4167 11.5H9.58333C9.05441 11.5 8.625 11.9294 8.625 12.4583V20.125"/><path d="M2.875 9.58333C2.87486 9.019 3.12344 8.48328 3.55446 8.119L10.2628 2.36996C10.9771 1.76623 12.0229 1.76623 12.7372 2.36996L19.4455 8.119C19.8766 8.48328 20.1251 9.019 20.125 9.58333V18.2083C20.125 19.2662 19.2662 20.125 18.2083 20.125H4.79167C3.73383 20.125 2.875 19.2662 2.875 18.2083V9.58333"/></svg></div><b>Home</b><span>Preview coming soon</span></div>
+        <div class="exp-chip soon" data-tab="new"><div class="sc-ic"><svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 11.5C1.91667 16.7892 6.21081 21.0833 11.5 21.0833C16.7892 21.0833 21.0833 16.7892 21.0833 11.5C21.0833 6.21081 16.7892 1.91667 11.5 1.91667C6.21081 1.91667 1.91667 6.21081 1.91667 11.5V11.5"/><path d="M7.66667 11.5H15.3333"/><path d="M11.5 7.66667V15.3333"/></svg></div><b>New bake</b><span>Preview coming soon</span></div>
+        <div class="exp-chip soon" data-tab="recipes"><div class="sc-ic"><svg viewBox="0 0 23 23" aria-hidden="true"><path d="M11.5 6.70833V20.125"/><path d="M2.875 17.25C2.34608 17.25 1.91667 16.8206 1.91667 16.2917V3.83333C1.91667 3.30441 2.34608 2.875 2.875 2.875H7.66667C9.78234 2.875 11.5 4.59266 11.5 6.70833C11.5 4.59266 13.2177 2.875 15.3333 2.875H20.125C20.6539 2.875 21.0833 3.30441 21.0833 3.83333V16.2917C21.0833 16.8206 20.6539 17.25 20.125 17.25H14.375C12.7882 17.25 11.5 18.5382 11.5 20.125C11.5 18.5382 10.2118 17.25 8.625 17.25H2.875"/></svg></div><b>My Recipes</b><span>Preview coming soon</span></div>
       </div>
       <div class="nb-barwrap">
         <nav class="nb-bar" role="tablist" aria-label="BakeSide app navigation">
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="home">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5l8-6.5 8 6.5"/><path d="M6 9.3V20h12V9.3"/><path d="M9.5 20v-3.2a2.5 2.5 0 0 1 5 0V20"/></svg><span>Home</span>
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="home" data-title="Home" data-desc="Everything for today, at a glance.">
+            <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M14.375 20.125V12.4583C14.375 11.9294 13.9456 11.5 13.4167 11.5H9.58333C9.05441 11.5 8.625 11.9294 8.625 12.4583V20.125"/><path d="M2.875 9.58333C2.87486 9.019 3.12344 8.48328 3.55446 8.119L10.2628 2.36996C10.9771 1.76623 12.0229 1.76623 12.7372 2.36996L19.4455 8.119C19.8766 8.48328 20.1251 9.019 20.125 9.58333V18.2083C20.125 19.2662 19.2662 20.125 18.2083 20.125H4.79167C3.73383 20.125 2.875 19.2662 2.875 18.2083V9.58333"/></svg><span>Home</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="starters">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12c-2.2 0-4-1.4-4-3.4 2.2 0 4 1.4 4 3.4z"/><path d="M12 12c2.2 0 4-1.4 4-3.4-2.2 0-4 1.4-4 3.4z"/><path d="M12 16.5c-2.2 0-4-1.4-4-3.4 2.2 0 4 1.4 4 3.4z"/><path d="M12 16.5c2.2 0 4-1.4 4-3.4-2.2 0-4 1.4-4 3.4z"/><path d="M12 8c-1.6 0-3-1.2-3-3 1.6 0 3 1.2 3 3z"/><path d="M12 8c1.6 0 3-1.2 3-3-1.6 0-3 1.2-3 3z"/></svg><span>Starters</span>
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="starters" data-title="My Starters" data-desc="Know the moment it's ready to bake.">
+            <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 21.0833L15.3333 7.66667"/><path d="M3.32542 12.0079L4.79167 10.5417L6.25792 12.0079C7.56158 13.3167 7.56158 15.4333 6.25792 16.7421L4.79167 18.2083L3.32542 16.7421C2.02175 15.4333 2.02175 13.3167 3.32542 12.0079V12.0079"/><path d="M7.15875 8.17458L8.625 6.70833L10.0912 8.17458C11.3949 9.48339 11.3949 11.5999 10.0912 12.9087L8.625 14.375L7.15875 12.9087C5.85508 11.5999 5.85508 9.48339 7.15875 8.17458V8.17458"/><path d="M10.9921 4.34125L12.4583 2.875L13.9246 4.34125C15.2283 5.65006 15.2283 7.76661 13.9246 9.07542L12.4583 10.5417L10.9921 9.07542C9.68841 7.76661 9.68841 5.65006 10.9921 4.34125V4.34125"/><path d="M19.1667 1.91667H21.0833V3.83333C21.0833 5.94901 19.3657 7.66667 17.25 7.66667H15.3333V5.75C15.3333 3.63433 17.051 1.91667 19.1667 1.91667V1.91667"/><path d="M10.9921 16.7421L12.4583 18.2083L10.9921 19.6746C9.68328 20.9783 7.56672 20.9783 6.25792 19.6746L4.79167 18.2083L6.25792 16.7421C7.56672 15.4384 9.68328 15.4384 10.9921 16.7421V16.7421"/><path d="M14.8254 12.9087L16.2917 14.375L14.8254 15.8412C13.5166 17.1449 11.4001 17.1449 10.0912 15.8412L8.625 14.375L10.0912 12.9087C11.4001 11.6051 13.5166 11.6051 14.8254 12.9087V12.9087"/><path d="M18.6587 9.07542L20.125 10.5417L18.6587 12.0079C17.3499 13.3116 15.2334 13.3116 13.9246 12.0079L12.4583 10.5417L13.9246 9.07542C15.2334 7.77175 17.3499 7.77175 18.6587 9.07542V9.07542"/></svg><span>Starters</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="new">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8.5v7M8.5 12h7"/></svg><span>New</span>
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="new" data-title="New bake" data-desc="Start a bake in a couple of taps.">
+            <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 11.5C1.91667 16.7892 6.21081 21.0833 11.5 21.0833C16.7892 21.0833 21.0833 16.7892 21.0833 11.5C21.0833 6.21081 16.7892 1.91667 11.5 1.91667C6.21081 1.91667 1.91667 6.21081 1.91667 11.5V11.5"/><path d="M7.66667 11.5H15.3333"/><path d="M11.5 7.66667V15.3333"/></svg><span>New</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="recipes">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 6 4.6 3.5 5.2V18c2.5-.6 6.5-.2 8.5 1.3 2-1.5 6-1.9 8.5-1.3V5.2C18 4.6 14 5 12 6.5z"/><path d="M12 6.5V19"/></svg><span>Recipes</span>
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="recipes" data-title="My Recipes" data-desc="Bend any recipe to your kitchen.">
+            <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M11.5 6.70833V20.125"/><path d="M2.875 17.25C2.34608 17.25 1.91667 16.8206 1.91667 16.2917V3.83333C1.91667 3.30441 2.34608 2.875 2.875 2.875H7.66667C9.78234 2.875 11.5 4.59266 11.5 6.70833C11.5 4.59266 13.2177 2.875 15.3333 2.875H20.125C20.6539 2.875 21.0833 3.30441 21.0833 3.83333V16.2917C21.0833 16.8206 20.6539 17.25 20.125 17.25H14.375C12.7882 17.25 11.5 18.5382 11.5 20.125C11.5 18.5382 10.2118 17.25 8.625 17.25H2.875"/></svg><span>Recipes</span>
           </button>
-          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="bake">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 3.4 4.5 5.6 4.5 8.5a4.5 4.5 0 0 1-9 0c0-1.7.8-3 1.8-4.2C10.4 8.9 11.4 7 12 3z"/></svg><span>Bake</span>
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="bake" data-title="My Bakes" data-desc="Repeat what worked, skip what didn't.">
+            <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M8.14583 13.8958C9.46813 13.8958 10.5417 12.8223 10.5417 11.5C10.5417 10.1775 10.0625 9.58333 9.58333 8.625C8.556 6.57129 9.36867 4.73992 11.5 2.875C11.9792 5.27083 13.4167 7.57083 15.3333 9.10417C17.25 10.6375 18.2083 12.4583 18.2083 14.375C18.2083 18.0774 15.2024 21.0833 11.5 21.0833C7.79757 21.0833 4.79167 18.0774 4.79167 14.375C4.79167 13.27 5.20662 12.1766 5.75 11.5C5.75 12.8223 6.82354 13.8958 8.14583 13.8958V13.8958"/></svg><span>Bake</span>
           </button>
         </nav>
       </div>
+      <p class="exp-cap"><b class="exp-cap-t"></b><span class="exp-cap-d"></span></p>
     </div>
   </div>
 </section>
@@ -947,12 +953,15 @@
   var items=[].slice.call(root.querySelectorAll('.nb-item'));
   var chips=[].slice.call(root.querySelectorAll('.exp-chip'));
   var hint=root.querySelector('.exp-hint');
-  function show(tab){
-    items.forEach(function(b){var on=b.dataset.tab===tab;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+  var cap=root.querySelector('.exp-cap'), capT=root.querySelector('.exp-cap-t'), capD=root.querySelector('.exp-cap-d');
+  function show(btn){
+    var tab=btn.dataset.tab;
+    items.forEach(function(b){var on=b===btn;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
     chips.forEach(function(c){c.classList.toggle('active',c.dataset.tab===tab);});
     if(hint)hint.classList.add('gone');
+    if(capT){capT.textContent=btn.dataset.title||'';capD.textContent=' '+(btn.dataset.desc||'');cap.classList.add('show');}
   }
-  items.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.tab);});});
+  items.forEach(function(b){b.addEventListener('click',function(){show(b);});});
 })();</script>
 <!-- ============ 3 · WHAT DOES BAKESIDE INCLUDE? — interactive phone module ============
      Round 3: replaces the old "See it work" diagnosis section, the "How it works"
