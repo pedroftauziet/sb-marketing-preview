@@ -475,6 +475,9 @@
   .demo-tab:focus-visible{outline:3px solid var(--red);outline-offset:3px}
   .demo-tab .lab{font-size:1.12rem;font-weight:800;letter-spacing:-.015em;color:var(--red-deep)}
   .demo-tab .hint{font-size:.88rem;color:var(--muted);line-height:1.4}
+  /* controlled line-breaks in the feature hints: d-only shows on desktop, m-only on mobile (Pedro 2026-08-14) */
+  br.d-only{display:inline}
+  br.m-only{display:none}
   .demo-tab[aria-selected="true"]{background:linear-gradient(155deg,var(--red),var(--red-deep));
     border-color:transparent;box-shadow:var(--shadow)}
   .demo-tab[aria-selected="true"] .lab{color:var(--cream-5)}
@@ -683,6 +686,8 @@
   @media(max-width:640px){
     section{padding:54px 0}
     .sec-head h2{font-size:1.8rem;text-wrap:balance}
+    br.d-only{display:none}
+    br.m-only{display:inline}
     /* hero on mobile: left-align the copy (Pedro 2026-08-14 — centred read awkwardly) and hide the phone (shown again below) */
     .hero-grid{text-align:left}
     .hero-grid>div:last-child{display:none}
@@ -879,7 +884,7 @@
      Pedro 2026-08-13: no phone — just the real app navbar in the middle. Tapping a tab pops up a
      brief preview chip. Starters + Bake use real onboarding screens; others are "coming soon". -->
 <style>
-  #explore{background:#f7efdc;--ch:clamp(288px,70vw,326px)}
+  #explore{background:#f7efdc;--ch:clamp(320px,78vw,392px)}
   #explore .sec-head.center{margin-bottom:8px}
   #explore .sec-head.center h2{color:#4a3311}
   .nb-stage{position:relative;max-width:520px;margin:12px auto 0;display:flex;flex-direction:column;align-items:center}
@@ -933,19 +938,19 @@
   .exp-cap .exp-cap-t{display:block;font-weight:800;color:var(--ink);font-size:1.05rem}
   .exp-cap .exp-cap-d{display:block;color:#38322c;font-size:.95rem;margin-top:2px;white-space:nowrap}
   /* tap affordance — make the navbar clearly read as interactive (Pedro 2026-08-14) */
-  .exp-taphint{display:flex;align-items:center;justify-content:center;gap:7px;margin:12px auto 0;
+  .exp-taphint{display:flex;align-items:center;justify-content:center;margin:12px auto 0;
     font-size:.92rem;font-weight:700;color:var(--red);transition:opacity .3s ease,margin .3s ease,max-height .3s ease}
-  .exp-taphint svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;
-    animation:tapNudge 1.7s ease-in-out infinite}
-  @keyframes tapNudge{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
   .nb-stage.opened .exp-taphint{opacity:0;max-height:0;margin:0;pointer-events:none;overflow:hidden}
-  /* a soft pulsing ring on one icon so the row plainly invites a tap */
-  .nb-item.nudge::after{content:"";position:absolute;top:-4px;left:50%;width:46px;height:46px;border-radius:50%;
-    border:2px solid var(--red);opacity:0;transform:translateX(-50%) scale(.6);pointer-events:none;
-    animation:tapRing 1.9s ease-out infinite}
-  @keyframes tapRing{0%{opacity:.5;transform:translateX(-50%) scale(.6)}70%{opacity:0;transform:translateX(-50%) scale(1.3)}100%{opacity:0}}
-  .nb-stage.opened .nb-item.nudge::after{display:none}
-  @media(prefers-reduced-motion:reduce){.exp-taphint svg,.nb-item.nudge::after{animation:none}}
+  /* a bold pulsing ring + constant soft halo on one icon so the row clearly reads as tappable */
+  .nb-item.nudge::before{content:"";position:absolute;top:-6px;left:50%;z-index:0;width:44px;height:44px;border-radius:50%;
+    background:radial-gradient(circle,rgba(242,90,46,.22),rgba(242,90,46,0) 70%);transform:translateX(-50%);pointer-events:none}
+  .nb-item.nudge::after{content:"";position:absolute;top:-8px;left:50%;z-index:0;width:56px;height:56px;border-radius:50%;
+    border:2.5px solid var(--red);opacity:0;transform:translateX(-50%) scale(.5);pointer-events:none;
+    box-shadow:0 0 16px 3px rgba(242,90,46,.45);animation:tapRing 1.6s ease-out infinite}
+  .nb-item.nudge svg,.nb-item.nudge span{position:relative;z-index:1}
+  @keyframes tapRing{0%{opacity:.85;transform:translateX(-50%) scale(.5)}70%{opacity:0;transform:translateX(-50%) scale(1.4)}100%{opacity:0}}
+  .nb-stage.opened .nb-item.nudge::after,.nb-stage.opened .nb-item.nudge::before{display:none}
+  @media(prefers-reduced-motion:reduce){.nb-item.nudge::after{animation:none;opacity:.5}}
   @media(max-width:640px){
     .nb-item{font-size:.72rem}
     .nb-item svg{width:23px;height:23px}
@@ -959,14 +964,14 @@
     <div class="nb-stage">
       <button class="exp-close" type="button" aria-label="Close preview">&#215;</button>
       <div class="exp-preview">
-        <div class="exp-chip" data-tab="home"><img src="assets/all/home.webp" width="700" height="1090" loading="lazy" alt="BakeSide Home screen — reminders, quick actions and recent activity"></div>
+        <div class="exp-chip framed" data-tab="home"><img src="assets/all/home.webp" width="640" height="998" loading="lazy" alt="BakeSide Home screen — reminders, quick actions and recent activity"></div>
         <div class="exp-chip framed" data-tab="starters"><img src="assets/all/mystarterstransparent.webp" width="800" height="900" loading="lazy" alt="My Starters app screen — starters sorted by last active, health scores and next feed times"></div>
         <div class="exp-chip framed" data-tab="new"><img src="assets/all/newtransparent.webp" width="800" height="900" loading="lazy" alt="Ask the BakeSide coach — chat with suggestions like create a starter, check health, plan a bake"></div>
         <div class="exp-chip framed" data-tab="recipes"><img src="assets/all/myrecipestransparent.webp" width="800" height="900" loading="lazy" alt="My Recipes app screen — recipes as horizontal rows with times, yield and calories"></div>
         <div class="exp-chip framed" data-tab="bake"><img src="assets/all/mybakestransparent.webp" width="800" height="900" loading="lazy" alt="My Bakes app screen — upcoming and past bakes with outcome scores"></div>
       </div>
       <p class="exp-cap"><b class="exp-cap-t"></b><span class="exp-cap-d"></span></p>
-      <p class="exp-taphint"><span>Tap a tab to explore</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6-6 6"/></svg></p>
+      <p class="exp-taphint"><span>Tap a tab to explore</span></p>
       <div class="nb-barwrap">
         <nav class="nb-bar" role="tablist" aria-label="BakeSide app navigation">
           <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="home" data-title="Home" data-desc="Today&rsquo;s plan, at a glance.">
@@ -1062,7 +1067,7 @@
           <div class="demo-tabs" role="tablist" aria-label="BakeSide app features">
             <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="true" aria-controls="panel-diagnosis" tabindex="0">
               <span class="lab">Know when it's ready</span>
-              <span class="hint">Snap a photo and know the exact moment it's ready to bake &mdash; no more guessing.</span>
+              <span class="hint">Snap a photo and know the exact moment it's ready to bake &mdash;<br class="d-only">no more guessing.</span>
             </button>
             <button class="demo-tab" id="tab-timing" role="tab" aria-selected="false" aria-controls="panel-timing" tabindex="-1">
               <span class="lab">Smart plans</span>
@@ -1070,7 +1075,7 @@
             </button>
             <button class="demo-tab" id="tab-track" role="tab" aria-selected="false" aria-controls="panel-track" tabindex="-1">
               <span class="lab">Learn from every bake</span>
-              <span class="hint">Each bake remembers what you changed, so the next one's better.</span>
+              <span class="hint">Each bake remembers what you changed,<br class="m-only">so the next one's better.</span>
             </button>
           </div>
           <div class="demo-dots" aria-hidden="true"><span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span></div>
@@ -1145,9 +1150,9 @@
       <p>Send any recipe as a link &mdash; <strong>your friend bakes the same loaf.</strong></p>
     </div>
     <div class="sh-cluster">
-      <div class="sh-chip sh1"><img src="assets/sharing/share-controls.webp" width="680" height="692" loading="lazy" alt="Choose what to share — toggles for Ingredients, Hydration, Equipment and Instructions"></div>
+      <div class="sh-chip sh1"><img src="assets/sharing/share-controls-fit.webp" width="618" height="690" loading="lazy" alt="Choose what to share — toggles for Ingredients, Hydration, Equipment and Instructions"></div>
       <div class="sh-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></div>
-      <div class="sh-chip sh2"><img src="assets/sharing/share-card.webp" width="680" height="800" loading="lazy" alt="The share card your friend receives — bread photo, total time, hydration, yield and a QR code to the full recipe"></div>
+      <div class="sh-chip sh2"><img src="assets/sharing/share-card-fit.webp" width="672" height="798" loading="lazy" alt="The share card your friend receives — bread photo, total time, hydration, yield and a QR code to the full recipe"></div>
     </div>
   </div>
 </section>
