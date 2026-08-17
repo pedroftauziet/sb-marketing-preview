@@ -25,27 +25,27 @@
 <!-- LOWER ZONE -->
 <tr><td style="padding:22px 30px 6px;text-align:center;"><table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr><td style="background:#c92c03;border-radius:10px;"><a href="#" style="display:inline-block;padding:15px 40px;color:#ffffff;font-size:16px;font-weight:700;text-decoration:none;">Check my starter</a></td></tr></table></td></tr>
 
-<!-- FEATURE 1 -->
+<!-- FEATURE 1 — dir=rtl: desktop keeps image-left / text-right; mobile stacks title -> copy -> image -->
 <tr><td style="padding:22px 30px 0;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-    <td class="col" width="46%" valign="middle" style="padding-right:16px;">
-      <img src="https://cdn.shopify.com/s/files/1/0549/9538/6505/files/bakeside_starterhealth_chip1_fixed.png?v=1786551922" width="260" alt="Take a photo of your jar" style="display:block;width:100%;max-width:260px;margin:0;">
-    </td>
-    <td class="col" width="54%" valign="middle">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" dir="rtl"><tr>
+    <td class="col" dir="ltr" width="54%" valign="middle" style="padding-left:16px;">
       <h2 style="margin:0 0 5px;color:#6e1602;font-size:17px;font-weight:800;">Just snap a photo</h2>
       <p style="margin:0;color:#1b1b1a;font-size:15px;line-height:1.55;">Point your camera at the jar and BakeSide does the read &mdash; no guesswork, no float test.</p>
     </td>
+    <td class="col" dir="ltr" width="46%" valign="middle">
+      <img src="https://cdn.shopify.com/s/files/1/0549/9538/6505/files/bakeside_starterhealth_chip1_fixed.png?v=1786551922" width="260" alt="Take a photo of your jar" style="display:block;width:100%;max-width:260px;margin:0;">
+    </td>
   </tr></table>
 </td></tr>
-<!-- FEATURE 2 — dir=rtl keeps desktop as text-left / image-right (zigzag), but stacks image-then-text on mobile -->
+<!-- FEATURE 2 — desktop text-left / image-right; mobile stacks title -> copy -> image (text is first in DOM) -->
 <tr><td style="padding:24px 30px 0;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" dir="rtl"><tr>
-    <td class="col" dir="ltr" width="54%" valign="middle">
-      <img src="https://cdn.shopify.com/s/files/1/0549/9538/6505/files/bakeside_starterhealth_chip2_fixed.png?v=1786551922" width="310" alt="Starter health result" style="display:block;width:100%;max-width:310px;margin:0;">
-    </td>
-    <td class="col" dir="ltr" width="46%" valign="middle" style="padding-right:16px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td class="col" width="46%" valign="middle" style="padding-right:16px;">
       <h2 style="margin:0 0 5px;color:#6e1602;font-size:17px;font-weight:800;">Know it&rsquo;s ready</h2>
       <p style="margin:0;color:#1b1b1a;font-size:15px;line-height:1.55;">A quick, friendly gauge of rise and bubbles tells you when your starter&rsquo;s at its peak.</p>
+    </td>
+    <td class="col" width="54%" valign="middle">
+      <img src="https://cdn.shopify.com/s/files/1/0549/9538/6505/files/bakeside_starterhealth_chip2_fixed.png?v=1786551922" width="310" alt="Starter health result" style="display:block;width:100%;max-width:310px;margin:0;">
     </td>
   </tr></table>
 </td></tr>
