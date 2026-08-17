@@ -906,7 +906,7 @@
     transition:opacity .4s ease,transform .55s cubic-bezier(.2,.85,.25,1);pointer-events:none;will-change:transform,opacity}
   .exp-chip.active{opacity:1;transform:none}
   /* rounding + shadow go on the IMG itself — no overflow container, so it can never be clipped/cropped */
-  .exp-chip img{display:block;height:var(--ch);width:auto;max-width:94vw;border-radius:20px;box-shadow:0 16px 34px -14px rgba(46,7,0,.36)}
+  .exp-chip img{display:block;height:var(--ch);width:auto;max-width:94vw}
   /* framed screens already carry the phone frame + their own shadow on a transparent canvas:
      no CSS radius/shadow (that would draw a rectangular shadow around the transparent margin),
      the image fills the preview box exactly (its transparent margin gives breathing room),
