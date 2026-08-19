@@ -802,8 +802,8 @@
         <div class="demo-phone">
           <div class="demo-screen">
             <div class="demo-panel">
-              <div class="fallback"><b>Starter analysis</b><small>5/5 &middot; rise height &middot; bubble density</small></div>
-              <img src="assets/app-starter-analysis.png" alt="BakeSide starter analysis: 5 out of 5, rise height and bubble density" onerror="this.style.display='none'">
+              <div class="fallback"><b>Bake preparation plan</b><small>Step-by-step &middot; timed to your kitchen</small></div>
+              <img src="assets/app-bake-plan.png" alt="BakeSide bake preparation plan: a step-by-step sourdough schedule timed to your kitchen, with the current step highlighted" onerror="this.style.display='none'">
             </div>
           </div>
         </div>
@@ -936,10 +936,10 @@
     transition:max-height .45s ease,opacity .35s ease,margin .45s ease}
   .nb-stage.opened .exp-cap{max-height:74px;opacity:1;margin:14px auto 6px}
   .exp-cap .exp-cap-t{display:block;font-weight:800;color:var(--ink);font-size:1.05rem}
-  .exp-cap .exp-cap-d{display:block;color:#38322c;font-size:.95rem;margin-top:2px;white-space:nowrap}
+  .exp-cap .exp-cap-d{display:block;color:#38322c;font-size:.95rem;margin-top:2px;text-wrap:balance}
   /* tap affordance — make the navbar clearly read as interactive (Pedro 2026-08-14) */
-  .exp-taphint{display:flex;align-items:center;justify-content:center;margin:12px auto 0;
-    font-size:.92rem;font-weight:700;color:var(--red);transition:opacity .3s ease,margin .3s ease,max-height .3s ease}
+  .exp-taphint{display:flex;flex-direction:column;align-items:center;gap:3px;margin:14px auto 0;
+    font-size:1rem;font-weight:800;color:var(--red);letter-spacing:-.01em;transition:opacity .3s ease,margin .3s ease,max-height .3s ease}
   .nb-stage.opened .exp-taphint{opacity:0;max-height:0;margin:0;pointer-events:none;overflow:hidden}
   /* a bold pulsing ring + constant soft halo on one icon so the row clearly reads as tappable */
   .nb-item.nudge::before{content:"";position:absolute;top:-6px;left:50%;z-index:0;width:44px;height:44px;border-radius:50%;
@@ -951,6 +951,23 @@
   @keyframes tapRing{0%{opacity:.85;transform:translateX(-50%) scale(.5)}70%{opacity:0;transform:translateX(-50%) scale(1.4)}100%{opacity:0}}
   .nb-stage.opened .nb-item.nudge::after,.nb-stage.opened .nb-item.nudge::before{display:none}
   @media(prefers-reduced-motion:reduce){.nb-item.nudge::after{animation:none;opacity:.5}}
+  /* Option A (v2) — bold auto-demo tap: a crisp red ring bursts from each tab while the tab visibly "presses" (icon + label flash red and bounce). Cycles across the bar. */
+  .exp-ghost{position:absolute;top:50%;left:0;width:54px;height:54px;border-radius:50%;z-index:4;pointer-events:none;
+    transform:translate(-50%,-50%);opacity:0;transition:left .40s cubic-bezier(.4,0,.2,1);
+    border:3px solid var(--red);box-shadow:0 0 20px 5px rgba(242,90,46,.55),inset 0 0 12px rgba(242,90,46,.4)}
+  .exp-ghost.tapping{animation:ghostTap .95s cubic-bezier(.2,.7,.2,1)}
+  @keyframes ghostTap{0%{opacity:0;transform:translate(-50%,-50%) scale(.28)}
+    20%{opacity:1;transform:translate(-50%,-50%) scale(.66)}
+    100%{opacity:0;transform:translate(-50%,-50%) scale(2)}}
+  .nb-item.demo{color:var(--red)}
+  .nb-item.demo svg,.nb-item.demo span{position:relative;z-index:1}
+  .nb-item.demo svg{animation:demoPress .9s ease-out}
+  @keyframes demoPress{0%,100%{transform:scale(1)}22%{transform:scale(.8)}46%{transform:scale(1.2)}72%{transform:scale(1)}}
+  .nb-item.demo::after{content:"";position:absolute;inset:-6px 0 -8px;z-index:0;border-radius:16px;
+    background:radial-gradient(circle at 50% 42%,rgba(242,90,46,.24),rgba(242,90,46,0) 72%);animation:demoPad .9s ease-out}
+  @keyframes demoPad{0%,100%{opacity:0}35%{opacity:1}}
+  .nb-stage.opened .exp-ghost{opacity:0 !important;display:none}
+  @media(prefers-reduced-motion:reduce){.exp-ghost{display:none}}
   @media(max-width:640px){
     .nb-item{font-size:.72rem}
     .nb-item svg{width:23px;height:23px}
@@ -971,7 +988,8 @@
         <div class="exp-chip framed" data-tab="bake"><img src="assets/all/mybakestransparent.webp" width="800" height="900" loading="lazy" alt="My Bakes app screen — upcoming and past bakes with outcome scores"></div>
       </div>
       <p class="exp-cap"><b class="exp-cap-t"></b><span class="exp-cap-d"></span></p>
-      <p class="exp-taphint"><span>Tap a tab to explore</span></p>
+      <!-- Inviting microcopy above the nav; the auto-demo tap ripple carries the interactivity cue -->
+      <p class="exp-taphint"><span>Go on &mdash; tap around your bakery</span></p>
       <div class="nb-barwrap">
         <nav class="nb-bar" role="tablist" aria-label="BakeSide app navigation">
           <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="home" data-title="Home" data-desc="Today&rsquo;s plan, at a glance.">
@@ -980,7 +998,7 @@
           <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="starters" data-title="My Starters" data-desc="Know when it&rsquo;s ready.">
             <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 21.0833L15.3333 7.66667"/><path d="M3.32542 12.0079L4.79167 10.5417L6.25792 12.0079C7.56158 13.3167 7.56158 15.4333 6.25792 16.7421L4.79167 18.2083L3.32542 16.7421C2.02175 15.4333 2.02175 13.3167 3.32542 12.0079V12.0079"/><path d="M7.15875 8.17458L8.625 6.70833L10.0912 8.17458C11.3949 9.48339 11.3949 11.5999 10.0912 12.9087L8.625 14.375L7.15875 12.9087C5.85508 11.5999 5.85508 9.48339 7.15875 8.17458V8.17458"/><path d="M10.9921 4.34125L12.4583 2.875L13.9246 4.34125C15.2283 5.65006 15.2283 7.76661 13.9246 9.07542L12.4583 10.5417L10.9921 9.07542C9.68841 7.76661 9.68841 5.65006 10.9921 4.34125V4.34125"/><path d="M19.1667 1.91667H21.0833V3.83333C21.0833 5.94901 19.3657 7.66667 17.25 7.66667H15.3333V5.75C15.3333 3.63433 17.051 1.91667 19.1667 1.91667V1.91667"/><path d="M10.9921 16.7421L12.4583 18.2083L10.9921 19.6746C9.68328 20.9783 7.56672 20.9783 6.25792 19.6746L4.79167 18.2083L6.25792 16.7421C7.56672 15.4384 9.68328 15.4384 10.9921 16.7421V16.7421"/><path d="M14.8254 12.9087L16.2917 14.375L14.8254 15.8412C13.5166 17.1449 11.4001 17.1449 10.0912 15.8412L8.625 14.375L10.0912 12.9087C11.4001 11.6051 13.5166 11.6051 14.8254 12.9087V12.9087"/><path d="M18.6587 9.07542L20.125 10.5417L18.6587 12.0079C17.3499 13.3116 15.2334 13.3116 13.9246 12.0079L12.4583 10.5417L13.9246 9.07542C15.2334 7.77175 17.3499 7.77175 18.6587 9.07542V9.07542"/></svg><span>Starters</span>
           </button>
-          <button class="nb-item nudge" type="button" role="tab" aria-selected="false" data-tab="new" data-title="New" data-desc="Ask the coach anything.">
+          <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="new" data-title="New" data-desc="Ask the coach anything.">
             <svg viewBox="0 0 23 23" aria-hidden="true"><path d="M1.91667 11.5C1.91667 16.7892 6.21081 21.0833 11.5 21.0833C16.7892 21.0833 21.0833 16.7892 21.0833 11.5C21.0833 6.21081 16.7892 1.91667 11.5 1.91667C6.21081 1.91667 1.91667 6.21081 1.91667 11.5V11.5"/><path d="M7.66667 11.5H15.3333"/><path d="M11.5 7.66667V15.3333"/></svg><span>New</span>
           </button>
           <button class="nb-item" type="button" role="tab" aria-selected="false" data-tab="recipes" data-title="My Recipes" data-desc="Make any recipe your own.">
@@ -1016,6 +1034,30 @@
   var closeBtn=root.querySelector('.exp-close');
   if(closeBtn)closeBtn.addEventListener('click',close);
 })();</script>
+<script>/* Auto-demo tap: a bold red ring bursts from each nav tab in turn while the tab visibly presses (red flash + bounce), showing the bar is tappable — no words needed. Pauses while a preview is open; stops once the user taps; disabled for reduced-motion. */
+(function(){
+  var bar=document.querySelector('#explore .nb-bar'); if(!bar) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var stage=document.querySelector('#explore .nb-stage');
+  var items=[].slice.call(bar.querySelectorAll('.nb-item')); if(!items.length) return;
+  var ghost=document.createElement('span'); ghost.className='exp-ghost'; bar.insertBefore(ghost,bar.firstChild);
+  var i=0, userTapped=false, prev=null;
+  function place(it){var r=it.getBoundingClientRect(),br=bar.getBoundingClientRect();ghost.style.left=(r.left-br.left+r.width/2)+'px';}
+  function tick(){
+    if(userTapped) return;
+    if(stage&&stage.classList.contains('opened')){return;}
+    var it=items[i%items.length]; place(it);
+    if(prev) prev.classList.remove('demo');
+    ghost.classList.remove('tapping'); void ghost.offsetWidth; ghost.classList.add('tapping');
+    it.classList.add('demo'); prev=it;
+    setTimeout(function(){it.classList.remove('demo');},900);
+    i++;
+  }
+  items.forEach(function(b){b.addEventListener('click',function(){userTapped=true;ghost.style.display='none';if(prev)prev.classList.remove('demo');});});
+  place(items[0]);
+  setTimeout(tick,500);
+  setInterval(tick,1400);
+})();</script>
 <!-- ============ 3 · WHAT DOES BAKESIDE INCLUDE? — interactive phone module ============
      Round 3: replaces the old "See it work" diagnosis section, the "How it works"
      3-step section and the 4-card include grid. All three collapsed into one
@@ -1034,16 +1076,16 @@
       <div class="demo-phone">
         <div class="demo-screen">
 
-          <!-- 1 · the diagnosis — real screenshot -->
-          <div class="demo-panel active" id="panel-diagnosis" role="tabpanel" aria-labelledby="tab-diagnosis">
-            <div class="fallback"><b>Starter analysis</b><small>5/5 &middot; rise height &middot; bubble density</small></div>
-            <img src="assets/app-starter-analysis.png" alt="BakeSide starter analysis: 5 out of 5, rise height and bubble density" onerror="this.style.display='none'">
-          </div>
-
-          <!-- 2 · smart timing — real screenshot -->
-          <div class="demo-panel" id="panel-timing" role="tabpanel" aria-labelledby="tab-timing" hidden>
+          <!-- 1 · smart timing / step-by-step — leads the module (Florian 2026-08-17: lead with the BAKE) -->
+          <div class="demo-panel active" id="panel-timing" role="tabpanel" aria-labelledby="tab-timing">
             <div class="fallback"><b>Smart timing</b><small>Active plan &middot; reminders at each step</small></div>
             <img src="assets/smarttiming.png?v=4" alt="BakeSide smart timing: active plan with step reminders" onerror="this.style.display='none'">
+          </div>
+
+          <!-- 2 · the diagnosis — real screenshot -->
+          <div class="demo-panel" id="panel-diagnosis" role="tabpanel" aria-labelledby="tab-diagnosis" hidden>
+            <div class="fallback"><b>Starter analysis</b><small>5/5 &middot; rise height &middot; bubble density</small></div>
+            <img src="assets/app-starter-analysis.png" alt="BakeSide starter analysis: 5 out of 5, rise height and bubble density" onerror="this.style.display='none'">
           </div>
 
           <!-- 3 · track every bake — real screenshot -->
@@ -1065,13 +1107,13 @@
         <h2 class="display inc-title demo-title-d">Meet your AI bread coach</h2>
         <div class="demo-tabwrap">
           <div class="demo-tabs" role="tablist" aria-label="BakeSide app features">
-            <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="true" aria-controls="panel-diagnosis" tabindex="0">
-              <span class="lab">Know when it's ready</span>
-              <span class="hint">Snap a photo and know the exact moment it's ready to bake &mdash;<br class="d-only">no more guessing.</span>
-            </button>
-            <button class="demo-tab" id="tab-timing" role="tab" aria-selected="false" aria-controls="panel-timing" tabindex="-1">
+            <button class="demo-tab" id="tab-timing" role="tab" aria-selected="true" aria-controls="panel-timing" tabindex="0">
               <span class="lab">Smart plans</span>
               <span class="hint">Baking that fits your day &mdash; adjust any time, and reminders keep you on track.</span>
+            </button>
+            <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="false" aria-controls="panel-diagnosis" tabindex="-1">
+              <span class="lab">Know when it's ready</span>
+              <span class="hint">Snap a photo and know the exact moment it's ready to bake &mdash;<br class="d-only">no more guessing.</span>
             </button>
             <button class="demo-tab" id="tab-track" role="tab" aria-selected="false" aria-controls="panel-track" tabindex="-1">
               <span class="lab">Learn from every bake</span>
