@@ -962,9 +962,9 @@
   .nb-item.demo{color:var(--red)}
   .nb-item.demo svg,.nb-item.demo span{position:relative;z-index:1}
   .nb-item.demo svg{animation:demoPress .9s ease-out}
-  @keyframes demoPress{0%,100%{transform:scale(1)}22%{transform:scale(.8)}46%{transform:scale(1.2)}72%{transform:scale(1)}}
-  .nb-item.demo::after{content:"";position:absolute;inset:-6px 0 -8px;z-index:0;border-radius:16px;
-    background:radial-gradient(circle at 50% 42%,rgba(242,90,46,.24),rgba(242,90,46,0) 72%);animation:demoPad .9s ease-out}
+  @keyframes demoPress{0%,100%{transform:scale(1)}20%{transform:scale(.82)}46%{transform:scale(1.42)}74%{transform:scale(1.06)}}
+  .nb-item.demo::after{content:"";position:absolute;inset:-9px 0 -11px;z-index:0;border-radius:18px;
+    background:radial-gradient(circle at 50% 42%,rgba(242,90,46,.34),rgba(242,90,46,0) 74%);animation:demoPad .9s ease-out}
   @keyframes demoPad{0%,100%{opacity:0}35%{opacity:1}}
   .nb-stage.opened .exp-ghost{opacity:0 !important;display:none}
   @media(prefers-reduced-motion:reduce){.exp-ghost{display:none}}
@@ -1076,16 +1076,16 @@
       <div class="demo-phone">
         <div class="demo-screen">
 
-          <!-- 1 · smart timing / step-by-step — leads the module (Florian 2026-08-17: lead with the BAKE) -->
-          <div class="demo-panel active" id="panel-timing" role="tabpanel" aria-labelledby="tab-timing">
-            <div class="fallback"><b>Smart timing</b><small>Active plan &middot; reminders at each step</small></div>
-            <img src="assets/smarttiming.png?v=4" alt="BakeSide smart timing: active plan with step reminders" onerror="this.style.display='none'">
-          </div>
-
-          <!-- 2 · the diagnosis — real screenshot -->
-          <div class="demo-panel" id="panel-diagnosis" role="tabpanel" aria-labelledby="tab-diagnosis" hidden>
+          <!-- 1 · the diagnosis — leads the module (Pedro 2026-08-19: lead with "Know when it's ready", before Smarter plans) -->
+          <div class="demo-panel active" id="panel-diagnosis" role="tabpanel" aria-labelledby="tab-diagnosis">
             <div class="fallback"><b>Starter analysis</b><small>5/5 &middot; rise height &middot; bubble density</small></div>
             <img src="assets/app-starter-analysis.png" alt="BakeSide starter analysis: 5 out of 5, rise height and bubble density" onerror="this.style.display='none'">
+          </div>
+
+          <!-- 2 · smarter plans / step-by-step timing -->
+          <div class="demo-panel" id="panel-timing" role="tabpanel" aria-labelledby="tab-timing" hidden>
+            <div class="fallback"><b>Smarter plans</b><small>Active plan &middot; reminders at each step</small></div>
+            <img src="assets/smarttiming.png?v=4" alt="BakeSide smarter plans: active plan with step reminders" onerror="this.style.display='none'">
           </div>
 
           <!-- 3 · track every bake — real screenshot -->
@@ -1107,13 +1107,13 @@
         <h2 class="display inc-title demo-title-d">Meet your AI bread coach</h2>
         <div class="demo-tabwrap">
           <div class="demo-tabs" role="tablist" aria-label="BakeSide app features">
-            <button class="demo-tab" id="tab-timing" role="tab" aria-selected="true" aria-controls="panel-timing" tabindex="0">
-              <span class="lab">Smart plans</span>
-              <span class="hint">Baking that fits your day &mdash; adjust any time, and reminders keep you on track.</span>
-            </button>
-            <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="false" aria-controls="panel-diagnosis" tabindex="-1">
+            <button class="demo-tab" id="tab-diagnosis" role="tab" aria-selected="true" aria-controls="panel-diagnosis" tabindex="0">
               <span class="lab">Know when it's ready</span>
               <span class="hint">Snap a photo and know the exact moment it's ready to bake &mdash;<br class="d-only">no more guessing.</span>
+            </button>
+            <button class="demo-tab" id="tab-timing" role="tab" aria-selected="false" aria-controls="panel-timing" tabindex="-1">
+              <span class="lab">Smarter plans</span>
+              <span class="hint">BakeSide just got a <b>new, smarter&nbsp;engine</b> &mdash; tell it when you want warm bread and it times every step, with a reminder so you never miss&nbsp;one.</span>
             </button>
             <button class="demo-tab" id="tab-track" role="tab" aria-selected="false" aria-controls="panel-track" tabindex="-1">
               <span class="lab">Learn from every bake</span>
