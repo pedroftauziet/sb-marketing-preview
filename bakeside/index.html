@@ -1130,15 +1130,15 @@
 
 
 <!-- ============ SHARE YOUR BAKE — the share driver (Florian 2026-08-24; concept refined by Pedro) ============
-     Message = it's EASY and you can share ANYWHERE (many channels) → adoption at scale. Assets pulled
-     clean from the In-App Guidance Figma (RNdsT4V4yq8tVCq4pvGDvS), NO phone mockup / NO grey frame bg:
-       • Visual = the native "sharecard" (node 456:1408) — loaf Share Card ("Florian.Flour · Shared with
-         you", Hydration/Total/Yield/Active). Grey frame bg + the "Continue in Bakeside" band cropped out;
-         rounded + transparent.
-       • Channels = the "shareoptions" icon row (node 456:1230) — icons only, labels cropped (Pedro: icons
-         not words): Copy Link / Download / Status / WhatsApp / Messages / Stories / Instagram / IG Direct.
-     Card shows "My Country Loaf" = a bake, so it reads as sharing your loaf. NOTE: recipe/card share ships
-     with recipes (Wave 2); the landing publishes at Wave 2, so this is consistent. -->
+     Message = it's EASY and you can share ANYWHERE → adoption at scale. RIGHT = a constant-loop, CSS-only
+     cross-fade CAROUSEL showing the SAME bake shared three ways (Pedro's idea):
+       1. Instagram story  — real Figma frame "instagramsharebake" (node 456:1451), phone chrome/grey cropped out.
+       2. WhatsApp chat    — HTML mock, link-preview of the loaf (assets/all/loaf-preview.webp) + "bakeside.app".
+       3. iMessage         — HTML mock, same link preview + a blue bubble.
+     LEFT = headline + lede + the "shareoptions" channel icons (node 456:1230, icons only — Pedro: icons not words).
+     Loaf photo extracted from the Figma sharecard; IG story shows "My Country Loaf" = a bake.
+     NOTE: recipe/card share ships with recipes (Wave 2); the landing publishes at Wave 2, so this is consistent.
+     prefers-reduced-motion pauses the loop on slide 1. -->
 <style>
   #sharebake{background:var(--cream);position:relative;overflow:hidden}
   .sb-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center;max-width:1040px;margin:0 auto}
@@ -1148,14 +1148,55 @@
   .sb-copy .sb-lede strong{color:var(--ink);font-weight:700}
   .sb-icons{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 20px;box-shadow:0 16px 36px -22px rgba(90,15,0,.30)}
   .sb-icons img{display:block;width:100%;height:auto}
-  .sb-card{position:relative;justify-self:center}
-  .sb-card::before{content:"";position:absolute;inset:-6% -10%;background:radial-gradient(56% 50% at 50% 44%,rgba(201,44,3,.16),transparent 70%);z-index:0}
-  .sb-card img{position:relative;z-index:1;display:block;width:100%;max-width:376px;height:auto;filter:drop-shadow(0 30px 54px rgba(90,15,0,.26))}
+  /* ---- looping format carousel ---- */
+  .sb-stage{position:relative;width:100%;max-width:320px;aspect-ratio:1/2;margin:0 auto;justify-self:center}
+  .sb-stage::before{content:"";position:absolute;inset:-7% -13%;background:radial-gradient(56% 50% at 50% 45%,rgba(201,44,3,.17),transparent 70%);z-index:0}
+  .sb-slide{position:absolute;inset:0;z-index:1;border-radius:30px;overflow:hidden;opacity:0;border:1px solid var(--line);box-shadow:0 30px 58px -30px rgba(90,15,0,.42);animation:sbfade 12s infinite;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+  .sb-slide:nth-child(1){animation-delay:0s}
+  .sb-slide:nth-child(2){animation-delay:4s}
+  .sb-slide:nth-child(3){animation-delay:8s}
+  @keyframes sbfade{0%{opacity:0}4%{opacity:1}29%{opacity:1}34%{opacity:0}100%{opacity:0}}
+  .sb-slide.ig img{width:100%;height:100%;object-fit:cover;display:block}
+  /* WhatsApp mock */
+  .wa{background:#e6ddd4;display:flex;flex-direction:column}
+  .wa-top{background:#075e54;color:#fff;display:flex;align-items:center;gap:8px;padding:12px 12px 10px}
+  .wa-top .wa-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#f2c14e,#c96a1c);flex:none}
+  .wa-top b{font-size:13.5px;line-height:1.1}
+  .wa-top small{display:block;font-size:10px;opacity:.8;font-weight:400}
+  .wa-top .wa-back{font-size:20px;line-height:1;margin-right:-2px}
+  .wa-body{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:9px;justify-content:flex-end;background-image:radial-gradient(rgba(0,0,0,.03) 1px,transparent 1px);background-size:16px 16px}
+  .wa-msg{max-width:82%;font-size:12.5px;line-height:1.35;padding:7px 9px;border-radius:11px;color:#111}
+  .wa-msg.in{align-self:flex-start;background:#fff;border-top-left-radius:3px}
+  .wa-msg.out{align-self:flex-end;background:#dcf8c6;border-top-right-radius:3px}
+  .wa-card{padding:5px 5px 6px;width:86%}
+  .wa-prev{background:rgba(0,0,0,.04);border-radius:8px;overflow:hidden}
+  .wa-prev img{width:100%;height:148px;object-fit:cover;display:block}
+  .wa-prev-t{padding:6px 8px}
+  .wa-prev-t b{display:block;font-size:12px;color:#111}
+  .wa-prev-t span{font-size:10.5px;color:#5b7083}
+  .wa-cap{padding:5px 4px 1px;font-size:12px}
+  .wa-time{float:right;font-size:9.5px;color:#5c8a4a;margin:3px 0 0 6px}
+  /* iMessage mock */
+  .im{background:#fff;display:flex;flex-direction:column}
+  .im-top{border-bottom:1px solid #eee;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0 10px;color:#111;position:relative}
+  .im-top .im-back{position:absolute;left:12px;top:12px;color:#0a84ff;font-size:20px;line-height:1}
+  .im-top .im-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#f2c14e,#c96a1c)}
+  .im-top b{font-size:12px;font-weight:600}
+  .im-body{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:7px;justify-content:flex-end}
+  .im-msg{max-width:78%;font-size:12.5px;line-height:1.35;padding:7px 11px;border-radius:16px}
+  .im-msg.in{align-self:flex-start;background:#e9e9eb;color:#111}
+  .im-msg.out{align-self:flex-end;background:#0a84ff;color:#fff}
+  .im-prev{align-self:flex-end;width:74%;background:#fff;border:1px solid #e6e6e6;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+  .im-prev img{width:100%;height:132px;object-fit:cover;display:block}
+  .im-prev-t{padding:7px 9px}
+  .im-prev-t b{display:block;font-size:11.5px;color:#111}
+  .im-prev-t span{font-size:10px;color:#8a8a8e}
+  .sb-cap{text-align:center;color:var(--muted);font-size:.85rem;margin:16px auto 0;max-width:300px}
+  @media(prefers-reduced-motion:reduce){.sb-slide{animation:none;opacity:0}.sb-slide:nth-child(1){opacity:1}}
   @media(max-width:820px){
-    .sb-grid{grid-template-columns:1fr;gap:28px;max-width:440px}
+    .sb-grid{grid-template-columns:1fr;gap:30px;max-width:440px}
     .sb-copy{max-width:none;text-align:center;order:2}
-    .sb-card{order:1}
-    .sb-card img{max-width:320px;margin:0 auto}
+    .sb-stage-wrap{order:1}
     .sb-icons{max-width:400px;margin:0 auto}
   }
 </style>
@@ -1164,13 +1205,43 @@
     <div class="sb-grid">
       <div class="sb-copy">
         <h2>Show off the loaf you're proud&nbsp;of.</h2>
-        <p class="sb-lede">Turn your bake into a card and <strong>share it in a tap</strong> &mdash; a link, your story, or straight to a friend.</p>
+        <p class="sb-lede">Turn your bake into a card and <strong>share it in a tap</strong> &mdash; post it to your story, drop it in a chat, or send a link.</p>
         <div class="sb-icons">
           <img src="assets/all/share-icons.webp" width="760" height="64" loading="lazy" alt="Share to Copy Link, Download, Status, WhatsApp, Messages, Stories, Instagram or Instagram Direct">
         </div>
       </div>
-      <div class="sb-card">
-        <img src="assets/all/bake-card.webp" width="760" height="847" loading="lazy" alt="A BakeSide share card — a photo of a finished country sourdough loaf shared by Florian.Flour, with hydration 68%, total time 3h 30m, yield 1 loaf and 20 min active">
+      <div class="sb-stage-wrap">
+        <div class="sb-stage" role="img" aria-label="The same bake shared three ways — as an Instagram story, a WhatsApp chat, and an iMessage link preview">
+          <!-- slide 1: Instagram story (real app frame) -->
+          <div class="sb-slide ig"><img src="assets/all/fmt-instagram.webp" width="680" height="1360" loading="lazy" alt="The bake shared as an Instagram story"></div>
+          <!-- slide 2: WhatsApp chat -->
+          <div class="sb-slide wa" aria-hidden="true">
+            <div class="wa-top"><span class="wa-back">&lsaquo;</span><span class="wa-av"></span><span><b>Sourdough Club</b><small>online</small></span></div>
+            <div class="wa-body">
+              <div class="wa-msg in">Send us the loaf!! 🙌</div>
+              <div class="wa-msg out wa-card">
+                <div class="wa-prev">
+                  <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
+                  <div class="wa-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
+                </div>
+                <div class="wa-cap">Fresh out the oven 🍞<span class="wa-time">9:41 ✓✓</span></div>
+              </div>
+            </div>
+          </div>
+          <!-- slide 3: iMessage -->
+          <div class="sb-slide im" aria-hidden="true">
+            <div class="im-top"><span class="im-back">&lsaquo;</span><span class="im-av"></span><b>Mum</b></div>
+            <div class="im-body">
+              <div class="im-msg in">Show me your loaf 🤩</div>
+              <div class="im-prev">
+                <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
+                <div class="im-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
+              </div>
+              <div class="im-msg out">Just baked this! 😍</div>
+            </div>
+          </div>
+        </div>
+        <p class="sb-cap">One loaf, shared everywhere your bakers are.</p>
       </div>
     </div>
   </div>
