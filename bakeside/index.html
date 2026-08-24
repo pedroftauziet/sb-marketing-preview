@@ -1148,14 +1148,12 @@
   .sb-copy .sb-lede strong{color:var(--ink);font-weight:700}
   .sb-icons{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 20px;box-shadow:0 16px 36px -22px rgba(90,15,0,.30)}
   .sb-icons img{display:block;width:100%;height:auto}
-  /* ---- looping format carousel ---- */
-  .sb-stage{position:relative;width:100%;max-width:320px;aspect-ratio:1/2;margin:0 auto;justify-self:center}
-  .sb-stage::before{content:"";position:absolute;inset:-7% -13%;background:radial-gradient(56% 50% at 50% 45%,rgba(201,44,3,.17),transparent 70%);z-index:0}
-  .sb-slide{position:absolute;inset:0;z-index:1;border-radius:30px;overflow:hidden;opacity:0;border:1px solid var(--line);box-shadow:0 30px 58px -30px rgba(90,15,0,.42);animation:sbfade 12s infinite;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
-  .sb-slide:nth-child(1){animation-delay:0s}
-  .sb-slide:nth-child(2){animation-delay:4s}
-  .sb-slide:nth-child(3){animation-delay:8s}
-  @keyframes sbfade{0%{opacity:0}4%{opacity:1}29%{opacity:1}34%{opacity:0}100%{opacity:0}}
+  /* ---- coverflow carousel: centre slide big, neighbours peek in from the sides, auto-slide loop ---- */
+  .sb-stage{position:relative;width:100%;overflow-x:clip;overflow-y:visible;padding:22px 0}
+  .sb-stage::before{content:"";position:absolute;inset:8% 0;background:radial-gradient(44% 58% at 50% 50%,rgba(201,44,3,.16),transparent 72%);z-index:0}
+  .sb-track{display:flex;gap:22px;align-items:center;will-change:transform;transition:transform .72s cubic-bezier(.4,0,.2,1)}
+  .sb-slide{position:relative;z-index:1;flex:0 0 auto;width:240px;aspect-ratio:1/2;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 16px 34px -24px rgba(90,15,0,.38);transform:scale(.8);opacity:.4;transition:transform .72s cubic-bezier(.4,0,.2,1),opacity .72s ease,box-shadow .72s ease;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+  .sb-slide.is-active{transform:scale(1);opacity:1;box-shadow:0 34px 60px -26px rgba(90,15,0,.5)}
   .sb-slide.ig img{width:100%;height:100%;object-fit:cover;display:block}
   /* WhatsApp mock */
   .wa{background:#e6ddd4;display:flex;flex-direction:column}
@@ -1192,7 +1190,7 @@
   .im-prev-t b{display:block;font-size:11.5px;color:#111}
   .im-prev-t span{font-size:10px;color:#8a8a8e}
   .sb-cap{text-align:center;color:var(--muted);font-size:.85rem;margin:16px auto 0;max-width:300px}
-  @media(prefers-reduced-motion:reduce){.sb-slide{animation:none;opacity:0}.sb-slide:nth-child(1){opacity:1}}
+  @media(max-width:420px){.sb-slide{width:210px}}
   @media(max-width:820px){
     .sb-grid{grid-template-columns:1fr;gap:30px;max-width:440px}
     .sb-copy{max-width:none;text-align:center;order:2}
@@ -1211,7 +1209,8 @@
         </div>
       </div>
       <div class="sb-stage-wrap">
-        <div class="sb-stage" role="img" aria-label="The same bake shared three ways — as an Instagram story, a WhatsApp chat, and an iMessage link preview">
+        <div class="sb-stage" id="sbStage" role="group" aria-label="The same bake shared three ways — as an Instagram story, a WhatsApp chat, and an iMessage link preview">
+          <div class="sb-track" aria-hidden="true">
           <!-- slide 1: Instagram story (real app frame) -->
           <div class="sb-slide ig"><img src="assets/all/fmt-instagram.webp" width="680" height="1360" loading="lazy" alt="The bake shared as an Instagram story"></div>
           <!-- slide 2: WhatsApp chat -->
@@ -1240,12 +1239,39 @@
               <div class="im-msg out">Just baked this! 😍</div>
             </div>
           </div>
+          </div><!-- /sb-track -->
         </div>
         <p class="sb-cap">One loaf, shared everywhere your bakers are.</p>
       </div>
     </div>
   </div>
 </section>
+<script>
+/* Share-your-bake coverflow: centre slide focused, neighbours peek; auto-advances in a seamless loop. */
+(function(){
+  var stage=document.getElementById('sbStage'); if(!stage)return;
+  var track=stage.querySelector('.sb-track'); if(!track)return;
+  var base=[].slice.call(track.children), N=base.length;
+  if(N<2){ if(base[0])base[0].classList.add('is-active'); return; }
+  for(var c=0;c<2;c++) base.forEach(function(s){ track.appendChild(s.cloneNode(true)); });
+  var slides=[].slice.call(track.children), i=N, GAP=22;
+  function sw(){ return slides[0].getBoundingClientRect().width || 240; }
+  function place(anim){
+    var w=sw();
+    track.style.transition = anim ? '' : 'none';
+    track.style.transform = 'translateX(' + (stage.clientWidth/2 - (i*(w+GAP)+w/2)) + 'px)';
+    for(var k=0;k<slides.length;k++) slides[k].classList.toggle('is-active', k===i);
+    if(!anim){ void track.offsetWidth; track.style.transition=''; }
+  }
+  place(false);
+  window.addEventListener('resize', function(){ place(false); });
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  setInterval(function(){
+    i++; place(true);
+    if(i >= 2*N){ setTimeout(function(){ i=N; place(false); }, 740); }
+  }, 3600);
+})();
+</script>
 <!-- ============ WHY BAKESIDE — three ideas, short ============ -->
 <!-- HIDDEN per Pedro 2026-08-12: filler, the point is now made in the chip modules above. Reversible: remove `hidden`. -->
 <section id="why" style="background:var(--surface)" hidden>
