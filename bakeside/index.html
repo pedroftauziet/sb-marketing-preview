@@ -1129,72 +1129,63 @@
 
 
 
-<!-- ============ SHARE YOUR BAKE — the emotional share driver (Florian 2026-08-24) ============
-     Angle = share the whole bake as a link. HONEST to what's live today: BakeSide can share
-     the bake CONVERSATION/journey (which carries the loaf + starter + plan) — a standalone
-     "bake card / recipe" share ships with recipes. Visual = a real shared-conversation page
-     (bakeside.app/c/…, "Shared by Nabiha"). Do NOT imply a dedicated bake-analysis card exists yet. -->
+<!-- ============ SHARE YOUR BAKE — the share driver (Florian 2026-08-24; concept refined by Pedro) ============
+     Message = it's EASY and you can share ANYWHERE (many channels) → adoption at scale. The "what it
+     looks like" is secondary to conveying ease + multi-channel reach (Pedro). Visual = the real
+     "sharerecipe" frame from the In-App Guidance Figma (RNdsT4V4yq8tVCq4pvGDvS, node 456:1283):
+     the loaf Share Card + the native share sheet (Copy link / Download / WhatsApp / Messages /
+     Stories / Instagram / Instagram Direct). The card shows "My Country Loaf" = a bake, so it reads
+     as sharing your loaf. NOTE: recipe/card share ships with recipes (Wave 2) — the landing itself
+     publishes at Wave 2, so this is consistent; keep copy on "your loaf/bake", not a live-now claim. -->
 <style>
   #sharebake{background:var(--cream);position:relative;overflow:hidden}
-  #sharebake .sb-kicker{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.16em;color:var(--red);text-transform:uppercase;margin-bottom:8px}
-  #sharebake .sec-head h2{color:var(--red-deep)}
-  .sb-stage{position:relative;max-width:640px;margin:0 auto}
-  .sb-stage::before{content:"";position:absolute;inset:-10% -14%;background:radial-gradient(58% 52% at 50% 38%,rgba(201,44,3,.15),transparent 70%);z-index:0}
-  .sb-card{position:relative;z-index:1;border-radius:22px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 34px 70px -34px rgba(90,15,0,.42)}
-  .sb-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#f4efe8;border-bottom:1px solid var(--line)}
-  .sb-bar .sb-dots{display:inline-flex;gap:6px;flex:none}
-  .sb-bar .sb-dots i{width:10px;height:10px;border-radius:50%;background:rgba(30,26,23,.16)}
-  .sb-bar .sb-url{flex:1;font:600 .82rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .sb-bar .sb-share{color:var(--red);display:inline-flex;flex:none}
-  .sb-bar .sb-share svg{width:18px;height:18px}
-  .sb-shot img{display:block;width:100%;height:auto}
-  .sb-cap{text-align:center;color:var(--muted);font-size:.85rem;margin:16px auto 0;max-width:520px}
-  .sb-benef{display:flex;gap:22px;max-width:900px;margin:36px auto 0;justify-content:center}
-  .sb-b{flex:1;max-width:260px;text-align:center}
-  .sb-b .sb-ic{width:46px;height:46px;margin:0 auto 11px;display:flex;align-items:center;justify-content:center;border-radius:13px;background:rgba(201,44,3,.09);color:var(--red)}
-  .sb-b .sb-ic svg{width:24px;height:24px}
-  .sb-b h3{font-size:1rem;margin:0 0 3px;color:var(--ink)}
-  .sb-b p{font-size:.9rem;color:var(--muted);margin:0;line-height:1.45}
-  @media(max-width:720px){
-    .sb-benef{flex-direction:column;gap:22px;align-items:center;margin-top:30px}
-    .sb-b{max-width:340px}
+  #sharebake .sb-kicker{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.16em;color:var(--red);text-transform:uppercase;margin-bottom:10px}
+  .sb-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;max-width:1040px;margin:0 auto}
+  .sb-copy{max-width:470px}
+  .sb-copy h2{font-size:clamp(1.9rem,3.9vw,2.7rem);font-weight:800;letter-spacing:-.02em;line-height:1.07;color:var(--red-deep);margin:0 0 14px}
+  .sb-copy .sb-lede{color:var(--muted);font-size:1.06rem;line-height:1.5;margin:0 0 24px;text-wrap:pretty}
+  .sb-copy .sb-lede strong{color:var(--ink);font-weight:700}
+  .sb-chan-label{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 11px}
+  .sb-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .sb-chip{display:inline-flex;align-items:center;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.86rem;font-weight:600;color:var(--ink)}
+  .sb-line{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--red-deep);font-size:1.02rem}
+  .sb-line svg{width:21px;height:21px;color:var(--red);flex:none}
+  .sb-phone{position:relative;justify-self:center}
+  .sb-phone::before{content:"";position:absolute;inset:-4% -12%;background:radial-gradient(56% 50% at 50% 46%,rgba(201,44,3,.17),transparent 70%);z-index:0}
+  .sb-phone img{position:relative;z-index:1;display:block;width:100%;max-width:340px;height:auto;filter:drop-shadow(0 34px 58px rgba(90,15,0,.30))}
+  @media(max-width:820px){
+    .sb-grid{grid-template-columns:1fr;gap:26px;max-width:520px}
+    .sb-copy{max-width:none;text-align:center;margin:0 auto;order:2}
+    .sb-chips{justify-content:center}
+    .sb-line{justify-content:center}
+    .sb-phone{order:1}
+    .sb-phone img{max-width:290px;margin:0 auto}
   }
 </style>
 <section id="sharebake">
   <div class="wrap">
-    <div class="sec-head center">
-      <span class="sb-kicker">Share your bake</span>
-      <h2 class="display">Baked something you're proud of? Share the whole&nbsp;story.</h2>
-      <p>Your starter, your plan, the tweaks, the final loaf &mdash; <strong>BakeSide turns the whole bake into a link you can send anywhere.</strong></p>
-    </div>
-
-    <div class="sb-stage">
-      <div class="sb-card">
-        <div class="sb-bar" aria-hidden="true">
-          <span class="sb-dots"><i></i><i></i><i></i></span>
-          <span class="sb-url">bakeside.app/c/&hellip;</span>
-          <span class="sb-share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"/><path d="M8 8l4-4 4 4"/><path d="M5 13v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg></span>
+    <div class="sb-grid">
+      <div class="sb-copy">
+        <span class="sb-kicker">Share your bake</span>
+        <h2>Share your loaf anywhere, in one&nbsp;tap.</h2>
+        <p class="sb-lede">Turn the loaf you're proud of into a card and <strong>send it wherever your people are.</strong> A link, your story, a quick message &mdash; however they'll see it.</p>
+        <p class="sb-chan-label">Share to</p>
+        <div class="sb-chips">
+          <span class="sb-chip">Copy link</span>
+          <span class="sb-chip">Download</span>
+          <span class="sb-chip">WhatsApp</span>
+          <span class="sb-chip">Messages</span>
+          <span class="sb-chip">Stories</span>
+          <span class="sb-chip">Instagram</span>
+          <span class="sb-chip">Instagram Direct</span>
         </div>
-        <div class="sb-shot"><img src="assets/all/shared-bake.webp" width="1240" height="1278" loading="lazy" alt="A shared BakeSide bake opened as a link — the whole conversation from starter to sourdough recipe, ready for a friend to open"></div>
+        <div class="sb-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"/><path d="M8 8l4-4 4 4"/><path d="M5 13v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>
+          One tap. Any channel. More bakers.
+        </div>
       </div>
-      <p class="sb-cap">Opens in any browser &mdash; send it to WhatsApp, Instagram, or straight to a baker&nbsp;friend.</p>
-    </div>
-
-    <div class="sb-benef">
-      <div class="sb-b">
-        <div class="sb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"/><path d="M8 8l4-4 4 4"/><path d="M5 13v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg></div>
-        <h3>One tap to share</h3>
-        <p>Turn any bake or chat into a link, right from the app.</p>
-      </div>
-      <div class="sb-b">
-        <div class="sb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="1.6"/><circle cx="6" cy="17" r="1.6"/><path d="M6 8.7v6.6"/><path d="M11 7h7"/><path d="M11 17h7"/></svg></div>
-        <h3>They see the whole journey</h3>
-        <p>Starter, plan, the tweaks you made and the final loaf.</p>
-      </div>
-      <div class="sb-b">
-        <div class="sb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13c0-3.2 3.6-5.8 8-5.8s8 2.6 8 5.8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 11.4v2.2M12 11v2.6M15 11.4v2.2"/></svg></div>
-        <h3>They can bake it too</h3>
-        <p>Your friend opens the link and follows along.</p>
+      <div class="sb-phone">
+        <img src="assets/all/share-anywhere.webp" width="880" height="1835" loading="lazy" alt="The BakeSide share sheet — a card of your finished loaf with total time, hydration and yield, ready to send to WhatsApp, Messages, Stories, Instagram, or as a link">
       </div>
     </div>
   </div>
