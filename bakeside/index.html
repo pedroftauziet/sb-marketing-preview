@@ -1149,7 +1149,7 @@
   .sb-copy .sb-lede strong{color:var(--ink);font-weight:700}
   /* ---- spotlight coverflow: one screen lit + large, neighbours dim + peeking; auto-rotates ---- */
   .sb-media{position:relative}
-  .sb-stage{position:relative;width:100%;overflow:clip;overflow-clip-margin:38px;padding:16px 0}
+  .sb-stage{position:relative;width:100%;overflow-x:clip;overflow-y:visible;padding:16px 0 30px}
   .sb-stage::before{content:"";position:absolute;inset:6% 0;background:radial-gradient(42% 56% at 50% 48%,rgba(201,44,3,.18),transparent 72%);z-index:0}
   .sb-track{display:flex;gap:20px;align-items:center;will-change:transform;transition:transform .7s cubic-bezier(.4,0,.2,1)}
   .sb-slide{position:relative;z-index:1;flex:0 0 auto;width:222px;aspect-ratio:1/2;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 12px 26px -18px rgba(90,15,0,.3);transform:scale(.76);opacity:.32;transition:transform .7s cubic-bezier(.4,0,.2,1),opacity .7s ease,box-shadow .7s ease;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
@@ -1228,6 +1228,7 @@
                 <div class="wa-cap">obsessed with this one 🥹<span class="wa-time">9:41 ✓✓</span></div>
               </div>
               <div class="wa-msg in">STOP 😍 send the recipe!!</div>
+              <div class="wa-msg out">it's all in the link 👆</div>
             </div>
           </div>
           <!-- slide 3: iMessage -->
