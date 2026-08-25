@@ -1277,7 +1277,7 @@
   }
   function loopReset(){ if(i>=2*N) setTimeout(function(){ i=N; place(false); }, 720); }
   function next(){ i++; place(true); loopReset(); }
-  function restart(){ if(timer) clearInterval(timer); if(!reduce) timer=setInterval(next,2880); }
+  function restart(){ if(timer) clearInterval(timer); if(!reduce) timer=setInterval(next,3600); }
   navs.forEach(function(b){ b.addEventListener('click', function(){
     var j=+b.getAttribute('data-i'), d=((j-(i%N))%N+N)%N;
     if(d===0) return; i+=d; place(true); loopReset(); restart();
