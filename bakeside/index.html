@@ -1164,7 +1164,8 @@
   /* WhatsApp mock */
   .wa{background:#e6ddd4;display:flex;flex-direction:column}
   .wa-top{background:#075e54;color:#fff;display:flex;align-items:center;gap:8px;padding:12px 12px 10px}
-  .wa-top .wa-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#f2c14e,#c96a1c);flex:none}
+  .wa-top .wa-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f2c14e,#c96a1c);flex:none;overflow:hidden}
+  .wa-av img,.im-av img{width:100%;height:100%;object-fit:cover;display:block}
   .wa-top b{font-size:13.5px;line-height:1.1}
   .wa-top small{display:block;font-size:10px;opacity:.8;font-weight:400}
   .wa-top .wa-back{font-size:20px;line-height:1;margin-right:-2px}
@@ -1184,7 +1185,7 @@
   .im{background:#fff;display:flex;flex-direction:column}
   .im-top{border-bottom:1px solid #eee;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0 10px;color:#111;position:relative}
   .im-top .im-back{position:absolute;left:12px;top:12px;color:#0a84ff;font-size:20px;line-height:1}
-  .im-top .im-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#f2c14e,#c96a1c)}
+  .im-top .im-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#f2c14e,#c96a1c);overflow:hidden}
   .im-top b{font-size:12px;font-weight:600}
   .im-body{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:7px;justify-content:flex-end}
   .im-msg{max-width:78%;font-size:12.5px;line-height:1.35;padding:7px 11px;border-radius:16px}
@@ -1217,28 +1218,28 @@
           <div class="sb-slide ig"><img src="assets/all/fmt-instagram.webp" width="680" height="1360" loading="lazy" alt="The bake shared as an Instagram story"></div>
           <!-- slide 2: WhatsApp chat -->
           <div class="sb-slide wa" aria-hidden="true">
-            <div class="wa-top"><span class="wa-back">&lsaquo;</span><span class="wa-av"></span><span><b>Sourdough Club</b><small>online</small></span></div>
+            <div class="wa-top"><span class="wa-back">&lsaquo;</span><span class="wa-av"><img src="assets/all/avatar-wa.webp" alt=""></span><span><b>Mara</b><small>online</small></span></div>
             <div class="wa-body">
-              <div class="wa-msg in">Send us the loaf!! 🙌</div>
               <div class="wa-msg out wa-card">
                 <div class="wa-prev">
                   <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
                   <div class="wa-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
                 </div>
-                <div class="wa-cap">Fresh out the oven 🍞<span class="wa-time">9:41 ✓✓</span></div>
+                <div class="wa-cap">obsessed with this one 🥹<span class="wa-time">9:41 ✓✓</span></div>
               </div>
+              <div class="wa-msg in">STOP 😍 send the recipe!!</div>
             </div>
           </div>
           <!-- slide 3: iMessage -->
           <div class="sb-slide im" aria-hidden="true">
-            <div class="im-top"><span class="im-back">&lsaquo;</span><span class="im-av"></span><b>Mum</b></div>
+            <div class="im-top"><span class="im-back">&lsaquo;</span><span class="im-av"><img src="assets/all/avatar-im.webp" alt=""></span><b>Mum</b></div>
             <div class="im-body">
-              <div class="im-msg in">Show me your loaf 🤩</div>
               <div class="im-prev">
                 <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
                 <div class="im-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
               </div>
-              <div class="im-msg out">Just baked this! 😍</div>
+              <div class="im-msg out">look what I just pulled out 🤯</div>
+              <div class="im-msg in">bakery level 😍 save me a slice</div>
             </div>
           </div>
           </div><!-- /sb-track -->
