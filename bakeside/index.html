@@ -742,7 +742,7 @@
     <nav class="nav-links">
       <a href="#features">What's included</a>
       <a href="#proof">Reviews</a>
-      <a href="#maker">Made by Superbaking</a>
+      <a href="learn/index.html">Learn</a>
       <a href="#faq">FAQ</a>
       <a href="app-support.html">Support</a>
     </nav>
@@ -761,6 +761,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#features">What's included</a>
     <a href="#proof">Reviews</a>
+    <a href="learn/index.html">Learn</a>
     <a href="#faq">FAQ</a>
     <a href="app-support.html">Support</a>
     <a href="#maker">Superbaking tools &rarr;</a>
@@ -839,6 +840,58 @@
   @media (max-width:600px){.gal-prev{left:10px}.gal-next{right:10px}}
   @media (prefers-reduced-motion:reduce){.gcard{transition:none}}
 </style>
+<!-- SHARE YOUR BAKE moved to top per Florian 2026-08-24 (adoption driver → first content module after hero) -->
+<section id="sharebake">
+  <div class="wrap">
+    <div class="sb-grid">
+      <div class="sb-copy">
+        <h2>You baked it,<br>now let them see it.</h2>
+        <p class="sb-lede">A great loaf is meant to be seen &mdash; <strong>share yours in a tap</strong> and let it earn every bit of the reaction.</p>
+      </div>
+      <div class="sb-media">
+        <div class="sb-stage" id="sbStage" role="group" aria-label="The same bake shared three ways — as an Instagram story, a WhatsApp chat, and an iMessage link preview">
+          <div class="sb-track" aria-hidden="true">
+          <!-- slide 1: Instagram story (real app frame) -->
+          <div class="sb-slide ig"><img src="assets/all/fmt-instagram.webp" width="680" height="1360" loading="lazy" alt="The bake shared as an Instagram story"></div>
+          <!-- slide 2: WhatsApp chat -->
+          <div class="sb-slide wa" aria-hidden="true">
+            <div class="wa-top"><span class="wa-back">&lsaquo;</span><span class="wa-av"><img src="assets/all/avatar-wa.webp" alt=""></span><span><b>Mara</b><small>online</small></span></div>
+            <div class="wa-body">
+              <div class="wa-msg out wa-card">
+                <div class="wa-prev">
+                  <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
+                  <div class="wa-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
+                </div>
+                <div class="wa-cap">obsessed with this one 🥹<span class="wa-meta">9:41<b>✓✓</b></span></div>
+              </div>
+              <div class="wa-msg in">STOP 😍 send the recipe!!<span class="wa-meta">9:42</span></div>
+              <div class="wa-msg out">it's all in the link 👆<span class="wa-meta">9:42<b>✓✓</b></span></div>
+            </div>
+          </div>
+          <!-- slide 3: iMessage -->
+          <div class="sb-slide im" aria-hidden="true">
+            <div class="im-top"><span class="im-back">&lsaquo;</span><span class="im-av"><img src="assets/all/avatar-im.webp" alt=""></span><b>Mum</b></div>
+            <div class="im-body">
+              <div class="im-prev">
+                <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
+                <div class="im-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
+              </div>
+              <div class="im-msg out">look what I just pulled out 🤯</div>
+              <div class="im-msg in">bakery level 😍 save me a slice</div>
+            </div>
+          </div>
+          </div><!-- /sb-track -->
+        </div>
+        <div class="sb-nav" role="tablist" aria-label="Share formats — the screen updates to match">
+          <button type="button" data-i="0" aria-label="Instagram story"><img src="assets/all/ic-instagram.webp" width="132" height="132" alt=""></button>
+          <button type="button" data-i="1" aria-label="WhatsApp"><img src="assets/all/ic-whatsapp.webp" width="132" height="132" alt=""></button>
+          <button type="button" data-i="2" aria-label="Messages"><img src="assets/all/ic-messages.webp" width="132" height="132" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HIDDEN per Pedro 2026-08-13: replaced by the interactive #explore module below. Reversible: remove `hidden`. -->
 <section class="gallery" id="bakery" hidden>
   <div class="wrap">
@@ -1206,56 +1259,7 @@
     .sb-nav{margin-top:16px}
   }
 </style>
-<section id="sharebake">
-  <div class="wrap">
-    <div class="sb-grid">
-      <div class="sb-copy">
-        <h2>You baked it,<br>now let them see it.</h2>
-        <p class="sb-lede">A great loaf is meant to be seen &mdash; <strong>share yours in a tap</strong> and let it earn every bit of the reaction.</p>
-      </div>
-      <div class="sb-media">
-        <div class="sb-stage" id="sbStage" role="group" aria-label="The same bake shared three ways — as an Instagram story, a WhatsApp chat, and an iMessage link preview">
-          <div class="sb-track" aria-hidden="true">
-          <!-- slide 1: Instagram story (real app frame) -->
-          <div class="sb-slide ig"><img src="assets/all/fmt-instagram.webp" width="680" height="1360" loading="lazy" alt="The bake shared as an Instagram story"></div>
-          <!-- slide 2: WhatsApp chat -->
-          <div class="sb-slide wa" aria-hidden="true">
-            <div class="wa-top"><span class="wa-back">&lsaquo;</span><span class="wa-av"><img src="assets/all/avatar-wa.webp" alt=""></span><span><b>Mara</b><small>online</small></span></div>
-            <div class="wa-body">
-              <div class="wa-msg out wa-card">
-                <div class="wa-prev">
-                  <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
-                  <div class="wa-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
-                </div>
-                <div class="wa-cap">obsessed with this one 🥹<span class="wa-meta">9:41<b>✓✓</b></span></div>
-              </div>
-              <div class="wa-msg in">STOP 😍 send the recipe!!<span class="wa-meta">9:42</span></div>
-              <div class="wa-msg out">it's all in the link 👆<span class="wa-meta">9:42<b>✓✓</b></span></div>
-            </div>
-          </div>
-          <!-- slide 3: iMessage -->
-          <div class="sb-slide im" aria-hidden="true">
-            <div class="im-top"><span class="im-back">&lsaquo;</span><span class="im-av"><img src="assets/all/avatar-im.webp" alt=""></span><b>Mum</b></div>
-            <div class="im-body">
-              <div class="im-prev">
-                <img src="assets/all/loaf-preview.webp" width="760" height="461" loading="lazy" alt="">
-                <div class="im-prev-t"><b>My Country Loaf</b><span>bakeside.app</span></div>
-              </div>
-              <div class="im-msg out">look what I just pulled out 🤯</div>
-              <div class="im-msg in">bakery level 😍 save me a slice</div>
-            </div>
-          </div>
-          </div><!-- /sb-track -->
-        </div>
-        <div class="sb-nav" role="tablist" aria-label="Share formats — the screen updates to match">
-          <button type="button" data-i="0" aria-label="Instagram story"><img src="assets/all/ic-instagram.webp" width="132" height="132" alt=""></button>
-          <button type="button" data-i="1" aria-label="WhatsApp"><img src="assets/all/ic-whatsapp.webp" width="132" height="132" alt=""></button>
-          <button type="button" data-i="2" aria-label="Messages"><img src="assets/all/ic-messages.webp" width="132" height="132" alt=""></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 <script>
 /* Share-your-bake spotlight coverflow: one screen lit + centred, neighbours dim + peeking; auto-rotates.
    The icon bar under it stays in sync with the active screen; clicking an icon selects that format. */
