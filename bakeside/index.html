@@ -1866,7 +1866,9 @@
     if(!a) return;
     var addr=a.getAttribute('href').replace(/^mailto:/i,'').split('?')[0];
     if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(addr).then(function(){toast('Email copied: '+addr);}).catch(function(){});
+      navigator.clipboard.writeText(addr).then(function(){toast('Email copied: '+addr);},function(){toast('Email us at '+addr);});
+    }else{
+      toast('Email us at '+addr);
     }
   });
 })();
